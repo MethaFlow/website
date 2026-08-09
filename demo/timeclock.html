@@ -5,54 +5,170 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>METHAFLOW — ลงเวลา (GPS)</title>
 <meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#08382C">
+
+
 <link rel="stylesheet" href="assets/app.css">
 </head>
 <body>
 <div class="app">
-    <aside class="side">
-      <div class="logo"><b>METHAFLOW</b><span>Payroll System</span><div class="wave"></div></div>
-      <nav class="menu">
-        <a href="index.html"><span class="dot"></span>ภาพรวม</a>
-        <a href="timeclock.html" class="on"><span class="dot"></span>ลงเวลา (GPS)</a>
-        <a href="approvals.html"><span class="dot"></span>คำขอ / อนุมัติ</a>
-        <a href="payroll.html"><span class="dot"></span>คำนวณเงินเดือน</a>
-        <a href="ewf.html"><span class="dot"></span>กองทุนสงเคราะห์ฯ</a>
-      </nav>
+
+  <aside class="side">
+    <a class="logo" href="../index.html"><b>METHAFLOW</b><span>Payroll System</span><div class="wave"></div></a>
+    <nav class="menu">
+      <div class="grp">การทำงาน</div>
+      <a href="index.html">
+        <svg viewBox="0 0 24 24"><path d="M3 9.6 12 3l9 6.6V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>ภาพรวม</a>
+      <a href="timeclock.html" class="on" aria-current="page">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>ลงเวลา (GPS)</a>
+      <a href="approvals.html">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8.5 11.8l2.4 2.4 4.6-5"/></svg>คำขอ / อนุมัติ</a>
+      <div class="grp">การเงิน · นำส่ง</div>
+      <a href="payroll.html">
+        <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 7.5h8M8 12h2m3 0h3M8 16h2m3 0h3"/></svg>คำนวณเงินเดือน</a>
+      <a href="ewf.html">
+        <svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6"/><path d="M5.5 10v8m4.3-8v8m4.4-8v8m4.3-8v8"/><path d="M3.5 20.5h17"/></svg>กองทุนสงเคราะห์ฯ</a>
+    </nav>
+    <div class="side-foot">
+      <a class="back" href="../index.html">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span>กลับหน้าเว็บหลัก</span></a>
       <div class="me">
         <div class="av">วร</div>
-        <div><b style="font-size:13px">วรัญญา ส.</b><small>ฝ่ายบุคคล · บจก.เดโม่เฮลท์แคร์</small></div>
+        <div class="who"><b>วรัญญา ส.</b><small>ฝ่ายบุคคล · บจก.เดโม่เฮลท์แคร์</small></div>
       </div>
-    </aside>
-  <main class="main">
+    </div>
+  </aside>
+
+  <div class="main">
     <header class="top">
-      <div><h1>ลงเวลา (GPS)</h1></div>
-      <div class="right"><div class="chip">ศุกร์ 7 ส.ค. 2569</div><div class="chip"><b>3</b> สาขา</div></div>
-    </header>
-    <div class="demo-note">ℹ️ นี่คือหน้าตัวอย่างระบบ (demo) — ข้อมูลทั้งหมดเป็นข้อมูลสมมติเพื่อสาธิตเท่านั้น</div>
-    <section class="grid">
-      <div class="card kpi"><div class="ico" style="background:#EAF5E4">✅</div><h3>เข้างานแล้ว</h3><div class="v" style="color:var(--green)">9 <span style="font-size:13px;font-weight:500">คน</span></div><div class="d up">GPS ตรงสาขาทุกคน</div></div>
-      <div class="card kpi"><div class="ico" style="background:#FFF6E5">⏰</div><h3>มาสาย</h3><div class="v">1 <span style="font-size:13px;font-weight:500">คน</span></div><div class="d dim">เทียบกะของตัวเอง</div></div>
-      <div class="card kpi"><div class="ico" style="background:#E9F4FD">🌴</div><h3>ลา (อนุมัติแล้ว)</h3><div class="v">2 <span style="font-size:13px;font-weight:500">คน</span></div><div class="d dim">พักร้อน 1 · ป่วย 1</div></div>
-      <div class="card kpi"><div class="ico" style="background:#FDEFF4">📍</div><h3>ยังไม่ลงเวลา</h3><div class="v">1 <span style="font-size:13px;font-weight:500">คน</span></div><div class="d dim">แจ้งเตือนหัวหน้าแล้ว</div></div>
-    </section>
-    <section style="margin-top:14px">
-      <div class="card">
-        <div class="hd"><h3>การลงเวลาวันนี้ · เรียงตามเวลาเข้า</h3><span class="sub">พิกัด GPS บันทึกเฉพาะวินาทีที่กดลงเวลา</span></div>
-        <div class="emp"><div class="av">ปว</div><div class="who"><b>ประเสริฐ มั่นคง</b><small>กะเช้า · สำนักงานใหญ่</small></div><div style="text-align:right;font-size:12px"><b>08:00</b><br><small style="color:var(--mut)">ตรงเวลา</small></div><span class="pill" style="margin-left:10px">เข้างาน</span></div>
-        <div class="emp"><div class="av">จิ</div><div class="who"><b>จิราพร แสงทอง</b><small>กะเช้า · ลาดพร้าว</small></div><div style="text-align:right;font-size:12px"><b>07:58</b><br><small style="color:var(--mut)">ตรงเวลา</small></div><span class="pill" style="margin-left:10px">เข้างาน</span></div>
-        <div class="emp"><div class="av">มณ</div><div class="who"><b>มณีรัตน์ พรพิพัฒน์</b><small>กะเช้า · สำนักงานใหญ่</small></div><div style="text-align:right;font-size:12px"><b>08:03</b><br><small style="color:var(--mut)">ตรงเวลา</small></div><span class="pill" style="margin-left:10px">เข้างาน</span></div>
-        <div class="emp"><div class="av">ชั</div><div class="who"><b>ชัยวัฒน์ รุ่งเรือง</b><small>กะเช้า · ลาดพร้าว</small></div><div style="text-align:right;font-size:12px"><b>08:00</b><br><small style="color:var(--mut)">ตรงเวลา</small></div><span class="pill" style="margin-left:10px">เข้างาน</span></div>
-        <div class="emp"><div class="av">อน</div><div class="who"><b>อนุชา ใจดี</b><small>กะบ่าย · ลาดพร้าว</small></div><div style="text-align:right;font-size:12px"><b>13:18</b><br><small style="color:var(--mut)">สาย 18 นาที</small></div><span class="pill b" style="margin-left:10px">มาสาย</span></div>
-        <div class="emp"><div class="av">สม</div><div class="who"><b>สมชาย ขยันงาน</b><small>กะเช้า · ลาดพร้าว (รายวัน)</small></div><div style="text-align:right;font-size:12px"><b>08:01</b><br><small style="color:var(--mut)">ตรงเวลา</small></div><span class="pill" style="margin-left:10px">เข้างาน</span></div>
-        <div class="emp"><div class="av">นัน</div><div class="who"><b>นันทรัตน์ สุขใจ</b><small>ลาพักร้อน (อนุมัติแล้ว)</small></div><div style="text-align:right;font-size:12px"><b>—</b><br><small style="color:var(--mut)">ลา 11–12 ส.ค.</small></div><span class="pill b" style="margin-left:10px">ลา</span></div>
-        <div class="emp"><div class="av">ถา</div><div class="who"><b>ถาวัน ไพรี</b><small>ยังไม่ลงเวลา</small></div><div style="text-align:right;font-size:12px"><b>—</b><br><small style="color:var(--mut)">รอลงเวลา</small></div><span class="pill b" style="margin-left:10px">ขาด</span></div>
+      <div class="top-in">
+        <div>
+          <div class="crumb">Time &amp; attendance</div>
+          <h1>ลงเวลาเข้า–ออกงาน</h1>
+          <p class="lede">บันทึกพิกัด GPS เฉพาะวินาทีที่กดลงเวลา · เทียบสายกับกะของพนักงานแต่ละคน</p>
+        </div>
+        <div class="right">
+          <div class="chip"><span class="live"></span>ศุกร์ 7 ส.ค. 2569 · <b>09:42</b></div>
+          <div class="chip">12 คน · 2 สาขา</div>
+          <a class="btn-cta" href="https://cal.com/methaflow/30min" target="_blank" rel="noopener">
+            นัดดูระบบตัวจริง<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
-    </section>
-    <div class="foot">METHAFLOW Payroll · หน้าตัวอย่างระบบ · ทุกตัวเลขในระบบจริงมีบันทึกตรวจสอบครบทุกรายการ</div>
-  </main>
+    </header>
+
+    <div class="wrap">
+      <div class="demo-note">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+        <span>นี่คือหน้าตัวอย่างระบบ (demo) — ข้อมูลทั้งหมดเป็นข้อมูลสมมติเพื่อสาธิตเท่านั้น</span>
+      </div>
+
+      <section class="grid">
+        <div class="card kpi k-green">
+          <div class="k-top"><h3>เข้างานแล้ว</h3>
+            <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.4 12.2l2.4 2.4 4.8-5.2"/></svg></div>
+          </div>
+          <div class="v">9<u>คน</u></div>
+          <div class="d up">GPS ตรงสาขาทุกคน</div>
+        </div>
+        <div class="card kpi k-gold">
+          <div class="k-top"><h3>มาสาย</h3>
+            <div class="ico i-gold"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 1.8"/></svg></div>
+          </div>
+          <div class="v">1<u>คน</u></div>
+          <div class="d dim">เทียบกะของตัวเอง</div>
+        </div>
+        <div class="card kpi k-sky">
+          <div class="k-top"><h3>ลา (อนุมัติแล้ว)</h3>
+            <div class="ico i-sky"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10.5h18"/></svg></div>
+          </div>
+          <div class="v">2<u>คน</u></div>
+          <div class="d dim">พักร้อน 1 · ป่วย 1</div>
+        </div>
+        <div class="card kpi k-plum">
+          <div class="k-top"><h3>ยังไม่ลงเวลา</h3>
+            <div class="ico i-plum"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+          </div>
+          <div class="v">1<u>คน</u></div>
+          <div class="d dim">แจ้งเตือนหัวหน้าแล้ว</div>
+        </div>
+      </section>
+
+      <div class="sec-hd">
+        <div class="eyebrow">Today · 7 ส.ค. 2569</div>
+        <h2>การลงเวลาวันนี้</h2>
+        <p>เรียงตามเวลาเข้า — ทุกแถวผูกกับพิกัดสาขาและกะที่พนักงานสังกัด</p>
+      </div>
+
+      <section class="row2">
+        <div class="card">
+          <div class="hd">
+            <h3>รายการลงเวลา<span class="sub">พิกัด GPS บันทึกเฉพาะวินาทีที่กดลงเวลา</span></h3>
+            <a href="approvals.html">คำขอที่เกี่ยวข้อง<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+
+          <div class="rowline"><div class="av" style="background:var(--green)">ปว</div>
+            <div class="who"><b>ประเสริฐ มั่นคง</b><small>กะเช้า · สำนักงานใหญ่</small></div>
+            <div class="time"><b>08:00</b><small>ตรงเวลา</small></div>
+            <span class="bdg paid">เข้างาน</span></div>
+
+          <div class="rowline"><div class="av" style="background:var(--teal)">จิ</div>
+            <div class="who"><b>จิราพร แสงทอง</b><small>กะเช้า · ลาดพร้าว</small></div>
+            <div class="time"><b>07:58</b><small>ตรงเวลา</small></div>
+            <span class="bdg paid">เข้างาน</span></div>
+
+          <div class="rowline"><div class="av" style="background:var(--sky)">มณ</div>
+            <div class="who"><b>มณีรัตน์ พรพิพัฒน์</b><small>กะเช้า · สำนักงานใหญ่</small></div>
+            <div class="time"><b>08:03</b><small>ตรงเวลา</small></div>
+            <span class="bdg paid">เข้างาน</span></div>
+
+          <div class="rowline"><div class="av" style="background:var(--grass)">ชั</div>
+            <div class="who"><b>ชัยวัฒน์ รุ่งเรือง</b><small>กะเช้า · ลาดพร้าว</small></div>
+            <div class="time"><b>08:00</b><small>ตรงเวลา</small></div>
+            <span class="bdg paid">เข้างาน</span></div>
+
+          <div class="rowline is-late"><div class="av" style="background:var(--amber)">อน</div>
+            <div class="who"><b>อนุชา ใจดี</b><small>กะบ่าย · ลาดพร้าว</small></div>
+            <div class="time"><b>13:18</b><small>สาย 18 นาที</small></div>
+            <span class="bdg rev">มาสาย</span></div>
+
+          <div class="rowline"><div class="av" style="background:var(--green)">สม</div>
+            <div class="who"><b>สมชาย ขยันงาน</b><small>กะเช้า · ลาดพร้าว (รายวัน)</small></div>
+            <div class="time"><b>08:01</b><small>ตรงเวลา</small></div>
+            <span class="bdg paid">เข้างาน</span></div>
+
+          <div class="rowline is-off"><div class="av" style="background:var(--sky)">นัน</div>
+            <div class="who"><b>นันทรัตน์ สุขใจ</b><small>ลาพักร้อน (อนุมัติแล้ว)</small></div>
+            <div class="time"><b>—</b><small>ลา 11–12 ส.ค.</small></div>
+            <span class="bdg ok">ลา</span></div>
+
+          <div class="rowline is-off"><div class="av" style="background:var(--plum)">ถา</div>
+            <div class="who"><b>ถาวัน ไพรี</b><small>ยังไม่ลงเวลา</small></div>
+            <div class="time"><b>—</b><small>รอลงเวลา</small></div>
+            <span class="bdg off">ขาด</span></div>
+        </div>
+
+        <div class="card">
+          <div class="hd"><h3>สัดส่วนวันนี้<span class="sub">12 คนในงวด 08/2569</span></h3></div>
+          <div class="stat"><div class="t"><span>เข้างานแล้ว</span><b>9 คน · 75%</b></div><div class="track"><i style="width:75%;background:var(--grass)"></i></div></div>
+          <div class="stat"><div class="t"><span>ลาที่อนุมัติแล้ว</span><b>2 คน · 17%</b></div><div class="track"><i style="width:17%;background:var(--sky)"></i></div></div>
+          <div class="stat"><div class="t"><span>ยังไม่ลงเวลา</span><b>1 คน · 8%</b></div><div class="track"><i style="width:8%;background:var(--plum)"></i></div></div>
+
+          <div class="hd" style="margin:22px 0 14px"><h3>แยกตามกะและสถานที่</h3></div>
+          <ul class="lg">
+            <li><span><i class="sw" style="background:var(--green)"></i>กะเช้า</span><b>6 คน</b></li>
+            <li><span><i class="sw" style="background:var(--sky)"></i>กะบ่าย</span><b>3 คน</b></li>
+            <li><span><i class="sw" style="background:var(--gold)"></i>สำนักงาน</span><b>3 คน</b></li>
+          </ul>
+          <p class="note">พิกัดที่บันทึกใช้ตรวจสอบย้อนหลังได้ทุกแถว และการแก้ไขเวลาทุกครั้งถูกบันทึกว่าใครแก้ เมื่อไร</p>
+        </div>
+      </section>
+
+      <div class="foot">
+        <span>METHAFLOW Payroll · หน้าตัวอย่างระบบ · ทุกตัวเลขในระบบจริงมีบันทึกตรวจสอบครบทุกรายการ</span>
+        <span><a href="index.html">ภาพรวม</a> · <a href="../index.html">กลับหน้าเว็บหลัก</a></span>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>

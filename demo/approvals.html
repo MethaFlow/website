@@ -5,55 +5,159 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>METHAFLOW — คำขอ / อนุมัติ</title>
 <meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#08382C">
+
+
 <link rel="stylesheet" href="assets/app.css">
 </head>
 <body>
 <div class="app">
-    <aside class="side">
-      <div class="logo"><b>METHAFLOW</b><span>Payroll System</span><div class="wave"></div></div>
-      <nav class="menu">
-        <a href="index.html"><span class="dot"></span>ภาพรวม</a>
-        <a href="timeclock.html"><span class="dot"></span>ลงเวลา (GPS)</a>
-        <a href="approvals.html" class="on"><span class="dot"></span>คำขอ / อนุมัติ</a>
-        <a href="payroll.html"><span class="dot"></span>คำนวณเงินเดือน</a>
-        <a href="ewf.html"><span class="dot"></span>กองทุนสงเคราะห์ฯ</a>
-      </nav>
+
+  <aside class="side">
+    <a class="logo" href="../index.html"><b>METHAFLOW</b><span>Payroll System</span><div class="wave"></div></a>
+    <nav class="menu">
+      <div class="grp">การทำงาน</div>
+      <a href="index.html">
+        <svg viewBox="0 0 24 24"><path d="M3 9.6 12 3l9 6.6V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>ภาพรวม</a>
+      <a href="timeclock.html">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>ลงเวลา (GPS)</a>
+      <a href="approvals.html" class="on" aria-current="page">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8.5 11.8l2.4 2.4 4.6-5"/></svg>คำขอ / อนุมัติ</a>
+      <div class="grp">การเงิน · นำส่ง</div>
+      <a href="payroll.html">
+        <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 7.5h8M8 12h2m3 0h3M8 16h2m3 0h3"/></svg>คำนวณเงินเดือน</a>
+      <a href="ewf.html">
+        <svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6"/><path d="M5.5 10v8m4.3-8v8m4.4-8v8m4.3-8v8"/><path d="M3.5 20.5h17"/></svg>กองทุนสงเคราะห์ฯ</a>
+    </nav>
+    <div class="side-foot">
+      <a class="back" href="../index.html">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span>กลับหน้าเว็บหลัก</span></a>
       <div class="me">
         <div class="av">วร</div>
-        <div><b style="font-size:13px">วรัญญา ส.</b><small>ฝ่ายบุคคล · บจก.เดโม่เฮลท์แคร์</small></div>
+        <div class="who"><b>วรัญญา ส.</b><small>ฝ่ายบุคคล · บจก.เดโม่เฮลท์แคร์</small></div>
       </div>
-    </aside>
-  <main class="main">
+    </div>
+  </aside>
+
+  <div class="main">
     <header class="top">
-      <div><h1>คำขอ / อนุมัติ</h1></div>
-      <div class="right"><div class="chip">รออนุมัติ <b>3</b></div><div class="chip">maker–checker</div></div>
+      <div class="top-in">
+        <div>
+          <div class="crumb">Requests &amp; approvals</div>
+          <h1>คำขอ / อนุมัติ</h1>
+          <p class="lede">maker–checker: ผู้ยื่นอนุมัติคำขอตัวเองไม่ได้ และหัวหน้าเห็นเฉพาะลูกน้องสายตรง</p>
+        </div>
+        <div class="right">
+          <div class="chip"><span class="live"></span>รออนุมัติ <b>3</b> รายการ</div>
+          <div class="chip">งวดปัจจุบัน <b>08/2569</b></div>
+          <a class="btn-cta" href="https://cal.com/methaflow/30min" target="_blank" rel="noopener">
+            นัดดูระบบตัวจริง<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
     </header>
-    <div class="demo-note">ℹ️ นี่คือหน้าตัวอย่างระบบ (demo) — ข้อมูลทั้งหมดเป็นข้อมูลสมมติเพื่อสาธิตเท่านั้น</div>
-    <section style="margin-top:0">
-      <div class="card">
-        <div class="hd"><h3>รายการรออนุมัติ</h3><span class="sub">คุณอนุมัติได้เฉพาะลูกน้องสายตรง (ป้องกันอนุมัติเอง)</span></div>
-        <div class="req"><div class="av" style="background:var(--blue)">นัน</div><p><b>นันทรัตน์ สุขใจ</b> · ลาพักร้อน 11–12 ส.ค. (2 วัน)<br><small>ยื่นเมื่อวานนี้ · คงเหลือสิทธิลาพักร้อน 4 วัน</small></p><span class="tag leave">ลาพักร้อน</span><button class="btn ok" type="button">อนุมัติ</button><button class="btn no" type="button">ปฏิเสธ</button></div>
-        <div class="req"><div class="av" style="background:var(--grass)">สุ</div><p><b>สุทิดา ความสุข</b> · OT วันหยุด 2.0 ชม. (9 ส.ค.)<br><small>ยื่นวันนี้ 08:15 · กะบ่าย สาขาลาดพร้าว · คิดอัตรา 3.0 เท่า</small></p><span class="tag ot">ค่าล่วงเวลา</span><button class="btn ok" type="button">อนุมัติ</button><button class="btn no" type="button">ปฏิเสธ</button></div>
-        <div class="req"><div class="av" style="background:var(--pink)">ถา</div><p><b>ถาวัน ไพรี</b> · ลาป่วย 6 ส.ค. (1 วัน)<br><small>แนบใบรับรองแพทย์แล้ว · ระบบเก็บเฉพาะประเภทลาและจำนวนวัน</small></p><span class="tag sick">ลาป่วย</span><button class="btn ok" type="button">อนุมัติ</button><button class="btn no" type="button">ปฏิเสธ</button></div>
+
+    <div class="wrap">
+      <div class="demo-note">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+        <span>นี่คือหน้าตัวอย่างระบบ (demo) — ข้อมูลทั้งหมดเป็นข้อมูลสมมติเพื่อสาธิตเท่านั้น</span>
       </div>
-    </section>
-    <section style="margin-top:14px">
-      <div class="card">
-        <div class="hd"><h3>ประวัติการอนุมัติล่าสุด</h3><span class="sub">ทุกการอนุมัติถูกบันทึกว่าใครทำ เมื่อไร</span></div>
-        <table class="tbl">
-          <tr><th>พนักงาน</th><th>ประเภท</th><th>ช่วงวันที่</th><th>ผู้อนุมัติ</th><th>สถานะ</th></tr>
-          <tr><td>วิชัย พากเพียร</td><td>ลากิจ</td><td>4 ส.ค.</td><td>วรัญญา ส.</td><td><span class="bdg paid">อนุมัติ</span></td></tr>
-          <tr><td>จิราพร แสงทอง</td><td>OT วันทำงาน 3 ชม.</td><td>2 ส.ค.</td><td>วรัญญา ส.</td><td><span class="bdg paid">อนุมัติ</span></td></tr>
-          <tr><td>สมหญิง ตั้งใจ</td><td>ลาป่วย 2 วัน</td><td>28–29 ก.ค.</td><td>วรัญญา ส.</td><td><span class="bdg paid">อนุมัติ</span></td></tr>
-          <tr><td>อนุชา ใจดี</td><td>ลาพักร้อน</td><td>25 ก.ค.</td><td>วรัญญา ส.</td><td><span class="bdg new">ปฏิเสธ</span></td></tr>
-        </table>
+
+      <section class="grid">
+        <div class="card kpi k-gold">
+          <div class="k-top"><h3>รออนุมัติทั้งหมด</h3>
+            <div class="ico i-gold"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 1.8"/></svg></div>
+          </div>
+          <div class="v">3<u>รายการ</u></div>
+          <div class="d dim">ลา 2 · ค่าล่วงเวลา 1</div>
+        </div>
+        <div class="card kpi k-sky">
+          <div class="k-top"><h3>คำขอลา</h3>
+            <div class="ico i-sky"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10.5h18"/></svg></div>
+          </div>
+          <div class="v">2<u>รายการ</u></div>
+          <div class="d dim">พักร้อน 1 · ป่วย 1</div>
+        </div>
+        <div class="card kpi k-green">
+          <div class="k-top"><h3>คำขอค่าล่วงเวลา</h3>
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg></div>
+          </div>
+          <div class="v">1<u>รายการ</u></div>
+          <div class="d dim">วันหยุด · อัตรา 3.0 เท่า</div>
+        </div>
+        <div class="card kpi k-green">
+          <div class="k-top"><h3>อนุมัติแล้วเดือนนี้</h3>
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 15l2 2 4-4"/></svg></div>
+          </div>
+          <div class="v">4<u>รายการ</u></div>
+          <div class="d up">100% มีบันทึกตรวจสอบ</div>
+        </div>
+      </section>
+
+      <div class="sec-hd">
+        <div class="eyebrow">Pending</div>
+        <h2>รายการรออนุมัติ</h2>
+        <p>คุณอนุมัติได้เฉพาะลูกน้องสายตรง (ป้องกันการอนุมัติเอง)</p>
       </div>
-    </section>
-    <div class="foot">METHAFLOW Payroll · หน้าตัวอย่างระบบ · ทุกตัวเลขในระบบจริงมีบันทึกตรวจสอบครบทุกรายการ</div>
-  </main>
+
+      <section class="row2" style="grid-template-columns:1fr">
+        <div class="card">
+          <div class="hd">
+            <h3>คิวคำขอ<span class="sub">เรียงตามเวลายื่น</span></h3>
+            <a href="timeclock.html">ดูข้อมูลลงเวลา<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+
+          <div class="req"><div class="av" style="background:var(--sky)">นัน</div>
+            <p><b>นันทรัตน์ สุขใจ</b> · ลาพักร้อน 11–12 ส.ค. (2 วัน)
+              <small>ยื่นเมื่อวานนี้ · คงเหลือสิทธิลาพักร้อน 4 วัน</small></p>
+            <span class="tag leave">ลาพักร้อน</span>
+            <div class="actions"><button class="btn ok" type="button">อนุมัติ</button><button class="btn no" type="button">ปฏิเสธ</button></div>
+          </div>
+
+          <div class="req"><div class="av" style="background:var(--grass)">สุ</div>
+            <p><b>สุทิดา ความสุข</b> · OT วันหยุด 2.0 ชม. (9 ส.ค.)
+              <small>ยื่นวันนี้ 08:15 · กะบ่าย สาขาลาดพร้าว · คิดอัตรา 3.0 เท่า</small></p>
+            <span class="tag ot">ค่าล่วงเวลา</span>
+            <div class="actions"><button class="btn ok" type="button">อนุมัติ</button><button class="btn no" type="button">ปฏิเสธ</button></div>
+          </div>
+
+          <div class="req"><div class="av" style="background:var(--plum)">ถา</div>
+            <p><b>ถาวัน ไพรี</b> · ลาป่วย 6 ส.ค. (1 วัน)
+              <small>แนบใบรับรองแพทย์แล้ว · ระบบเก็บเฉพาะประเภทลาและจำนวนวัน</small></p>
+            <span class="tag sick">ลาป่วย</span>
+            <div class="actions"><button class="btn ok" type="button">อนุมัติ</button><button class="btn no" type="button">ปฏิเสธ</button></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="sec-hd">
+        <div class="eyebrow">Audit trail</div>
+        <h2>ประวัติการอนุมัติล่าสุด</h2>
+        <p>ทุกการอนุมัติถูกบันทึกว่าใครทำ เมื่อไร — แก้ย้อนหลังโดยไม่มีร่องรอยไม่ได้</p>
+      </div>
+
+      <section class="row2" style="grid-template-columns:1fr">
+        <div class="card">
+          <div class="hd"><h3>บันทึกการอนุมัติ<span class="sub">4 รายการล่าสุด</span></h3></div>
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr><th>พนักงาน</th><th>ประเภท</th><th>ช่วงวันที่</th><th>ผู้อนุมัติ</th><th>สถานะ</th></tr></thead>
+              <tbody>
+                <tr><td><b>วิชัย พากเพียร</b></td><td>ลากิจ</td><td>4 ส.ค. 2569</td><td>วรัญญา ส.</td><td><span class="bdg paid">อนุมัติ</span></td></tr>
+                <tr><td><b>จิราพร แสงทอง</b></td><td>OT วันทำงาน 3 ชม.</td><td>2 ส.ค. 2569</td><td>วรัญญา ส.</td><td><span class="bdg paid">อนุมัติ</span></td></tr>
+                <tr><td><b>สมหญิง ตั้งใจ</b></td><td>ลาป่วย 2 วัน</td><td>28–29 ก.ค. 2569</td><td>วรัญญา ส.</td><td><span class="bdg paid">อนุมัติ</span></td></tr>
+                <tr><td><b>อนุชา ใจดี</b></td><td>ลาพักร้อน</td><td>25 ก.ค. 2569</td><td>วรัญญา ส.</td><td><span class="bdg off">ปฏิเสธ</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <div class="foot">
+        <span>METHAFLOW Payroll · หน้าตัวอย่างระบบ · ทุกตัวเลขในระบบจริงมีบันทึกตรวจสอบครบทุกรายการ</span>
+        <span><a href="index.html">ภาพรวม</a> · <a href="../index.html">กลับหน้าเว็บหลัก</a></span>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>

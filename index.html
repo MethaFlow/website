@@ -55,7 +55,37 @@
   .btn-solid:hover{background:var(--green-hover);box-shadow:0 12px 28px -10px rgba(14,90,71,.7)}
   .btn-line{background:transparent;color:var(--green);border-color:var(--line)}
   .btn-line:hover{border-color:var(--green);background:#fff}
-  @media(max-width:860px){nav.links{display:none}}
+  /* ===== mobile nav : hamburger + dropdown ===== */
+  .navtoggle{display:none;width:42px;height:42px;flex:none;border:1px solid var(--line);background:#fff;
+    border-radius:11px;cursor:pointer;padding:0;place-items:center;align-content:center;gap:5px}
+  .navtoggle span{display:block;width:18px;height:2px;border-radius:2px;background:var(--green);
+    transition:transform .22s,opacity .22s}
+  .navtoggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .navtoggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .navtoggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:860px){
+    .nav-in{height:64px}
+    .navtoggle{display:grid}
+    nav.links{position:absolute;left:0;right:0;top:100%;display:none;flex-direction:column;gap:0;
+      padding:6px 20px 14px;background:rgba(250,248,242,.98);backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line);box-shadow:0 26px 44px -30px rgba(14,90,71,.55)}
+    header.nav.open nav.links{display:flex}
+    nav.links a{padding:14px 2px;font-size:16px;color:var(--ink);border-bottom:1px solid var(--line)}
+    nav.links a:last-child{border-bottom:none}
+    nav.links a::after{display:none}
+    .nav-right{gap:9px}
+    .nav-right .btn-solid{padding:9px 15px;font-size:13.5px;border-radius:10px;box-shadow:none}
+    .brand .m{font-size:19px}
+  }
+  @media(max-width:520px){
+    .btn{padding:10px 17px;font-size:14px}
+    .nav-right .btn-solid{padding:8px 13px;font-size:13px}
+    .langsw button{padding:5px 9px;font-size:12px}
+    .hero-cta{gap:10px}
+  }
+  @media(max-width:380px){
+    .nav-right .btn-solid{display:none}
+  }
 
   /* ===== HERO — warm gradient wash + floating accents ===== */
   .hero{position:relative;padding:96px 0 56px;overflow:hidden;
@@ -224,7 +254,7 @@
 <header class="nav" id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="index.html"><span class="m">METHAFLOW</span></a>
-    <nav class="links">
+    <nav class="links" id="mainnav">
       <a href="#platform"><span class="lang-th">แพลตฟอร์ม</span><span class="lang-en">Platform</span></a>
       <a href="demo/index.html"><span class="lang-th">ตัวอย่างระบบ</span><span class="lang-en">Live demo</span></a>
       <a href="#how"><span class="lang-th">การทำงาน</span><span class="lang-en">How it works</span></a>
@@ -237,6 +267,7 @@
         <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
       <a class="btn btn-solid" href="https://cal.com/methaflow/30min" target="_blank" rel="noopener"><span class="lang-th">นัดดูระบบ</span><span class="lang-en">Book a demo</span></a>
+      <button class="navtoggle" type="button" id="navtoggle" aria-controls="mainnav" aria-expanded="false" aria-label="เมนู"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -424,5 +455,20 @@
 
 <script src="js/main.js"></script>
 <script src="js/index.js"></script>
+<script>
+(function(){
+  var h=document.querySelector('header.nav'), t=document.getElementById('navtoggle');
+  if(!h||!t) return;
+  function close(){h.classList.remove('open');t.setAttribute('aria-expanded','false');}
+  t.addEventListener('click',function(e){
+    e.stopPropagation();
+    var open=h.classList.toggle('open');
+    t.setAttribute('aria-expanded',open?'true':'false');
+  });
+  h.querySelectorAll('#mainnav a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('click',function(e){if(!h.contains(e.target))close();});
+  window.addEventListener('resize',function(){if(window.innerWidth>860)close();});
+})();
+</script>
 </body>
 </html>
