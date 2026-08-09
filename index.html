@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="th" data-title-th="METHAFLOW — แพลตฟอร์มระบบหลังบ้านสำหรับธุรกิจไทย" data-title-en="METHAFLOW — Back-office platform for Thai business">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>METHAFLOW — แพลตฟอร์มระบบหลังบ้านสำหรับธุรกิจไทย</title>
+<meta name="description" content="METHAFLOW แพลตฟอร์มระบบหลังบ้านสำหรับธุรกิจไทย เริ่มจากระบบเงินเดือนที่แม่นยำระดับสตางค์ ต่อด้วยบัญชี CRM และบริการ บนสถาปัตยกรรมที่ปลอดภัยและตรวจสอบได้ทุกรายการ" />
+
+
+<link rel="stylesheet" href="css/style.css" />
+<style>
+  :root{
+    --green:#0E5A47; --green-hover:#137057; --green-deep:#08382C; --green-tint:#E8F0EC;
+    --teal:#1B8F79; --blue:#2AA9DC;
+    --cream:#FAF8F2; --paper:#FFFFFF; --sand:#F1EADB; --sand-2:#EFE7D4;
+    --ink:#182420; --muted:#5C6B63; --faint:#98A29A; --line:#E5DECD;
+    --gold:#C9A54E; --gold-soft:#E4C878; --coral:#E08A6B;
+    --font-d:'Prompt',sans-serif; --font-b:'Sarabun',sans-serif;
+    --maxw:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-b);font-size:17px;line-height:1.75;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .lang-en{display:none}
+  html[lang="en"] .lang-th{display:none}
+  html[lang="en"] .lang-en{display:inline}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  h1,h2,h3,.d{font-family:var(--font-d);letter-spacing:-.015em;line-height:1.18}
+
+  /* scroll reveal */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+
+  /* ===== nav ===== */
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(250,248,242,.82);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+  header.nav.stuck{border-bottom-color:var(--line);background:rgba(250,248,242,.94)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:baseline;gap:9px}
+  .brand .m{font-family:var(--font-d);font-weight:800;font-size:22px;letter-spacing:.01em;color:var(--green)}
+  .brand .s{font-size:11px;color:var(--faint);letter-spacing:.18em;text-transform:uppercase}
+  nav.links{display:flex;gap:32px;font-size:15px;font-weight:500}
+  nav.links a{color:var(--muted);position:relative;transition:color .15s}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--gold);transition:width .25s}
+  nav.links a:hover{color:var(--green)}
+  nav.links a:hover::after{width:100%}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .langsw{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .langsw button{font-family:var(--font-b);border:none;background:transparent;padding:5px 11px;font-size:13px;cursor:pointer;color:var(--muted)}
+  .langsw button[aria-pressed="true"]{background:var(--green);color:#fff}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-d);font-weight:500;font-size:15px;padding:11px 22px;border-radius:11px;cursor:pointer;transition:transform .12s,box-shadow .2s,background .15s;border:1px solid transparent}
+  .btn:active{transform:translateY(1px)}
+  .btn-solid{background:var(--green);color:#fff;box-shadow:0 8px 22px -10px rgba(14,90,71,.6)}
+  .btn-solid:hover{background:var(--green-hover);box-shadow:0 12px 28px -10px rgba(14,90,71,.7)}
+  .btn-line{background:transparent;color:var(--green);border-color:var(--line)}
+  .btn-line:hover{border-color:var(--green);background:#fff}
+  @media(max-width:860px){nav.links{display:none}}
+
+  /* ===== HERO — warm gradient wash + floating accents ===== */
+  .hero{position:relative;padding:96px 0 56px;overflow:hidden;
+    background:
+      radial-gradient(900px 480px at 88% -8%, rgba(42,169,220,.14), transparent 60%),
+      radial-gradient(760px 520px at 8% 12%, rgba(201,165,78,.16), transparent 58%),
+      linear-gradient(180deg,#FCFBF6 0%, var(--cream) 100%);}
+  .blob{position:absolute;border-radius:50%;filter:blur(46px);opacity:.5;z-index:0;animation:float 14s ease-in-out infinite}
+  .blob.b1{width:340px;height:340px;background:radial-gradient(circle,rgba(27,143,121,.34),transparent 70%);top:-60px;right:6%}
+  .blob.b2{width:260px;height:260px;background:radial-gradient(circle,rgba(201,165,78,.30),transparent 70%);bottom:-40px;left:12%;animation-delay:-5s}
+  @keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-24px) translateX(12px)}}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.12fr .88fr;gap:54px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-d);font-size:13px;font-weight:500;
+    letter-spacing:.03em;color:var(--green);background:rgba(255,255,255,.7);border:1px solid var(--line);padding:7px 15px;border-radius:999px;margin-bottom:26px;backdrop-filter:blur(6px)}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(27,143,121,.5);animation:ring 2.2s infinite}
+  @keyframes ring{0%{box-shadow:0 0 0 0 rgba(27,143,121,.5)}70%{box-shadow:0 0 0 8px rgba(27,143,121,0)}100%{box-shadow:0 0 0 0 rgba(27,143,121,0)}}
+  .hero h1{font-size:clamp(2.5rem,5.2vw,4rem);font-weight:800;letter-spacing:-.03em}
+  .hero h1 .g{background:linear-gradient(115deg,var(--green),var(--teal) 55%,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero h1 .u{position:relative;white-space:nowrap}
+  .hero h1 .u::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.16em;background:linear-gradient(90deg,var(--gold-soft),var(--gold));border-radius:3px;opacity:.65;z-index:-1}
+  .hero .sub{font-size:19px;color:var(--muted);margin:26px 0 34px;max-width:33em}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:13.5px;color:var(--faint);margin-top:20px;display:flex;align-items:center;gap:8px}
+  .hero-note b{color:var(--teal);font-family:var(--font-d);font-weight:600}
+
+  .panel{position:relative;z-index:2;background:var(--paper);border:1px solid var(--line);border-radius:20px;
+    box-shadow:0 40px 90px -40px rgba(14,90,71,.4);overflow:hidden;transform:perspective(1400px) rotateY(-6deg) rotateX(2deg);transition:transform .5s}
+  .panel:hover{transform:perspective(1400px) rotateY(0) rotateX(0)}
+  .panel-top{display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,var(--sand),var(--sand-2))}
+  .panel-top i{width:10px;height:10px;border-radius:50%}
+  .panel-top .d1{background:#E0655B}.panel-top .d2{background:#E5B95B}.panel-top .d3{background:#5BB07A}
+  .panel-top span{margin-left:8px;font-size:12.5px;color:var(--muted);font-family:var(--font-d)}
+  .panel-body{padding:24px}
+  .panel-big{text-align:center;padding:6px 0 16px}
+  .panel-big .n{font-family:var(--font-d);font-weight:800;font-size:46px;
+    background:linear-gradient(115deg,var(--green),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.02em;line-height:1}
+  .panel-big .c{font-size:13px;color:var(--faint);margin-top:7px}
+  .bar{height:8px;border-radius:6px;background:var(--green-tint);overflow:hidden;margin-top:4px}
+  .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));border-radius:6px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+  .panel-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px dashed var(--line);font-size:14px}
+  .panel-row:last-child{border-bottom:none}
+  .panel-row .lbl{color:var(--muted)}
+  .panel-row .val{font-family:var(--font-d);font-weight:600;font-size:16px}
+  .panel-row .val.ok{color:var(--teal)}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:42px}.panel{max-width:460px;transform:none}}
+
+  /* ===== marquee trust strip ===== */
+  .ticker{background:var(--green-deep);color:rgba(255,255,255,.9);overflow:hidden;border-top:1px solid rgba(255,255,255,.06)}
+  .ticker-track{display:flex;gap:56px;padding:16px 0;white-space:nowrap;animation:scroll 32s linear infinite;font-family:var(--font-d);font-size:14.5px;font-weight:500}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  .ticker-track span{display:inline-flex;align-items:center;gap:10px;color:rgba(255,255,255,.85)}
+  .ticker-track span b{color:var(--gold-soft)}
+  .ticker-track .sep{color:rgba(255,255,255,.25)}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ===== stat band (counts up) ===== */
+  .stats{background:linear-gradient(180deg,var(--cream),#F6F2E8);padding:70px 0;border-bottom:1px solid var(--line)}
+  .stats-in{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .stat{text-align:center;padding:10px}
+  .stat .n{font-family:var(--font-d);font-weight:800;font-size:clamp(2rem,4vw,2.9rem);letter-spacing:-.02em;
+    background:linear-gradient(115deg,var(--green),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .l{font-size:13.5px;color:var(--muted);margin-top:6px}
+  @media(max-width:700px){.stats-in{grid-template-columns:1fr 1fr;gap:30px 20px}}
+
+  /* ===== section shell ===== */
+  section.blk{padding:100px 0;position:relative}
+  .kicker{font-family:var(--font-d);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .blk h2{font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:700;margin:12px 0 16px;letter-spacing:-.02em;max-width:16em}
+  .blk .intro{font-size:18px;color:var(--muted);max-width:40em}
+
+  /* ===== PLATFORM (dark, rich) ===== */
+  .platform{background:
+      radial-gradient(700px 400px at 90% 0%, rgba(42,169,220,.14), transparent 60%),
+      radial-gradient(600px 500px at 0% 100%, rgba(201,165,78,.12), transparent 60%),
+      linear-gradient(160deg,var(--green-deep),#0B4739 70%,#0E5A47);color:#fff;overflow:hidden}
+  .platform .kicker{color:var(--gold-soft)}
+  .platform h2{color:#fff}.platform .intro{color:rgba(255,255,255,.72)}
+  .switch{display:flex;gap:10px;flex-wrap:wrap;margin:42px 0 32px}
+  .switch button{font-family:var(--font-d);font-weight:500;font-size:15px;padding:11px 20px;border-radius:999px;cursor:pointer;
+    background:rgba(255,255,255,.07);color:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.16);transition:.2s}
+  .switch button:hover{background:rgba(255,255,255,.13)}
+  .switch button[data-on="true"]{background:linear-gradient(120deg,#fff,#F3EEDF);color:var(--green-deep);border-color:#fff;box-shadow:0 10px 30px -12px rgba(0,0,0,.5)}
+  .switch button .tag{font-size:11px;margin-left:8px;padding:2px 9px;border-radius:999px;background:rgba(255,255,255,.18);vertical-align:middle}
+  .switch button[data-on="true"] .tag{background:var(--gold);color:var(--green-deep)}
+  .stage{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;min-height:330px}
+  .stage-txt .st-name{font-family:var(--font-d);font-weight:700;font-size:31px;letter-spacing:-.02em;margin-bottom:8px}
+  .stage-txt .st-status{display:inline-block;font-size:12.5px;font-weight:500;padding:4px 13px;border-radius:999px;margin-bottom:18px}
+  .st-status.live{background:var(--gold);color:var(--green-deep)}
+  .st-status.next{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3)}
+  .stage-txt p{color:rgba(255,255,255,.82);font-size:16.5px;margin-bottom:20px;max-width:32em}
+  .stage-txt ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .stage-txt li{padding-left:28px;position:relative;color:rgba(255,255,255,.92);font-size:15.5px}
+  .stage-txt li::before{content:"";position:absolute;left:0;top:.5em;width:14px;height:2px;background:linear-gradient(90deg,var(--gold-soft),var(--gold))}
+  .stage-vis{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:28px;backdrop-filter:blur(4px)}
+  .vis-row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:14.5px}
+  .vis-row:last-child{border-bottom:none}
+  .vis-row .vk{color:rgba(255,255,255,.6)}
+  .vis-row .vv{font-family:var(--font-d);font-weight:600}
+  .vis-row .vv.g{color:var(--gold-soft)}
+  @media(max-width:860px){.stage{grid-template-columns:1fr;gap:28px}}
+
+  /* ===== HOW — alternating rows on cream ===== */
+  .how{background:linear-gradient(180deg,#F6F2E8,var(--cream))}
+  .story{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:74px}
+  .story:first-of-type{margin-top:52px}
+  .story.flip .story-media{order:-1}
+  .story-txt .num{font-family:var(--font-d);font-weight:800;font-size:15px;letter-spacing:.12em;
+    background:linear-gradient(120deg,var(--gold),var(--coral));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .story-txt h3{font-size:27px;font-weight:600;margin:10px 0 14px;letter-spacing:-.015em}
+  .story-txt p{color:var(--muted);font-size:16.5px}
+  .story-media{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px;
+    box-shadow:0 30px 60px -34px rgba(14,90,71,.3);transition:transform .3s,box-shadow .3s}
+  .story-media:hover{transform:translateY(-4px);box-shadow:0 40px 70px -34px rgba(14,90,71,.4)}
+  .mini-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .mini-head .t{font-family:var(--font-d);font-weight:600;font-size:15px}
+  .mini-head .b{font-size:12px;color:#fff;background:linear-gradient(120deg,var(--green),var(--teal));padding:4px 11px;border-radius:999px}
+  .mini-line{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+  .mini-line:last-child{border-bottom:none}
+  .mini-line .ic{width:32px;height:32px;border-radius:9px;flex:none;background:linear-gradient(135deg,var(--green-tint),#DCEDE6);display:grid;place-items:center;color:var(--green);font-size:15px}
+  .mini-line .mt{flex:1}
+  .mini-line .mv{font-family:var(--font-d);font-weight:600;color:var(--teal)}
+  @media(max-width:860px){.story{grid-template-columns:1fr;gap:26px}.story.flip .story-media{order:0}}
+
+  /* ===== SECURITY — sand, bordered grid ===== */
+  .sec{background:linear-gradient(180deg,var(--cream),#F3EEE2)}
+  .sec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+  .sec-cell{background:var(--paper);padding:30px 26px;border:1px solid var(--line);border-radius:16px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+  .sec-cell::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));transform:scaleX(0);transform-origin:left;transition:transform .35s}
+  .sec-cell:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(14,90,71,.35)}
+  .sec-cell:hover::before{transform:scaleX(1)}
+  .sec-cell .h{font-family:var(--font-d);font-weight:600;font-size:17px;margin-bottom:8px;color:var(--green)}
+  .sec-cell p{font-size:14.5px;color:var(--muted);line-height:1.7}
+  @media(max-width:800px){.sec-grid{grid-template-columns:1fr}}
+
+  /* ===== CLOSING ===== */
+  .close{padding:110px 0;background:linear-gradient(180deg,#F3EEE2,var(--cream))}
+  .close-box{position:relative;overflow:hidden;border-radius:26px;padding:70px 48px;text-align:center;color:#fff;
+    background:radial-gradient(600px 300px at 15% 0%, rgba(42,169,220,.3), transparent 60%),linear-gradient(135deg,var(--green),var(--green-deep))}
+  .close-box::after{content:"";position:absolute;bottom:-50%;right:-8%;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(201,165,78,.32),transparent 68%)}
+  .close-box h2{color:#fff;font-size:clamp(1.7rem,3.4vw,2.7rem);margin:0 auto 14px;max-width:none;white-space:nowrap;position:relative;z-index:2}
+  @media(max-width:640px){.close-box h2{white-space:normal;font-size:1.7rem}}
+  .close-box p{color:rgba(255,255,255,.86);font-size:18px;max-width:36em;margin:0 auto 30px;position:relative;z-index:2}
+  .close-box .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
+  .close-box .btn-white{background:#fff;color:var(--green)}
+  .close-box .btn-white:hover{background:var(--cream)}
+  .close-box .btn-ghost2{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55)}
+  .close-box .btn-ghost2:hover{background:rgba(255,255,255,.1)}
+
+  /* ===== footer ===== */
+  footer.ft{background:var(--green-deep);color:rgba(255,255,255,.8);padding:58px 0 30px}
+  .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:42px}
+  .ft-grid .m{font-family:var(--font-d);font-weight:800;font-size:21px;color:#fff;margin-bottom:10px}
+  .ft-grid p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.62);max-width:26em}
+  .ft-col h4{font-family:var(--font-d);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px}
+  .ft-col a{display:block;font-size:14.5px;color:rgba(255,255,255,.8);padding:5px 0;transition:color .15s,padding-left .15s}
+  .ft-col a:hover{color:#fff;padding-left:4px}
+  .ft-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:rgba(255,255,255,.55)}
+  @media(max-width:760px){.ft-grid{grid-template-columns:1fr 1fr}}
+  @media(prefers-reduced-motion:reduce){.rv{transition:none;opacity:1;transform:none}.blob,.ticker-track,.eyebrow .dot{animation:none}}
+</style>
+</head>
+<body>
+
+<a class="announce" href="ewf-checker.html"><span class="lang-th">กฎหมายใหม่เริ่ม 1 ต.ค. 2569 — บริษัทที่มีลูกจ้าง 10 คนขึ้นไป ต้องหักเงินกองทุนสงเคราะห์ลูกจ้างทุกเดือน <u>เช็คความพร้อมบริษัทคุณฟรี →</u></span><span class="lang-en">New law from 1 Oct 2026 — employers with 10+ employees must remit the Employee Welfare Fund monthly. <u>Check your company free →</u></span></a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><span class="m">METHAFLOW</span><span class="s">Platform</span></a>
+    <nav class="links">
+      <a href="#platform"><span class="lang-th">แพลตฟอร์ม</span><span class="lang-en">Platform</span></a>
+      <a href="demo/index.html"><span class="lang-th">ตัวอย่างระบบ</span><span class="lang-en">Live demo</span></a>
+      <a href="#how"><span class="lang-th">การทำงาน</span><span class="lang-en">How it works</span></a>
+      <a href="#security"><span class="lang-th">ความปลอดภัย</span><span class="lang-en">Security</span></a>
+      <a href="doc-pricing.html"><span class="lang-th">ราคา</span><span class="lang-en">Pricing</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="langsw" role="group" aria-label="Language">
+        <button type="button" data-lang="th" aria-pressed="true">ไทย</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-solid" href="https://cal.com/methaflow/30min" target="_blank" rel="noopener"><span class="lang-th">นัดดูระบบ</span><span class="lang-en">Book a demo</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow rv in"><span class="dot"></span><span class="lang-th">แพลตฟอร์มระบบหลังบ้านสำหรับธุรกิจไทย</span><span class="lang-en">Back-office platform, built for Thailand</span></span>
+      <h1 class="rv in">
+        <span class="lang-th">ระบบหลังบ้าน<br>ที่ธุรกิจ<span class="g u">ไว้ใจได้</span></span>
+        <span class="lang-en">Back-office software<br>your business can <span class="g u">trust</span></span>
+      </h1>
+      <p class="sub rv d1 in">
+        <span class="lang-th">เริ่มจากระบบเงินเดือนที่แม่นยำระดับสตางค์ ตรวจสอบได้ทุกรายการ แล้วเติบโตต่อด้วยบัญชี CRM และบริการ — ทั้งหมดบนแพลตฟอร์มเดียว ข้อมูลเดียว ไว้ใจได้เท่ากัน</span>
+        <span class="lang-en">Starting with payroll accurate to the satang and auditable to the row — then Accounting, CRM and Service on one platform, one source of truth.</span>
+      </p>
+      <div class="hero-cta rv d2 in">
+        <a class="btn btn-solid" href="https://cal.com/methaflow/30min" target="_blank" rel="noopener"><span class="lang-th">นัดดูระบบตัวจริง</span><span class="lang-en">See it live</span></a>
+        <a class="btn btn-line" href="demo/index.html"><span class="lang-th">ดูตัวอย่างระบบ →</span><span class="lang-en">See the live demo →</span></a>
+      </div>
+      <p class="hero-note rv d3 in"><b>●</b><span class="lang-th">รองรับองค์กร 20–1,500 คน · ทุกตัวเลขวิ่งจากฐานข้อมูลจริง ไม่ใช่ตัวอย่าง</span><span class="lang-en">Built for 20–1,500 employees · every figure runs on real data, never mock-ups</span></p>
+    </div>
+
+    <div class="panel rv d1 in" aria-hidden="true">
+      <div class="panel-top"><i class="d1"></i><i class="d2"></i><i class="d3"></i><span>payroll · งวดปัจจุบัน</span></div>
+      <div class="panel-body">
+        <div class="panel-big"><div class="n">฿4,182,650</div><div class="c"><span class="lang-th">ยอดจ่ายสุทธิ · ตรวจทานแล้ว 312 / 312 คน</span><span class="lang-en">Net payroll · reconciled 312 / 312</span></div></div>
+        <div class="bar"><i data-fill="100"></i></div>
+        <div style="height:14px"></div>
+        <div class="panel-row"><span class="lbl"><span class="lang-th">ภาษีหัก ณ ที่จ่าย</span><span class="lang-en">Withholding tax</span></span><span class="val">฿271,940</span></div>
+        <div class="panel-row"><span class="lbl"><span class="lang-th">ประกันสังคม + กองทุนฯ</span><span class="lang-en">SSO + funds</span></span><span class="val">฿198,300</span></div>
+        <div class="panel-row"><span class="lbl"><span class="lang-th">รายการที่ตรวจย้อนได้</span><span class="lang-en">Auditable entries</span></span><span class="val ok">100%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span><b>±0.00</b> <span class="lang-th">ค่าคลาดเคลื่อนระดับสตางค์</span><span class="lang-en">satang-level accuracy</span></span><span class="sep">/</span>
+    <span><b>39/39</b> <span class="lang-th">เคสทดสอบการคำนวณผ่าน</span><span class="lang-en">calculation tests pass</span></span><span class="sep">/</span>
+    <span><b>RLS</b> <span class="lang-th">แยกข้อมูลรายบริษัท</span><span class="lang-en">per-tenant isolation</span></span><span class="sep">/</span>
+    <span><b>100%</b> <span class="lang-th">รายการมีบันทึกตรวจสอบ</span><span class="lang-en">audit-logged</span></span><span class="sep">/</span>
+    <span><b>PDPA</b> <span class="lang-th">สอดคล้องกฎหมายไทย</span><span class="lang-en">compliant</span></span><span class="sep">/</span>
+    <span><b>1,500</b> <span class="lang-th">พนักงาน/องค์กร</span><span class="lang-en">employees/org</span></span><span class="sep">/</span>
+    <!-- duplicate for seamless loop -->
+    <span><b>±0.00</b> <span class="lang-th">ค่าคลาดเคลื่อนระดับสตางค์</span><span class="lang-en">satang-level accuracy</span></span><span class="sep">/</span>
+    <span><b>39/39</b> <span class="lang-th">เคสทดสอบการคำนวณผ่าน</span><span class="lang-en">calculation tests pass</span></span><span class="sep">/</span>
+    <span><b>RLS</b> <span class="lang-th">แยกข้อมูลรายบริษัท</span><span class="lang-en">per-tenant isolation</span></span><span class="sep">/</span>
+    <span><b>100%</b> <span class="lang-th">รายการมีบันทึกตรวจสอบ</span><span class="lang-en">audit-logged</span></span><span class="sep">/</span>
+    <span><b>PDPA</b> <span class="lang-th">สอดคล้องกฎหมายไทย</span><span class="lang-en">compliant</span></span><span class="sep">/</span>
+    <span><b>1,500</b> <span class="lang-th">พนักงาน/องค์กร</span><span class="lang-en">employees/org</span></span><span class="sep">/</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap stats-in">
+    <div class="stat rv"><div class="n" data-count="312">0</div><div class="l"><span class="lang-th">พนักงานในงวดตัวอย่าง</span><span class="lang-en">employees, sample run</span></div></div>
+    <div class="stat rv d1"><div class="n" data-count="39" data-suffix="/39">0</div><div class="l"><span class="lang-th">เคสทดสอบการคำนวณ</span><span class="lang-en">calculation test cases</span></div></div>
+    <div class="stat rv d2"><div class="n" data-count="100" data-suffix="%">0</div><div class="l"><span class="lang-th">รายการมีบันทึกตรวจสอบ</span><span class="lang-en">actions audit-logged</span></div></div>
+    <div class="stat rv d3"><div class="n" data-count="4">0</div><div class="l"><span class="lang-th">ระบบใต้แพลตฟอร์มเดียว</span><span class="lang-en">systems, one platform</span></div></div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section class="blk platform" id="platform">
+  <div class="wrap">
+    <span class="kicker rv"><span class="lang-th">แพลตฟอร์มเดียว เติบโตทีละระบบ</span><span class="lang-en">One platform, phased rollout</span></span>
+    <h2 class="rv d1"><span class="lang-th">สี่ระบบที่คุยกันรู้เรื่อง เพราะอยู่บนข้อมูลเดียวกัน</span><span class="lang-en">Four systems that speak to each other — one shared source of truth</span></h2>
+    <p class="intro rv d2"><span class="lang-th">เราไม่ได้ขายเครื่องมือแยกชิ้น แต่สร้างแพลตฟอร์มที่ระบบต่อ ๆ ไปต่อยอดจากข้อมูลเดิมได้ทันที ไม่ต้องกรอกซ้ำ ไม่ต้องเชื่อมทีหลัง</span><span class="lang-en">Not separate tools bolted together — each new system builds on the same data, with no re-entry and no after-the-fact integration.</span></p>
+    <div class="switch rv d2" id="switch">
+      <button data-k="payroll" data-on="true"><span class="lang-th">เงินเดือน</span><span class="lang-en">Payroll</span><span class="tag"><span class="lang-th">พร้อมใช้</span><span class="lang-en">Live</span></span></button>
+      <button data-k="accounting"><span class="lang-th">บัญชี</span><span class="lang-en">Accounting</span><span class="tag"><span class="lang-th">ถัดไป</span><span class="lang-en">Next</span></span></button>
+      <button data-k="crm">CRM<span class="tag"><span class="lang-th">กำลังพัฒนา</span><span class="lang-en">Roadmap</span></span></button>
+      <button data-k="service">Service<span class="tag"><span class="lang-th">กำลังพัฒนา</span><span class="lang-en">Roadmap</span></span></button>
+    </div>
+    <div class="stage rv d3" id="stage"></div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="blk how" id="how">
+  <div class="wrap">
+    <span class="kicker rv"><span class="lang-th">ทำไมถึงต่างจากที่อื่น</span><span class="lang-en">What sets it apart</span></span>
+    <h2 class="rv d1"><span class="lang-th">ออกแบบให้ถูกต้องตั้งแต่ชั้นข้อมูล ไม่ใช่แค่หน้าจอสวย</span><span class="lang-en">Correct at the data layer — not just a pretty screen</span></h2>
+
+    <div class="story">
+      <div class="story-txt rv">
+        <div class="num">01</div>
+        <h3><span class="lang-th">คำนวณแม่นระดับสตางค์ ทดสอบทุกเคส</span><span class="lang-en">Accurate to the satang, tested every case</span></h3>
+        <p><span class="lang-th">สมองคำนวณเงินแยกออกจากหน้าจอ และผ่านชุดทดสอบมาตรฐานทุกครั้งก่อนปล่อย ครอบคลุมภาษีขั้นบันได เบี้ยขยัน พนักงานรายวัน กะข้ามคืน และการปรับยอดรายคน — เลขผิดแม้สตางค์เดียวคือปล่อยไม่ได้</span><span class="lang-en">The money engine is isolated from the UI and must pass a full golden-test suite before every release — progressive tax, allowances, daily wage, overnight shifts, per-person adjustments. A single satang off means it does not ship.</span></p>
+      </div>
+      <div class="story-media rv d1">
+        <div class="mini-head"><span class="t"><span class="lang-th">ชุดทดสอบการคำนวณ</span><span class="lang-en">Calculation test suite</span></span><span class="b">39 / 39 ✓</span></div>
+        <div class="mini-line"><span class="ic">✓</span><span class="mt"><span class="lang-th">ภาษีขั้นบันได + ค่าลดหย่อน</span><span class="lang-en">Progressive tax + allowances</span></span><span class="mv">pass</span></div>
+        <div class="mini-line"><span class="ic">✓</span><span class="mt"><span class="lang-th">เบี้ยขยัน 4 ชั้น</span><span class="lang-en">4-tier diligence</span></span><span class="mv">pass</span></div>
+        <div class="mini-line"><span class="ic">✓</span><span class="mt"><span class="lang-th">พนักงานรายวัน + กะข้ามคืน</span><span class="lang-en">Daily wage + overnight</span></span><span class="mv">pass</span></div>
+      </div>
+    </div>
+
+    <div class="story flip">
+      <div class="story-txt rv">
+        <div class="num">02</div>
+        <h3><span class="lang-th">ตรวจสอบย้อนได้ทุกรายการ แก้ไม่ได้ลับหลัง</span><span class="lang-en">Every action traceable, nothing changed in the dark</span></h3>
+        <p><span class="lang-th">ทุกการลงเวลา อนุมัติ แก้ไข และส่งออกข้อมูล ถูกบันทึกว่าใครทำ เมื่อไร และข้อมูลแต่ละบริษัทถูกแยกขาดที่ระดับฐานข้อมูล ผู้ตรวจสอบตรวจย้อนได้ พนักงานเห็นความจริง ข้อพิพาทจบเพราะบันทึกพูดแทน</span><span class="lang-en">Every punch, approval, edit and export is logged with who and when — and each company's data is isolated at the database level. Auditors can trace it, employees see the truth, disputes end.</span></p>
+      </div>
+      <div class="story-media rv d1">
+        <div class="mini-head"><span class="t"><span class="lang-th">บันทึกตรวจสอบ (audit)</span><span class="lang-en">Audit trail</span></span><span class="b">live</span></div>
+        <div class="mini-line"><span class="ic">◷</span><span class="mt"><span class="lang-th">อนุมัติคำขอลา · hr_admin</span><span class="lang-en">Leave approved · hr_admin</span></span><span class="mv">09:14</span></div>
+        <div class="mini-line"><span class="ic">↧</span><span class="mt"><span class="lang-th">ส่งออกไฟล์ธนาคาร · owner</span><span class="lang-en">Bank file export · owner</span></span><span class="mv">11:02</span></div>
+        <div class="mini-line"><span class="ic">✎</span><span class="mt"><span class="lang-th">ปรับยอดรายคน · บันทึกแล้ว</span><span class="lang-en">Per-person adjust · logged</span></span><span class="mv">14:37</span></div>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="story-txt rv">
+        <div class="num">03</div>
+        <h3><span class="lang-th">เสถียร รองรับองค์กรใหญ่ ไม่หน่วง</span><span class="lang-en">Stable at scale, never sluggish</span></h3>
+        <p><span class="lang-th">สถาปัตยกรรมออกแบบเพื่อองค์กร 500–1,500 คน ทุกหน้าเปิดเร็วบนดัชนีที่วางไว้ ไม่ใช่ต้นแบบที่อืดเมื่อข้อมูลโต — และยังรับองค์กรเล็ก 20–100 คนได้สบายบนราคาเดียวกัน</span><span class="lang-en">Architected for 500–1,500-person organisations, every screen fast on purpose-built indexes — not a prototype that crawls as data grows — while serving 20–100-person teams just as well.</span></p>
+      </div>
+      <div class="story-media rv d1">
+        <div class="mini-head"><span class="t"><span class="lang-th">ประสิทธิภาพระบบ</span><span class="lang-en">System performance</span></span><span class="b">1,500 ✓</span></div>
+        <div class="mini-line"><span class="ic">⚡</span><span class="mt"><span class="lang-th">เปิดหน้าภาพรวม</span><span class="lang-en">Overview load</span></span><span class="mv">&lt; 1s</span></div>
+        <div class="mini-line"><span class="ic">▤</span><span class="mt"><span class="lang-th">แยกข้อมูลรายบริษัท</span><span class="lang-en">Per-tenant isolation</span></span><span class="mv">RLS</span></div>
+        <div class="mini-line"><span class="ic">◆</span><span class="mt"><span class="lang-th">สิทธิ์ตามบทบาท</span><span class="lang-en">Role-based access</span></span><span class="mv">✓</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section class="blk sec" id="security">
+  <div class="wrap">
+    <span class="kicker rv"><span class="lang-th">ความปลอดภัยและการปฏิบัติตามกฎหมาย</span><span class="lang-en">Security &amp; compliance</span></span>
+    <h2 class="rv d1"><span class="lang-th">ความไว้ใจ สร้างด้วยสถาปัตยกรรม ไม่ใช่คำโฆษณา</span><span class="lang-en">Trust built into the architecture, not the copy</span></h2>
+    <div class="sec-grid">
+      <div class="sec-cell rv"><div class="h"><span class="lang-th">แยกข้อมูลรายบริษัท</span><span class="lang-en">Per-tenant isolation</span></div><p><span class="lang-th">ข้อมูลแต่ละองค์กรถูกแยกขาดที่ระดับฐานข้อมูล (RLS) ยิง API ตรงก็ข้ามบริษัทกันไม่ได้</span><span class="lang-en">Each organisation's data is isolated at the database level (RLS) — even a direct API call cannot cross tenants.</span></p></div>
+      <div class="sec-cell rv d1"><div class="h"><span class="lang-th">ปกปิดข้อมูลอ่อนไหว</span><span class="lang-en">Sensitive-field masking</span></div><p><span class="lang-th">เลขบัตรประชาชนและเลขบัญชีถูกจำกัดสิทธิ์และปกปิดบางส่วนบนหน้าจอตามบทบาทผู้ใช้</span><span class="lang-en">National ID and bank numbers are access-restricted and masked on screen by role.</span></p></div>
+      <div class="sec-cell rv d2"><div class="h"><span class="lang-th">สอดคล้อง PDPA</span><span class="lang-en">PDPA-aligned</span></div><p><span class="lang-th">ออกแบบตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล มีข้อตกลงประมวลผลข้อมูล (DPA) กับลูกค้าทุกราย</span><span class="lang-en">Designed around Thailand's PDPA, with a DPA signed with every customer.</span></p></div>
+      <div class="sec-cell rv"><div class="h"><span class="lang-th">ไม่เก็บข้อมูลสุขภาพ</span><span class="lang-en">No health data stored</span></div><p><span class="lang-th">การลาป่วยบันทึกเฉพาะประเภทและจำนวนวัน ระบบไม่เก็บผลวินิจฉัยหรือข้อมูลสุขภาพ</span><span class="lang-en">Sick leave stores only the type and number of days — never diagnoses or health data.</span></p></div>
+      <div class="sec-cell rv d1"><div class="h">maker–checker</div><p><span class="lang-th">คนยื่นคำขอเองอนุมัติเองไม่ได้ หัวหน้าเห็นเฉพาะลูกน้องสายตรง ป้องกันการทุจริตเชิงระบบ</span><span class="lang-en">No one approves their own request; managers see only direct reports — structural fraud prevention.</span></p></div>
+      <div class="sec-cell rv d2"><div class="h"><span class="lang-th">เข้ารหัสทั้งเส้นทาง</span><span class="lang-en">Encrypted end to end</span></div><p><span class="lang-th">รับส่งข้อมูลผ่าน HTTPS ทั้งหมด และการส่งออกไฟล์ที่มีเลขบัตรถูกบันทึกในเส้นทางตรวจสอบทุกครั้ง</span><span class="lang-en">All traffic over HTTPS, and every export containing ID numbers is recorded in the audit trail.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="close">
+  <div class="wrap">
+    <div class="close-box rv">
+      <h2><span class="lang-th">เริ่มจากเงินเดือน เติบโตทั้งหลังบ้าน</span><span class="lang-en">Start with payroll, grow the whole back office</span></h2>
+      <p><span class="lang-th">เป็นหนึ่งในธุรกิจกลุ่มแรกของ METHAFLOW พร้อมราคาผู้ก่อตั้งและการดูแลจากทีมผู้สร้างโดยตรง</span><span class="lang-en">Join METHAFLOW's founding businesses — with founding pricing and direct care from the team that builds it.</span></p>
+      <div class="row">
+        <a class="btn btn-white" href="https://cal.com/methaflow/30min" target="_blank" rel="noopener"><span class="lang-th">นัดดูระบบตัวจริง</span><span class="lang-en">Book a live demo</span></a>
+        <a class="btn btn-ghost2" href="doc-pricing.html"><span class="lang-th">ดูราคาและแพ็กเกจ</span><span class="lang-en">See pricing</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <div class="m">METHAFLOW</div>
+        <p><span class="lang-th">แพลตฟอร์มระบบหลังบ้านสำหรับธุรกิจไทย เริ่มจากเงินเดือน ต่อด้วยบัญชี CRM และบริการ บนข้อมูลเดียวที่ไว้ใจได้</span><span class="lang-en">Back-office platform for Thai business — payroll first, then Accounting, CRM and Service, on one trusted source of truth.</span></p>
+      </div>
+      <div class="ft-col"><h4><span class="lang-th">แพลตฟอร์ม</span><span class="lang-en">Platform</span></h4>
+        <a href="demo/index.html"><span class="lang-th">เงินเดือน</span><span class="lang-en">Payroll</span></a><a href="#platform">Accounting</a><a href="#platform">CRM</a><a href="#platform">Service</a></div>
+      <div class="ft-col"><h4><span class="lang-th">บริษัท</span><span class="lang-en">Company</span></h4>
+        <a href="doc-pricing.html"><span class="lang-th">ราคา</span><span class="lang-en">Pricing</span></a><a href="payroll-tools.html"><span class="lang-th">เครื่องมือคำนวณเงินเดือนฟรี</span><span class="lang-en">Free payroll calculators</span></a><a href="ewf-checker.html"><span class="lang-th">ตรวจเกณฑ์กองทุนฯ</span><span class="lang-en">EWF checker</span></a><a href="ewf-guide.html"><span class="lang-th">คู่มือกองทุนสงเคราะห์ฯ</span><span class="lang-en">EWF guide</span></a><a href="doc-pdpa-consent.html"><span class="lang-th">แบบฟอร์มยินยอม PDPA</span><span class="lang-en">PDPA consent form</span></a><a href="privacy.html"><span class="lang-th">ความเป็นส่วนตัว</span><span class="lang-en">Privacy</span></a></div>
+      <div class="ft-col"><h4><span class="lang-th">ติดต่อ</span><span class="lang-en">Contact</span></h4>
+        <a href="mailto:contact@methaflow.tech">contact@methaflow.tech</a><a href="tel:+66616425116">061-642-5116</a></div>
+    </div>
+    <div class="ft-bottom">
+      <span>© 2569 METHAFLOW · METHARADEE KANCHANANIYOM</span>
+      <span><span class="lang-th">สร้างในประเทศไทย เพื่อธุรกิจไทย</span><span class="lang-en">Built in Thailand, for Thai business</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

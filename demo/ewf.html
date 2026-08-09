@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>METHAFLOW — กองทุนสงเคราะห์ลูกจ้าง (EWF)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="app">
+    <aside class="side">
+      <div class="logo"><b>METHAFLOW</b><span>Payroll System</span><div class="wave"></div></div>
+      <nav class="menu">
+        <a href="index.html"><span class="dot"></span>ภาพรวม</a>
+        <a href="timeclock.html"><span class="dot"></span>ลงเวลา (GPS)</a>
+        <a href="approvals.html"><span class="dot"></span>คำขอ / อนุมัติ</a>
+        <a href="payroll.html"><span class="dot"></span>คำนวณเงินเดือน</a>
+        <a href="ewf.html" class="on"><span class="dot"></span>กองทุนสงเคราะห์ฯ</a>
+      </nav>
+      <div class="me">
+        <div class="av">วร</div>
+        <div><b style="font-size:13px">วรัญญา ส.</b><small>ฝ่ายบุคคล · บจก.เดโม่เฮลท์แคร์</small></div>
+      </div>
+    </aside>
+  <main class="main">
+    <header class="top">
+      <div><h1>กองทุนสงเคราะห์ลูกจ้าง (EWF)</h1></div>
+      <div class="right"><div class="chip">เริ่มบังคับ <b>1 ต.ค. 2569</b></div><div class="chip">อัตรา 0.25%</div></div>
+    </header>
+    <div class="demo-note">ℹ️ นี่คือหน้าตัวอย่างระบบ (demo) — ข้อมูลทั้งหมดเป็นข้อมูลสมมติเพื่อสาธิตเท่านั้น</div>
+    <section class="grid">
+      <div class="card kpi"><div class="ico" style="background:#EAF5E4">🏛️</div><h3>นำส่งกองทุนฯ รวม</h3><div class="v" style="color:var(--green)">฿1,105.00</div><div class="d dim">ลูกจ้าง + นายจ้าง · งวด 10/2569</div></div>
+      <div class="card kpi"><div class="ico" style="background:#E9F4FD">👥</div><h3>ลูกจ้างที่ต้องนำส่ง</h3><div class="v">10 <span style="font-size:13px;font-weight:500">คน</span></div><div class="d dim">ยกเว้น 2 คน (มี PVD)</div></div>
+      <div class="card kpi"><div class="ico" style="background:#FFF6E5">📅</div><h3>กำหนดนำส่ง</h3><div class="v">15 พ.ย.</div><div class="d dim">ภายในวันที่ 15 เดือนถัดไป</div></div>
+      <div class="card kpi"><div class="ico" style="background:#FDEFF4">📄</div><h3>แบบนำส่ง</h3><div class="v" style="font-size:19px">สกล.</div><div class="d dim">สร้างจากงวดเดียวกับเงินเดือน</div></div>
+    </section>
+    <section style="margin-top:14px">
+      <div class="card">
+        <div class="hd"><h3>คำนวณเงินสะสม/สมทบรายคน <span class="sub">(ตัวอย่าง 5 จาก 10 คน · อัตรา 0.25% ต่อฝ่าย)</span></h3></div>
+        <table class="tbl">
+          <tr><th>รหัส</th><th>ชื่อ</th><th class="num">ค่าจ้าง</th><th class="num">ลูกจ้าง</th><th class="num">นายจ้าง</th><th class="num">รวม/คน</th><th>สถานะ</th></tr>
+          <tr><td>EMP001</td><td>วรัญญา สุขสมบูรณ์</td><td class="num">45,000.00</td><td class="num">112.50</td><td class="num">112.50</td><td class="num"><b>225.00</b></td><td><span class="pill">นำส่ง</span></td></tr>
+          <tr><td>EMP002</td><td>นันทรัตน์ สุขใจ</td><td class="num">32,000.00</td><td class="num">80.00</td><td class="num">80.00</td><td class="num"><b>160.00</b></td><td><span class="pill">นำส่ง</span></td></tr>
+          <tr><td>EMP005</td><td>ประเสริฐ มั่นคง</td><td class="num">35,000.00</td><td class="num">87.50</td><td class="num">87.50</td><td class="num"><b>175.00</b></td><td><span class="pill">นำส่ง</span></td></tr>
+          <tr><td>EMP009</td><td>ชัยวัฒน์ รุ่งเรือง</td><td class="num">33,000.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num"><b>0.00</b></td><td><span class="pill b">ยกเว้น</span> มี PVD</td></tr>
+          <tr><td>EMP010</td><td>สมชาย ขยันงาน</td><td class="num">13,200.00</td><td class="num">33.00</td><td class="num">33.00</td><td class="num"><b>66.00</b></td><td><span class="pill">นำส่ง</span></td></tr>
+        </table>
+        <p class="sub" style="margin-top:12px">ลูกจ้างที่เป็นสมาชิกกองทุนสำรองเลี้ยงชีพ (PVD) ครบถ้วน ได้รับยกเว้นการนำส่ง EWF · อัตราปรับเป็น 0.50% ตั้งแต่ 1 ต.ค. 2574</p>
+      </div>
+    </section>
+    <div class="foot">METHAFLOW Payroll · หน้าตัวอย่างระบบ · ทุกตัวเลขในระบบจริงมีบันทึกตรวจสอบครบทุกรายการ</div>
+  </main>
+</div>
+</body>
+</html>

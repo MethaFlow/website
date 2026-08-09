@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>METHAFLOW — ภาพรวมองค์กร</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="app">
+    <aside class="side">
+      <div class="logo"><b>METHAFLOW</b><span>Payroll System</span><div class="wave"></div></div>
+      <nav class="menu">
+        <a href="index.html" class="on"><span class="dot"></span>ภาพรวม</a>
+        <a href="timeclock.html"><span class="dot"></span>ลงเวลา (GPS)</a>
+        <a href="approvals.html"><span class="dot"></span>คำขอ / อนุมัติ</a>
+        <a href="payroll.html"><span class="dot"></span>คำนวณเงินเดือน</a>
+        <a href="ewf.html"><span class="dot"></span>กองทุนสงเคราะห์ฯ</a>
+      </nav>
+      <div class="me">
+        <div class="av">วร</div>
+        <div><b style="font-size:13px">วรัญญา ส.</b><small>ฝ่ายบุคคล · บจก.เดโม่เฮลท์แคร์</small></div>
+      </div>
+    </aside>
+  <main class="main">
+    <header class="top">
+      <div><h1>ภาพรวมองค์กร</h1></div>
+      <div class="right"><div class="chip">ศุกร์ 7 ส.ค. 2569 · <b>09:42</b></div><div class="chip">งวดปัจจุบัน <b>08/2569</b></div></div>
+    </header>
+    <div class="demo-note">ℹ️ นี่คือหน้าตัวอย่างระบบ (demo) — ข้อมูลทั้งหมดเป็นข้อมูลสมมติเพื่อสาธิตเท่านั้น</div>
+    <section class="grid">
+      <div class="card kpi"><div class="ico" style="background:#EAF5E4">👥</div><h3>พนักงานทั้งหมด</h3><div class="v">12 <span style="font-size:13px;font-weight:500">คน</span></div><div class="d up">▲ +2 คน เดือนนี้ · รายวัน 3 คน</div></div>
+      <div class="card kpi"><div class="ico" style="background:#E9F4FD">💠</div><h3>รวมจ่ายสุทธิ (งวด 07/2569)</h3><div class="v" style="color:var(--green)">฿486,240.50</div><div class="d dim">จ่ายแล้ว 28 ก.ค. 2569 · 12 คน</div></div>
+      <div class="card kpi"><div class="ico" style="background:#FDEFF4">🧾</div><h3>ภาษี + สปส. + กองทุนฯ</h3><div class="v">฿38,712.25</div><div class="d dim">ภ.ง.ด.1 ยื่นแล้ว · สปส. นำส่งแล้ว</div></div>
+      <div class="card kpi"><div class="ico" style="background:#FFF6E5">⏳</div><h3>รายการรออนุมัติ</h3><div class="v">3 <span style="font-size:13px;font-weight:500">รายการ</span></div><div class="d dim">ลา 2 · ค่าล่วงเวลา 1</div></div>
+    </section>
+
+    <section class="row2">
+      <div class="card">
+        <div class="hd"><h3>สรุปเงินเดือน 6 เดือนย้อนหลัง <span class="sub">(จ่ายสุทธิรวมทั้งบริษัท)</span></h3><a href="payroll.html">ไปหน้าคำนวณเงินเดือน »</a></div>
+        <div class="bars">
+          <div class="bar"><span>458k</span><i style="height:74%"></i></div>
+          <div class="bar"><span>462k</span><i style="height:76%"></i></div>
+          <div class="bar"><span>472k</span><i style="height:80%"></i></div>
+          <div class="bar"><span>471k</span><i style="height:79%"></i></div>
+          <div class="bar"><span>486k</span><i style="height:85%"></i></div>
+          <div class="bar est"><span>502k</span><i style="height:92%"></i></div>
+        </div>
+        <div class="xlab"><span>มี.ค.</span><span>เม.ย.</span><span>พ.ค.</span><span>มิ.ย.</span><span>ก.ค.</span><span>ส.ค.*</span></div>
+      </div>
+      <div class="card">
+        <div class="hd"><h3>สถานะพนักงานวันนี้</h3><a href="timeclock.html">ไปหน้าลงเวลา »</a></div>
+        <div class="stat"><div class="t"><span>เข้างานแล้ว</span><b>9 คน · 75%</b></div><div class="track"><i style="width:75%;background:var(--grass)"></i></div></div>
+        <div class="stat"><div class="t"><span>ลาที่อนุมัติแล้ว</span><b>2 คน · 17%</b></div><div class="track"><i style="width:17%;background:var(--sky)"></i></div></div>
+        <div class="stat"><div class="t"><span>ยังไม่ลงเวลา</span><b>1 คน · 8%</b></div><div class="track"><i style="width:8%;background:var(--pink)"></i></div></div>
+        <div class="stat"><div class="t"><span>มาสาย (เทียบกะของตัวเอง)</span><b>1 คน</b></div><div class="track"><i style="width:8%;background:var(--gold)"></i></div></div>
+        <p class="sub" style="margin-top:10px">กะเช้า 6 คน · กะบ่าย 3 คน · สำนักงาน 3 คน — GPS ตรงสาขาทุกคน</p>
+      </div>
+      <div class="card">
+        <div class="hd"><h3>ประมาณการงวดถัดไป</h3><a href="payroll.html">08/2569 »</a></div>
+        <div class="donutwrap">
+          <div class="donut"><b><small>ประมาณการจ่าย</small>฿502,450</b></div>
+          <ul class="lg">
+            <li><span><i class="sw" style="background:var(--green)"></i>เงินเดือนพื้นฐาน</span><b>78%</b></li>
+            <li><span><i class="sw" style="background:var(--blue)"></i>OT + ค่ากะ</span><b>13%</b></li>
+            <li><span><i class="sw" style="background:var(--grass)"></i>เบี้ยขยัน + อื่น ๆ</span><b>9%</b></li>
+          </ul>
+        </div>
+        <p class="sub" style="margin-top:10px">วันจ่าย 28 ส.ค. 2569 · ตัดรอบ 25 ส.ค.</p>
+      </div>
+    </section>
+
+    <section class="row3">
+      <div class="card">
+        <div class="hd"><h3>คำขอรออนุมัติ</h3><a href="approvals.html">ไปหน้ารายการ »</a></div>
+        <div class="req"><div class="av" style="background:var(--blue)">นัน</div><p><b>นันทรัตน์ สุขใจ</b> · ลาพักร้อน 11–12 ส.ค.<br><small>ยื่นเมื่อวานนี้ · หัวหน้าสายตรง: คุณวรัญญา</small></p><span class="tag leave">ลาพักร้อน</span></div>
+        <div class="req"><div class="av" style="background:var(--grass)">สุ</div><p><b>สุทิดา ความสุข</b> · OT วันหยุด 2.0 ชม. (9 ส.ค.)<br><small>ยื่นวันนี้ 08:15 · กะบ่าย สาขาลาดพร้าว</small></p><span class="tag ot">ค่าล่วงเวลา</span></div>
+        <div class="req"><div class="av" style="background:var(--pink)">ถา</div><p><b>ถาวัน ไพรี</b> · ลาป่วย 6 ส.ค. (1 วัน)<br><small>แนบใบรับรองแพทย์แล้ว</small></p><span class="tag sick">ลาป่วย</span></div>
+      </div>
+      <div class="card">
+        <div class="hd"><h3>ปฏิทิน · สิงหาคม 2569</h3></div>
+        <table class="cal">
+          <tr><th>อา</th><th>จ</th><th>อ</th><th>พ</th><th>พฤ</th><th>ศ</th><th>ส</th></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+          <tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td class="today">7</td><td>8</td></tr>
+          <tr><td>9</td><td>10</td><td>11</td><td class="hol">12</td><td>13</td><td>14</td><td>15</td></tr>
+          <tr><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td></tr>
+          <tr><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td class="pay">28</td><td>29</td></tr>
+          <tr><td>30</td><td>31</td><td></td><td></td><td></td><td></td><td></td></tr>
+        </table>
+        <div class="keys"><span><i style="background:var(--green)"></i>วันนี้</span><span><i style="background:#c2477a"></i>วันหยุด</span><span><i style="background:#4a7a1c"></i>วันจ่าย</span></div>
+      </div>
+      <div class="card">
+        <div class="hd"><h3>รอบเงินเดือนล่าสุด</h3><a href="payroll.html">ทั้งหมด »</a></div>
+        <table class="tbl">
+          <tr><th>งวด</th><th>วันจ่าย</th><th class="num">จ่ายสุทธิ</th><th>สถานะ</th></tr>
+          <tr><td>08/2569</td><td>28 ส.ค.</td><td class="num">฿502,450.00</td><td><span class="bdg rev">รอตรวจทาน</span></td></tr>
+          <tr><td>07/2569</td><td>28 ก.ค.</td><td class="num">฿486,240.50</td><td><span class="bdg paid">จ่ายแล้ว</span></td></tr>
+          <tr><td>06/2569</td><td>26 มิ.ย.</td><td class="num">฿470,880.00</td><td><span class="bdg paid">จ่ายแล้ว</span></td></tr>
+        </table>
+        <p class="sub" style="margin-top:10px">ทุกงวดมีบันทึกตรวจสอบครบ</p>
+      </div>
+    </section>
+    <div class="foot">METHAFLOW Payroll · หน้าตัวอย่างระบบ · ทุกตัวเลขในระบบจริงมีบันทึกตรวจสอบครบทุกรายการ</div>
+  </main>
+</div>
+</body>
+</html>

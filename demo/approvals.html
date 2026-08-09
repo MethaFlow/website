@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>METHAFLOW — คำขอ / อนุมัติ</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="app">
+    <aside class="side">
+      <div class="logo"><b>METHAFLOW</b><span>Payroll System</span><div class="wave"></div></div>
+      <nav class="menu">
+        <a href="index.html"><span class="dot"></span>ภาพรวม</a>
+        <a href="timeclock.html"><span class="dot"></span>ลงเวลา (GPS)</a>
+        <a href="approvals.html" class="on"><span class="dot"></span>คำขอ / อนุมัติ</a>
+        <a href="payroll.html"><span class="dot"></span>คำนวณเงินเดือน</a>
+        <a href="ewf.html"><span class="dot"></span>กองทุนสงเคราะห์ฯ</a>
+      </nav>
+      <div class="me">
+        <div class="av">วร</div>
+        <div><b style="font-size:13px">วรัญญา ส.</b><small>ฝ่ายบุคคล · บจก.เดโม่เฮลท์แคร์</small></div>
+      </div>
+    </aside>
+  <main class="main">
+    <header class="top">
+      <div><h1>คำขอ / อนุมัติ</h1></div>
+      <div class="right"><div class="chip">รออนุมัติ <b>3</b></div><div class="chip">maker–checker</div></div>
+    </header>
+    <div class="demo-note">ℹ️ นี่คือหน้าตัวอย่างระบบ (demo) — ข้อมูลทั้งหมดเป็นข้อมูลสมมติเพื่อสาธิตเท่านั้น</div>
+    <section style="margin-top:0">
+      <div class="card">
+        <div class="hd"><h3>รายการรออนุมัติ</h3><span class="sub">คุณอนุมัติได้เฉพาะลูกน้องสายตรง (ป้องกันอนุมัติเอง)</span></div>
+        <div class="req"><div class="av" style="background:var(--blue)">นัน</div><p><b>นันทรัตน์ สุขใจ</b> · ลาพักร้อน 11–12 ส.ค. (2 วัน)<br><small>ยื่นเมื่อวานนี้ · คงเหลือสิทธิลาพักร้อน 4 วัน</small></p><span class="tag leave">ลาพักร้อน</span><button class="btn ok" type="button">อนุมัติ</button><button class="btn no" type="button">ปฏิเสธ</button></div>
+        <div class="req"><div class="av" style="background:var(--grass)">สุ</div><p><b>สุทิดา ความสุข</b> · OT วันหยุด 2.0 ชม. (9 ส.ค.)<br><small>ยื่นวันนี้ 08:15 · กะบ่าย สาขาลาดพร้าว · คิดอัตรา 3.0 เท่า</small></p><span class="tag ot">ค่าล่วงเวลา</span><button class="btn ok" type="button">อนุมัติ</button><button class="btn no" type="button">ปฏิเสธ</button></div>
+        <div class="req"><div class="av" style="background:var(--pink)">ถา</div><p><b>ถาวัน ไพรี</b> · ลาป่วย 6 ส.ค. (1 วัน)<br><small>แนบใบรับรองแพทย์แล้ว · ระบบเก็บเฉพาะประเภทลาและจำนวนวัน</small></p><span class="tag sick">ลาป่วย</span><button class="btn ok" type="button">อนุมัติ</button><button class="btn no" type="button">ปฏิเสธ</button></div>
+      </div>
+    </section>
+    <section style="margin-top:14px">
+      <div class="card">
+        <div class="hd"><h3>ประวัติการอนุมัติล่าสุด</h3><span class="sub">ทุกการอนุมัติถูกบันทึกว่าใครทำ เมื่อไร</span></div>
+        <table class="tbl">
+          <tr><th>พนักงาน</th><th>ประเภท</th><th>ช่วงวันที่</th><th>ผู้อนุมัติ</th><th>สถานะ</th></tr>
+          <tr><td>วิชัย พากเพียร</td><td>ลากิจ</td><td>4 ส.ค.</td><td>วรัญญา ส.</td><td><span class="bdg paid">อนุมัติ</span></td></tr>
+          <tr><td>จิราพร แสงทอง</td><td>OT วันทำงาน 3 ชม.</td><td>2 ส.ค.</td><td>วรัญญา ส.</td><td><span class="bdg paid">อนุมัติ</span></td></tr>
+          <tr><td>สมหญิง ตั้งใจ</td><td>ลาป่วย 2 วัน</td><td>28–29 ก.ค.</td><td>วรัญญา ส.</td><td><span class="bdg paid">อนุมัติ</span></td></tr>
+          <tr><td>อนุชา ใจดี</td><td>ลาพักร้อน</td><td>25 ก.ค.</td><td>วรัญญา ส.</td><td><span class="bdg new">ปฏิเสธ</span></td></tr>
+        </table>
+      </div>
+    </section>
+    <div class="foot">METHAFLOW Payroll · หน้าตัวอย่างระบบ · ทุกตัวเลขในระบบจริงมีบันทึกตรวจสอบครบทุกรายการ</div>
+  </main>
+</div>
+</body>
+</html>

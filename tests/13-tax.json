@@ -1,0 +1,123 @@
+{
+  "module": "tax",
+  "effectiveDate": "2026-01-01",
+  "cases": [
+    {
+      "caseCode": "TAX-001",
+      "description": "เงินเดือน 30,000 โสด ไม่มีบุตร หัก ณ ที่จ่ายรายเดือน",
+      "input": {
+        "annualRegularIncome": "360000",
+        "irregularCurrentPeriod": "0",
+        "irregularSpread": "0",
+        "annualSso": "10500",
+        "annualPvd": "0",
+        "profile": { "maritalStatus": "SINGLE", "children": 0, "additionalChildren": 0, "otherAllowances": "0" },
+        "remainingPeriods": 12,
+        "on": "2026-01-31",
+        "rules": [
+          {
+            "effectiveDate": "2026-01-01",
+            "expenseRate": "0.5",
+            "expenseCap": "100000",
+            "personalAllowance": "60000",
+            "spouseAllowance": "60000",
+            "childAllowance": "30000",
+            "additionalChildAllowance": "60000",
+            "ssoDeductionCap": "10500",
+            "pvdDeductibleWageRate": "0.15",
+            "pvdDeductibleCap": "500000",
+            "brackets": [
+              { "over": "0", "upTo": "150000", "rate": "0" },
+              { "over": "150000", "upTo": "300000", "rate": "0.05" },
+              { "over": "300000", "upTo": "500000", "rate": "0.1" },
+              { "over": "500000", "upTo": "750000", "rate": "0.15" },
+              { "over": "750000", "upTo": "1000000", "rate": "0.2" },
+              { "over": "1000000", "upTo": "2000000", "rate": "0.25" },
+              { "over": "2000000", "upTo": "5000000", "rate": "0.3" },
+              { "over": "5000000", "upTo": null, "rate": "0.35" }
+            ]
+          }
+        ]
+      },
+      "expected": { "annualTaxOnRegularIncome": "1975.00", "taxOnIrregularIncome": "0.00", "periodWithholding": "164.58" }
+    },
+    {
+      "caseCode": "TAX-002",
+      "description": "โบนัส 50,000 หักภาษีทั้งจำนวนในงวดที่จ่าย",
+      "input": {
+        "annualRegularIncome": "360000",
+        "irregularCurrentPeriod": "50000",
+        "irregularSpread": "0",
+        "annualSso": "10500",
+        "annualPvd": "0",
+        "profile": { "maritalStatus": "SINGLE", "children": 0, "additionalChildren": 0, "otherAllowances": "0" },
+        "remainingPeriods": 12,
+        "on": "2026-01-31",
+        "rules": [
+          {
+            "effectiveDate": "2026-01-01",
+            "expenseRate": "0.5",
+            "expenseCap": "100000",
+            "personalAllowance": "60000",
+            "spouseAllowance": "60000",
+            "childAllowance": "30000",
+            "additionalChildAllowance": "60000",
+            "ssoDeductionCap": "10500",
+            "pvdDeductibleWageRate": "0.15",
+            "pvdDeductibleCap": "500000",
+            "brackets": [
+              { "over": "0", "upTo": "150000", "rate": "0" },
+              { "over": "150000", "upTo": "300000", "rate": "0.05" },
+              { "over": "300000", "upTo": "500000", "rate": "0.1" },
+              { "over": "500000", "upTo": "750000", "rate": "0.15" },
+              { "over": "750000", "upTo": "1000000", "rate": "0.2" },
+              { "over": "1000000", "upTo": "2000000", "rate": "0.25" },
+              { "over": "2000000", "upTo": "5000000", "rate": "0.3" },
+              { "over": "5000000", "upTo": null, "rate": "0.35" }
+            ]
+          }
+        ]
+      },
+      "expected": { "annualTaxOnRegularIncome": "1975.00", "taxOnIrregularIncome": "2500.00", "periodWithholding": "2664.58" }
+    },
+    {
+      "caseCode": "TAX-003",
+      "description": "โบนัส 60,000 เฉลี่ยภาษีตลอด 12 งวดที่เหลือ",
+      "input": {
+        "annualRegularIncome": "360000",
+        "irregularCurrentPeriod": "0",
+        "irregularSpread": "60000",
+        "annualSso": "10500",
+        "annualPvd": "0",
+        "profile": { "maritalStatus": "SINGLE", "children": 0, "additionalChildren": 0, "otherAllowances": "0" },
+        "remainingPeriods": 12,
+        "on": "2026-01-31",
+        "rules": [
+          {
+            "effectiveDate": "2026-01-01",
+            "expenseRate": "0.5",
+            "expenseCap": "100000",
+            "personalAllowance": "60000",
+            "spouseAllowance": "60000",
+            "childAllowance": "30000",
+            "additionalChildAllowance": "60000",
+            "ssoDeductionCap": "10500",
+            "pvdDeductibleWageRate": "0.15",
+            "pvdDeductibleCap": "500000",
+            "brackets": [
+              { "over": "0", "upTo": "150000", "rate": "0" },
+              { "over": "150000", "upTo": "300000", "rate": "0.05" },
+              { "over": "300000", "upTo": "500000", "rate": "0.1" },
+              { "over": "500000", "upTo": "750000", "rate": "0.15" },
+              { "over": "750000", "upTo": "1000000", "rate": "0.2" },
+              { "over": "1000000", "upTo": "2000000", "rate": "0.25" },
+              { "over": "2000000", "upTo": "5000000", "rate": "0.3" },
+              { "over": "5000000", "upTo": null, "rate": "0.35" }
+            ]
+          }
+        ]
+      },
+      "expected": { "annualTaxOnRegularIncome": "1975.00", "taxOnIrregularIncome": "3000.00", "periodWithholding": "414.58" }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "module": "deduction",
+  "effectiveDate": "2026-01-01",
+  "cases": [
+    {
+      "caseCode": "DED-001",
+      "description": "หักได้ทั้งจำนวนเพราะไม่เกินเพดานรายการและเพดานรวม",
+      "input": {
+        "wage": "30000",
+        "lines": [
+          { "code": "LOAN", "name": "เงินกู้สวัสดิการ", "amount": "2000", "priority": 1 },
+          { "code": "UNIFORM", "name": "ค่าชุดพนักงาน", "amount": "500", "priority": 2 }
+        ],
+        "rule": { "perItemWageRate": "0.1", "totalWageRate": "0.2" }
+      },
+      "expected": { "totalApplied": "2500.00", "totalCarriedForward": "0.00" }
+    },
+    {
+      "caseCode": "DED-002",
+      "description": "รายการเดียวเกินเพดาน 10% ของค่าจ้าง",
+      "input": {
+        "wage": "30000",
+        "lines": [{ "code": "LOAN", "name": "เงินกู้สวัสดิการ", "amount": "5000", "priority": 1 }],
+        "rule": { "perItemWageRate": "0.1", "totalWageRate": "0.2" }
+      },
+      "expected": { "totalApplied": "3000.00", "totalCarriedForward": "2000.00" }
+    },
+    {
+      "caseCode": "DED-003",
+      "description": "สามรายการชนเพดานรวม 20% ของค่าจ้าง",
+      "input": {
+        "wage": "30000",
+        "lines": [
+          { "code": "LOAN", "name": "เงินกู้สวัสดิการ", "amount": "3000", "priority": 1 },
+          { "code": "COOP", "name": "สหกรณ์", "amount": "3000", "priority": 2 },
+          { "code": "FINE", "name": "ค่าปรับ", "amount": "3000", "priority": 3 }
+        ],
+        "rule": { "perItemWageRate": "0.1", "totalWageRate": "0.2" }
+      },
+      "expected": { "totalApplied": "6000.00", "totalCarriedForward": "3000.00" }
+    }
+  ]
+}
