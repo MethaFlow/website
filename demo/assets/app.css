@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=Sarabun:wght@300;400;500;600;700&display=swap');
-
 /* ==========================================================================
    METHAFLOW Payroll — Demo UI stylesheet   ·   demo/assets/app.css
    โทนเดียวกับเว็บหลัก (style.css) : Prompt + Sarabun / เขียว–ครีม–ทอง
@@ -378,3 +376,33 @@ table.cal td.pay{background:#EDF4E5;color:var(--grass);font-weight:700}
   .top .right .chip{font-size:12px;padding:6px 12px}
   .btn-cta{padding:8px 12px;font-size:12px}
 }
+
+/* ==========================================================================
+   10 · UTILITIES — แทน inline style ทั้งหมด (ไม่ต้องใช้ style-src 'unsafe-inline')
+   ========================================================================== */
+.u-bg-amber{background:var(--amber)}
+.u-bg-faint{background:var(--faint)}
+.u-bg-gold{background:var(--gold)}
+.u-bg-grass{background:var(--grass)}
+.u-bg-green{background:var(--green)}
+.u-bg-plum{background:var(--plum)}
+.u-bg-sky{background:var(--sky)}
+.u-bg-teal{background:var(--teal)}
+.u-color-green{color:var(--green)}
+.u-gtc-1fr{grid-template-columns:1fr}
+.u-h-74{height:74%}
+.u-h-76{height:76%}
+.u-h-79{height:79%}
+.u-h-80{height:80%}
+.u-h-85{height:85%}
+.u-h-92{height:92%}
+.u-m-22px-0-14px{margin:22px 0 14px}
+.u-mt-12px{margin-top:12px}
+.u-w-13{width:13%}
+.u-w-17{width:17%}
+.u-w-33{width:33%}
+.u-w-66{width:66%}
+.u-w-75{width:75%}
+.u-w-78{width:78%}
+.u-w-8{width:8%}
+.u-w-9{width:9%}
