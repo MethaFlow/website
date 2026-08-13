@@ -39,7 +39,6 @@
     if(isNaN(emp) || emp<0){ flash($("emp")); return; }
     if(!lpa){ flash(document.querySelector('[data-name="lpa"]')); return; }
     if(!pvd){ flash(document.querySelector('[data-name="pvd"]')); return; }
-    if(!$("consent").checked){ flash($("consent").parentElement); return; }
 
     render(decide(emp,lpa,pvd), verifiedName || $("q").value.trim());
   });
