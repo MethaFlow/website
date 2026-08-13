@@ -150,6 +150,26 @@
     .topbar{flex-direction:column;align-items:flex-start;gap:8px}
     .topbar .r{text-align:left}
   }
+  /* ลายน้ำแบบกระจายทั่วหน้ากระดาษ (ปรับความเข้มขึ้น 2 ระดับ) */
+  @media print {
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999999 !important;
+      pointer-events: none;
+      
+      /* ปรับ fill='rgba(1, 13, 71, 0.30)' ให้สีเข้มขึ้นชัดเจน */
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='180'><text x='20' y='100' fill='rgba(1, 13, 71, 0.30)' font-size='16' font-weight='bold' font-family='sans-serif' transform='rotate(-25 100 100)'>METHAFLOW</text></svg>");
+      background-repeat: repeat;
+      
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+  }
 </style>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -352,8 +372,8 @@
     
     <div class="print-row">
       <button class="btn btn-print" onclick="mfPrintPDF()" type="button">🖨️ พิมพ์ / บันทึกเป็น PDF</button>
-      <button class="btn btn-print" onclick="mfExportExcel()" type="button">📊 ดาวน์โหลดข้อมูลเป็น Excel</button>
-      <button class="btn btn-print" onclick="mfExportWord()" type="button">📄 ดาวน์โหลดข้อมูลเป็น Word</button>
+      <button class="btn btn-print" onclick="mfExportExcel()" type="button" style="display: none;">📊 ดาวน์โหลดข้อมูลเป็น Excel</button>
+      <button class="btn btn-print" onclick="mfExportWord()" type="button" style="display: none;">📄 ดาวน์โหลดข้อมูลเป็น Word</button>
     </div>
   </section>
 
