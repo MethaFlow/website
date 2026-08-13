@@ -1,79 +1,84 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>คู่มือกองทุนสงเคราะห์ลูกจ้าง (EWF) | METHAFLOW</title>
-<meta name="description" content="คู่มือกองทุนสงเคราะห์ลูกจ้าง Employee Welfare Fund สำหรับนายจ้างและ HR — เกณฑ์ อัตราสมทบ ขั้นตอน และแนวทาง PDPA ก่อนกฎหมายบังคับใช้ 1 ต.ค. 2569" />
-
-
-<link rel="stylesheet" href="css/style.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>คู่มือกองทุนสงเคราะห์ลูกจ้าง (EWF) ฉบับสมบูรณ์สำหรับ HR | METHAFLOW</title>
+<meta name="description" content="คู่มือกองทุนสงเคราะห์ลูกจ้าง สำหรับนายจ้างและฝ่ายบุคคล — เกณฑ์ อัตราสมทบ ขั้นตอน แบบฟอร์ม (สกล.3, สกล.4) และแนวทาง PDPA ก่อนกฎหมายบังคับใช้ 1 ต.ค. 2569" name="description"/>
 <style>
   :root{
-    --ink:#182420; --accent:#0E5A47; --accent-2:#1B8F79; --accent-dark:#08382C;
-    --muted:#5C6B63; --rule:#E5DECD; --soft:#E8F0EC;
-    --amber:#FDF4E6; --amber-edge:#B45309;
-    --green:#1B8F79; --green-soft:#E8F0EC;
-    --grad:linear-gradient(135deg,#0E5A47 0%,#1B8F79 100%);
+    --ink:#182420; --accent:#010D47; --accent-2:#00FFFF; --accent-dark:#010D47;
+    --muted:#5E687A; --rule:#DCE2EA; --soft:#F3F7FA;
+    --amber:#FFF1E8; --amber-edge:#FF6600;
+    --green:#00FFFF; --green-soft:#F3F7FA;
+    --grad:linear-gradient(135deg,#010D47 0%,#00FFFF 100%);
     --shadow:0 14px 44px rgba(14,90,71,.12);
     --shadow-sm:0 2px 10px rgba(14,90,71,.06);
     --radius:16px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  h1,h2,h3{font-family:'Prompt','Sarabun',sans-serif;letter-spacing:-.01em}
-  body{font-family:'Sarabun','Prompt',system-ui,sans-serif;color:var(--ink);background:
-    radial-gradient(1100px 560px at 82% -12%, #F0E7D2 0%, transparent 58%),
-    radial-gradient(880px 500px at -12% 18%, #E8F0EC 0%, transparent 55%),
-    #FAF8F2;line-height:1.72;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:820px;margin:0 auto;padding:36px 20px 90px}
+  h1,h2,h3{font-family:'Sarabun',sans-serif;letter-spacing:-.01em}
+  body{font-family:'Sarabun',system-ui,sans-serif;color:var(--ink);background:#FFF7F1;line-height:1.72;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 90px}
 
-  /* top bar like the doc header */
+  /* Topbar & Logo Styling */
   .topbar{display:flex;justify-content:space-between;align-items:flex-end;
-    border-bottom:1px solid var(--rule);padding-bottom:14px;margin-bottom:8px}
-  .topbar .l .name{font-weight:700;letter-spacing:.08em;font-size:18px}
-  .topbar .l .tag{color:var(--muted);font-size:12.5px}
+    border-bottom:2px solid var(--rule);padding-bottom:16px;margin-bottom:24px}
+  .topbar .l .name{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:.04em;
+    background:linear-gradient(90deg,#00AFC7 0%,#010D47 50%,#E85A16 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-decoration:none;
+    display:inline-block;
+  }
+  .topbar .l .tag{color:var(--muted);font-size:12.5px;margin-top:2px}
   .topbar .r{text-align:right}
-  .topbar .r .doc{color:var(--accent);font-weight:600;font-size:13px}
+  .topbar .r .doc{color:var(--accent);font-weight:700;font-size:13.5px}
   .topbar .r .c{color:var(--muted);font-size:12px}
 
   .backlink{display:inline-flex;align-items:center;gap:6px;color:var(--accent);text-decoration:none;
-    font-size:13.5px;font-weight:500;margin:18px 0 4px}
+    font-size:13.5px;font-weight:500;margin:12px 0 16px}
   .backlink:hover{text-decoration:underline}
 
-  .hero{margin-top:14px}
+  .hero{margin-top:10px}
   .pill{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:var(--amber-edge);
-    font-weight:600;font-size:13px;padding:7px 14px;border-radius:999px;border:1px solid #f3dcae}
+    font-weight:600;font-size:13px;padding:7px 14px;border-radius:999px;border:1px solid #f3dcae;margin-bottom:12px}
   .pill .k{width:7px;height:7px;border-radius:50%;background:var(--amber-edge)}
-  h1{font-size:32px;font-weight:700;line-height:1.28;margin:14px 0 8px}
+  h1{font-size:32px;font-weight:700;line-height:1.28;margin:10px 0 8px}
   h1 em{font-style:normal;color:var(--accent)}
-  .lead{color:var(--muted);font-size:16px;max-width:640px}
-  .meta{color:var(--muted);font-size:12.5px;margin-top:14px;line-height:1.9}
+  .lead{color:var(--muted);font-size:16px;max-width:720px;margin-bottom:12px}
+  .meta{color:var(--muted);font-size:13px;margin-top:10px;line-height:1.8;background:#fff;padding:12px 16px;border-radius:10px;border:1px solid var(--rule)}
 
-  section{margin-top:30px}
-  h2{font-size:20px;font-weight:700;margin-bottom:12px;padding-bottom:8px;
+  section{margin-top:36px}
+  h2{font-size:20px;font-weight:700;margin-bottom:14px;padding-bottom:8px;
     border-bottom:2px solid var(--accent);display:flex;align-items:baseline;gap:10px}
   h2 .n{color:var(--accent);font-weight:700}
-  h3{font-size:15.5px;font-weight:600;color:var(--accent);margin:18px 0 8px}
+  h3{font-size:16px;font-weight:600;color:var(--accent);margin:18px 0 8px}
   p{margin-bottom:12px;font-size:15px}
   .muted{color:var(--muted);font-size:13.5px}
 
   ul.clean{list-style:none;margin:8px 0 12px}
   ul.clean li{position:relative;padding-left:22px;margin-bottom:8px;font-size:15px}
   ul.clean li::before{content:"›";position:absolute;left:4px;top:-1px;color:var(--accent);font-weight:700}
+  
   ol.steps{list-style:none;counter-reset:s;margin:8px 0 12px}
-  ol.steps li{position:relative;padding-left:34px;margin-bottom:12px;font-size:15px;counter-increment:s}
-  ol.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:23px;height:23px;
+  ol.steps li{position:relative;padding-left:34px;margin-bottom:14px;font-size:15px;counter-increment:s}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:24px;height:24px;
     background:var(--accent);color:#fff;border-radius:7px;display:grid;place-items:center;
     font-size:12.5px;font-weight:700;line-height:1}
 
-  table{width:100%;border-collapse:collapse;margin:10px 0 14px;font-size:14px;
-    border-radius:12px;overflow:hidden;box-shadow:0 1px 0 var(--rule)}
-  thead th{background:var(--ink);color:#fff;font-weight:600;text-align:left;padding:11px 14px;font-size:13.5px}
-  tbody td{padding:10px 14px;border-top:1px solid var(--rule);vertical-align:top}
+  table{width:100%;border-collapse:collapse;margin:12px 0 16px;font-size:14px;
+    border-radius:12px;overflow:hidden;box-shadow:0 1px 0 var(--rule);background:#fff}
+  thead th{background:var(--accent);color:#fff;font-weight:600;text-align:left;padding:11px 14px;font-size:13.5px}
+  tbody td{padding:11px 14px;border-top:1px solid var(--rule);vertical-align:top}
   tbody tr:nth-child(even){background:var(--soft)}
   td.num{white-space:nowrap}
 
-  .callout{border-radius:12px;padding:16px 18px 16px 20px;margin:14px 0;position:relative;
+  .callout{border-radius:12px;padding:16px 18px;margin:16px 0;position:relative;
     border:1px solid var(--rule);background:var(--soft)}
   .callout::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:12px 0 0 12px;background:var(--accent)}
   .callout.warn{background:var(--amber);border-color:#f3dcae}
@@ -84,12 +89,12 @@
   .callout .quote{font-style:italic;color:var(--ink);background:#fff;border:1px dashed var(--rule);
     border-radius:9px;padding:10px 12px;margin-top:8px;font-size:14px}
 
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0}
   .box{border:1px solid var(--rule);border-radius:12px;padding:16px;background:#fff}
   .box h3{margin-top:0}
 
   .cta{background:var(--grad);color:#fff;
-    border-radius:var(--radius);padding:30px;margin-top:32px;box-shadow:0 18px 50px rgba(14,90,71,.35)}
+    border-radius:var(--radius);padding:32px;margin-top:36px;box-shadow:0 18px 50px rgba(1,13,71,.25)}
   .cta h2{color:#fff;border-color:rgba(255,255,255,.35)}
   .cta p{color:rgba(255,255,255,.94);font-size:15px}
   .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
@@ -99,29 +104,68 @@
   .btn-white{background:#fff;color:var(--accent)}
   .btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
 
-  .disclaimer{font-size:12.5px;color:var(--muted);margin-top:26px;padding:14px 16px;background:var(--soft);border-radius:11px}
+  .disclaimer{font-size:12.5px;color:var(--muted);margin-top:28px;padding:14px 16px;background:var(--soft);border-radius:11px;border:1px solid var(--rule)}
   .disclaimer a{color:var(--accent)}
   .foot{text-align:center;color:var(--muted);font-size:13px;margin-top:30px;border-top:1px solid var(--rule);padding-top:18px}
   .foot a{color:var(--accent);text-decoration:none}
+  .footer-brand{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:2px}
+  .footer-brand img{width:174px;height:58px;object-fit:contain;display:block}
+  .footer-brand .footer-text{font-size:13px;color:var(--muted);line-height:1.5}
+
+  /* ===== Print buttons ===== */
+  .print-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .btn-print{background:var(--accent);color:#fff}
+  .btn-print:hover{background:#000}
+
+  /* ===== Print / PDF Layout Optimization ===== */
+  @media print{
+    @page{size:A4;margin:15mm 15mm 15mm 15mm}
+    body{background:#fff !important;color:#000 !important}
+    .wrap{max-width:100%;padding:0}
+    .backlink,.print-row,.cta{display:none !important}
+    section,.callout,.box,table,ol.steps,ul.clean,.grid2,.hero,.topbar{page-break-inside:avoid;break-inside:avoid}
+    section{margin-top:20px}
+    h2{page-break-after:avoid;break-after:avoid}
+    table{box-shadow:none;border:1px solid #999}
+    thead th{background:#010D47 !important;color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    tbody tr:nth-child(even){background:#F5F5F5 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .disclaimer,.foot{page-break-inside:avoid}
+    .footer-brand img{width:150px;height:50px}
+    a{color:inherit;text-decoration:none}
+    
+    /* Ensure METHAFLOW logo appears clearly in print/PDF (fix gradient clip invisibility bug) */
+    .topbar .l .name{
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      color: #010D47 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      font-size: 22px !important;
+    }
+  }
 
   @media(max-width:600px){
     h1{font-size:26px}
     .grid2{grid-template-columns:1fr}
-    .topbar{flex-direction:column;align-items:flex-start;gap:6px}
+    .topbar{flex-direction:column;align-items:flex-start;gap:8px}
     .topbar .r{text-align:left}
   }
 </style>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&amp;family=Montserrat:wght@800;900&amp;family=Sarabun:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 </head>
 <body>
 <div class="wrap">
 
+  <!-- Topbar / Logo -->
   <div class="topbar">
     <div class="l">
-      <a class="name" href="index.html" style="color:inherit;text-decoration:none">METHAFLOW</a>
-      <div class="tag">Automated Thai Payroll</div>
+      <a class="name" href="#">METHAFLOW</a>
+      <div class="tag">HR & Payroll Intelligence Platform</div>
     </div>
     <div class="r">
-      <div class="doc">EMPLOYEE WELFARE FUND</div>
+      <div class="doc">คู่มือกองทุนสงเคราะห์ลูกจ้าง (EWF)</div>
       <div class="c">methaflow.tech · 061-642-5116</div>
     </div>
   </div>
@@ -130,164 +174,250 @@
 
   <div class="hero">
     <span class="pill"><span class="k"></span>กฎหมายเริ่มบังคับ 1 ต.ค. 2569</span>
-    <h1>คู่มือ<em>กองทุนสงเคราะห์ลูกจ้าง</em><br>สำหรับนายจ้างและ HR</h1>
-    <p class="lead">Employee Welfare Fund (EWF) — รวมทุกเรื่องที่ต้องรู้: ใครเข้าเกณฑ์ อัตราสมทบ ขั้นตอนดำเนินการ และการดูแลข้อมูลตาม PDPA</p>
+    <h1>คู่มือ<em>กองทุนสงเคราะห์ลูกจ้าง</em><br/>สำหรับนายจ้างและฝ่ายบุคคล (HR)</h1>
+    <p class="lead">รวมทุกข้อสงสัยและสาระสำคัญจากประกาศกระทรวงแรงงาน: เกณฑ์บังคับ อัตราเงินสมทบ ขั้นตอนการขึ้นทะเบียนแบบฟอร์ม สกล.3-สกล.4 และแนวทางปฏิบัติภายใต้ PDPA</p>
     <div class="meta">
-      เอกสารอ้างอิง MF-EWF-2026-001 · ปรับปรุงข้อมูล สิงหาคม 2569<br>
-      อ้างอิง พ.ร.บ. คุ้มครองแรงงาน พ.ศ. 2541 หมวด 13 (มาตรา 126–138) และพระราชกฤษฎีกา พ.ศ. 2568
+      <strong>เอกสารอ้างอิง:</strong> MF-EWF-2026-001 · ปรับปรุงข้อมูลล่าสุด สิงหาคม 2569<br/>
+      <strong>กฎหมายแม่บท:</strong> พ.ร.บ. คุ้มครองแรงงาน พ.ศ. 2541 หมวด 13 (มาตรา 126–138) และพระราชกฤษฎีกาเลื่อนการบังคับใช้ พ.ศ. 2568
     </div>
   </div>
 
   <div class="callout warn" style="margin-top:22px">
-    <div class="t">อัปเดตสำคัญ — วันเริ่มบังคับถูกเลื่อน</div>
-    <p>เดิมกำหนดเริ่มจัดเก็บ 1 ตุลาคม 2568 แต่กรมสวัสดิการและคุ้มครองแรงงานประกาศเลื่อนเป็น <strong>1 ตุลาคม 2569</strong> ตามพระราชกฤษฎีกา พ.ศ. 2568 อัตราสมทบและช่วงเวลา 5 ปีแรกยังคงเดิม เพียงเลื่อนกรอบเวลาออกไป 1 ปี</p>
+    <div class="t">อัปเดตสำคัญ — วันเริ่มบังคับจัดเก็บถูกเลื่อนเป็น 1 ต.ค. 2569</div>
+    <p>เดิมกำหนดเริ่มจัดเก็บในวันที่ 1 ตุลาคม 2568 แต่กรมสวัสดิการและคุ้มครองแรงงานได้ประกาศพระราชกฤษฎีกาเลื่อนวันบังคับใช้ออกไปเป็น <strong>1 ตุลาคม 2569</strong> อัตราสมทบและช่วงเวลา 5 ปีแรกยังคงเดิม เพียงเลื่อนกรอบเวลาออกไป 1 ปีเต็ม เพื่อให้นายจ้างและระบบ HR มีเวลาเตรียมความพร้อม</p>
   </div>
 
   <section>
-    <h2><span class="n">1.</span> กองทุนสงเคราะห์ลูกจ้างคืออะไร</h2>
-    <p>กองทุนสงเคราะห์ลูกจ้าง (Employee Welfare Fund — EWF) จัดตั้งขึ้นตาม พ.ร.บ. คุ้มครองแรงงาน พ.ศ. 2541 มาตรา 126 อยู่ในความดูแลของกรมสวัสดิการและคุ้มครองแรงงาน กระทรวงแรงงาน มีวัตถุประสงค์เพื่อเป็นเงินช่วยเหลือลูกจ้างในกรณีที่ออกจากงาน เสียชีวิต หรือกรณีอื่นตามที่กำหนด โดยเฉพาะการเป็นหลักประกันสำหรับลูกจ้างที่ยังไม่มีกองทุนสำรองเลี้ยงชีพรองรับ</p>
-    <p>แม้กฎหมายจะมีมาตั้งแต่ปี 2541 แต่ส่วนของการจัดเก็บเงินสะสมและเงินสมทบเพิ่งจะเริ่มบังคับใช้จริง ทำให้นายจ้างจำนวนมากต้องเตรียมความพร้อมด้านระบบเงินเดือนและการนำส่งเป็นครั้งแรก</p>
+    <h2><span class="n">1.</span> กองทุนสงเคราะห์ลูกจ้างคืออะไร และมีความสำคัญอย่างไร</h2>
+    <p><strong>กองทุนสงเคราะห์ลูกจ้าง (Employee Welfare Fund — EWF)</strong> จัดตั้งขึ้นตามพระราชบัญญัติคุ้มครองแรงงาน พ.ศ. 2541 มาตรา 126 อยู่ภายใต้การกำกับดูแลของกรมสวัสดิการและคุ้มครองแรงงาน กระทรวงแรงงาน มีวัตถุประสงค์หลักเพื่อเป็นเงินช่วยเหลือและหลักประกันแก่ลูกจ้างเมื่อออกจากงาน ตาย หรือประสบปัญหาตามเงื่อนไขที่กฎหมายกำหนด โดยเฉพาะลูกจ้างในสถานประกอบกิจการที่ยังไม่มีกองทุนสำรองเลี้ยงชีพรองรับ</p>
+    <p>แม้พระราชบัญญัติฉบับนี้จะมีผลบังคับใช้มาตั้งแต่ปี 2541 แต่มาตรการจัดเก็บเงินสะสมและเงินสมทบจริงเพิ่งเริ่มขับเคลื่อนอย่างเป็นรูปธรรม ทำให้นายจ้างและฝ่ายทรัพยากรบุคคล (HR) ต้องทำความเข้าใจระบบการหักเงินเดือนและการนำส่งให้ถูกต้อง</p>
   </section>
 
   <section>
-    <h2><span class="n">2.</span> ใครต้องเข้ากองทุน (เกณฑ์สำคัญ)</h2>
-    <p>โดยหลัก นายจ้างที่มีลูกจ้างตั้งแต่ 10 คนขึ้นไป และอยู่ภายใต้บังคับ พ.ร.บ. คุ้มครองแรงงาน มีหน้าที่ต้องขึ้นทะเบียนและนำส่งเงินเข้ากองทุนสงเคราะห์ลูกจ้าง</p>
+    <h2><span class="n">2.</span> บริษัทต้องเข้ากองทุนหรือไม่? (เกณฑ์และข้อยกเว้น)</h2>
+    <p>นายจ้างที่มีหน้าที่ต้องขึ้นทะเบียนและนำส่งเงินเข้ากองทุนสงเคราะห์ลูกจ้าง ได้แก่ กิจการที่มี<strong>ลูกจ้างตั้งแต่ 10 คนขึ้นไป</strong> และอยู่ภายใต้บังคับของกฎหมายคุ้มครองแรงงาน</p>
+    
     <div class="grid2">
       <div class="box">
-        <h3>เข้าเกณฑ์ (ต้องเข้ากองทุน)</h3>
+        <h3>เข้าเกณฑ์ (ต้องขึ้นทะเบียนและนำส่ง)</h3>
         <ul class="clean">
-          <li>มีลูกจ้างตั้งแต่ 10 คนขึ้นไป</li>
-          <li>อยู่ภายใต้บังคับ พ.ร.บ. คุ้มครองแรงงาน (บริษัท ห้างร้าน โรงงาน)</li>
-          <li>มีลูกจ้างที่ยังไม่ได้เป็นสมาชิกกองทุนสำรองเลี้ยงชีพ</li>
+          <li>มีลูกจ้างรวมกันตั้งแต่ 10 คนขึ้นไปในสถานประกอบกิจการ</li>
+          <li>อยู่ภายใต้ พ.ร.บ. คุ้มครองแรงงาน (บริษัท, ห้างหุ้นส่วน, โรงงาน, ร้านค้า)</li>
+          <li>มีลูกจ้างที่ยังไม่ได้เป็นสมาชิกกองทุนสำรองเลี้ยงชีพ (PVD)</li>
         </ul>
       </div>
       <div class="box">
-        <h3>ได้รับยกเว้น / ยังไม่เข้าเกณฑ์</h3>
+        <h3>ได้รับยกเว้น / กรณีพิเศษ</h3>
         <ul class="clean">
-          <li>มีลูกจ้างน้อยกว่า 10 คน</li>
-          <li>จัดให้ลูกจ้างเป็นสมาชิกกองทุนสำรองเลี้ยงชีพแล้ว (สำหรับกลุ่มนั้น)</li>
-          <li>ไม่อยู่ใต้ พ.ร.บ. เช่น งานเกษตรบางประเภท งานรับใช้ในบ้าน มูลนิธิ สมาคม องค์กรไม่แสวงหากำไร</li>
+          <li>มีลูกจ้างรวมกันน้อยกว่า 10 คน (ไม่บังคับ แต่สามารถสมัครใจได้)</li>
+          <li>จัดให้ลูกจ้าง<strong>ทุกคน</strong>เป็นสมาชิกกองทุนสำรองเลี้ยงชีพแล้ว</li>
+          <li>กิจการที่ไม่อยู่ภายใต้ พ.ร.บ. คุ้มครองแรงงาน (เช่น งานเกษตรกรรมบางประเภท งานบ้าน, มูลนิธิ/สมาคมตามประกาศ)</li>
         </ul>
       </div>
     </div>
+
     <div class="callout">
-      <div class="t">จุดที่มักเข้าใจผิด</div>
-      <p>ต้องมีกองทุนสำรองเลี้ยงชีพ “ครบทุกคน” จึงจะยกเว้นได้เต็มที่ หากมีลูกจ้างบางส่วนที่ยังไม่ได้เป็นสมาชิก นายจ้างยังมีหน้าที่นำลูกจ้างกลุ่มที่เหลือเข้ากองทุนสงเคราะห์ลูกจ้าง</p>
+      <div class="t">ข้อควรระวังสำหรับ HR (กรณีเข้าใจผิดบ่อย)</div>
+      <p>หากบริษัทมีพนักงาน 15 คน แต่มีกองทุนสำรองเลี้ยงชีพ (PVD) ให้เฉพาะพนักงานบางส่วน (เช่น ระดับผู้จัดการ) พนักงานที่เหลือที่ยังไม่มี PVD <strong>ยังคงต้องถูกนำส่งเข้ากองทุนสงเคราะห์ลูกจ้าง</strong> การยกเว้นจะมีผลก็ต่อเมื่อพนักงานทุกคนได้รับสิทธิ PVD ครบถ้วนแล้วเท่านั้น</p>
     </div>
   </section>
 
   <section>
-    <h2><span class="n">3.</span> อัตราเงินสะสมและเงินสมทบ</h2>
-    <p>ทั้งฝ่ายนายจ้างและลูกจ้างนำส่งฝ่ายละเท่ากัน คิดจากค่าจ้าง โดยทยอยปรับขึ้นตามช่วงเวลา</p>
+    <h2><span class="n">3.</span> อัตราเงินสะสม เงินสมทบ และตัวอย่างการคำนวณ</h2>
+    <p>การนำส่งเงินเข้ากองทุนประกอบด้วย 2 ส่วนในอัตราเท่ากัน คือ <strong>เงินสะสมจากลูกจ้าง</strong> และ <strong>เงินสมทบจากนายจ้าง</strong> โดยแบ่งเป็น 2 ช่วงเวลา (เฟส) ดังนี้:</p>
+    
     <table>
-      <thead><tr><th>ช่วงเวลา</th><th>ฝ่ายลูกจ้าง</th><th>ฝ่ายนายจ้าง</th><th>รวม</th></tr></thead>
+      <thead>
+        <tr>
+          <th>ช่วงเวลา</th>
+          <th>ฝ่ายลูกจ้าง (เงินสะสม)</th>
+          <th>ฝ่ายนายจ้าง (เงินสมทบ)</th>
+          <th>รวมหักนำส่งต่อเดือน</th>
+        </tr>
+      </thead>
       <tbody>
-        <tr><td>1 ต.ค. 2569 – 30 ก.ย. 2574</td><td>0.25% ของค่าจ้าง</td><td>0.25% ของค่าจ้าง</td><td class="num">0.50%</td></tr>
-        <tr><td>ตั้งแต่ 1 ต.ค. 2574 เป็นต้นไป</td><td>0.50% ของค่าจ้าง</td><td>0.50% ของค่าจ้าง</td><td class="num">1.00%</td></tr>
+        <tr>
+          <td><strong>เฟส 1:</strong> 1 ต.ค. 2569 – 30 ก.ย. 2574</td>
+          <td>0.25% ของค่าจ้าง</td>
+          <td>0.25% ของค่าจ้าง</td>
+          <td class="num"><strong>0.50% ของค่าจ้าง</strong></td>
+        </tr>
+        <tr>
+          <td><strong>เฟส 2:</strong> ตั้งแต่ 1 ต.ค. 2574 เป็นต้นไป</td>
+          <td>0.50% ของค่าจ้าง</td>
+          <td>0.50% ของค่าจ้าง</td>
+          <td class="num"><strong>1.00% ของค่าจ้าง</strong></td>
+        </tr>
       </tbody>
     </table>
-    <p class="muted">หมายเหตุ: กรอบเวลาอ้างอิงตามการเลื่อนบังคับใช้ล่าสุด (เริ่ม 1 ต.ค. 2569) หากมีลูกจ้างเป็นสมาชิกกองทุนสำรองเลี้ยงชีพ อัตรานำส่งกองทุนสำรองฯ เป็นไปตามข้อบังคับของกองทุนนั้น (โดยทั่วไป 2%–15% ของค่าจ้าง) แยกจาก EWF</p>
+
+    <h3>ตัวอย่างการคำนวณเงินนำส่ง (ในช่วงเฟสที่ 1: อัตรา 0.25% ฝ่ายละ)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ค่าจ้างต่อเดือน (บาท)</th>
+          <th>ลูกจ้างสะสม (0.25%)</th>
+          <th>นายจ้างสมทบ (0.25%)</th>
+          <th>รวมนำส่งเข้ากองทุน/คน/เดือน</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">15,000 บาท</td><td class="num">37.50 บาท</td><td class="num">37.50 บาท</td><td class="num">75.00 บาท</td></tr>
+        <tr><td class="num">20,000 บาท</td><td class="num">50.00 บาท</td><td class="num">50.00 บาท</td><td class="num">100.00 บาท</td></tr>
+        <tr><td class="num">30,000 บาท</td><td class="num">75.00 บาท</td><td class="num">75.00 บาท</td><td class="num">150.00 บาท</td></tr>
+        <tr><td class="num">50,000 บาท</td><td class="num">125.00 บาท</td><td class="num">125.00 บาท</td><td class="num">250.00 บาท</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">หมายเหตุ: ฐานค่าจ้างที่ใช้คำนวณให้ยึดตามนิยามค่าจ้างตามกฎหมายคุ้มครองแรงงาน และหากมีการเปลี่ยนแปลงอัตราหรือฐานเงินเดือนสูงสุดตามประกาศกระทรวง ให้ตรวจสอบกับระบบ EWF อีกครั้ง</p>
   </section>
 
   <section>
-    <h2><span class="n">4.</span> ตัวอย่างการคำนวณ</h2>
-    <p>สมมติเริ่มจัดเก็บในอัตรา 0.25% ต่อฝ่าย คำนวณจากค่าจ้างรวมต่อเดือน</p>
-    <table>
-      <thead><tr><th>ค่าจ้าง/เดือน (บาท)</th><th>หักจากลูกจ้าง 0.25%</th><th>นายจ้างสมทบ 0.25%</th><th>นำส่งรวม/คน/เดือน</th></tr></thead>
-      <tbody>
-        <tr><td class="num">15,000</td><td class="num">37.50</td><td class="num">37.50</td><td class="num">75.00</td></tr>
-        <tr><td class="num">20,000</td><td class="num">50.00</td><td class="num">50.00</td><td class="num">100.00</td></tr>
-        <tr><td class="num">30,000</td><td class="num">75.00</td><td class="num">75.00</td><td class="num">150.00</td></tr>
-        <tr><td class="num">50,000</td><td class="num">125.00</td><td class="num">125.00</td><td class="num">250.00</td></tr>
-      </tbody>
-    </table>
-    <p class="muted">ตัวเลขเป็นเพียงตัวอย่างเพื่อความเข้าใจ ฐานค่าจ้างที่ใช้คำนวณจริงให้เป็นไปตามนิยาม “ค่าจ้าง” ตามกฎหมายและประกาศที่เกี่ยวข้อง</p>
+    <h2><span class="n">4.</span> แบบฟอร์มขึ้นทะเบียนและเอกสารที่เกี่ยวข้อง</h2>
+    <p>ในการดำเนินการกับกองทุนสงเคราะห์ลูกจ้าง นายจ้างและ HR ต้องรู้จักแบบฟอร์มราชการหลัก ๆ ดังนี้:</p>
+    <ul class="clean">
+      <li><strong>แบบ สกล.3:</strong> แบบคำขอขึ้นทะเบียนนายจ้างและลูกจ้าง (สำหรับกิจการที่อยู่ในเกณฑ์บังคับ)</li>
+      <li><strong>แบบ สกล.3/1:</strong> แบบคำขอขึ้นทะเบียนสำหรับกิจการที่ไม่อยู่ในเกณฑ์บังคับ แต่ลูกจ้างสมัครใจและนายจ้างยินยอม</li>
+      <li><strong>แบบ สกล.3/2:</strong> แบบแจ้งการเปลี่ยนแปลงข้อความ หรือแก้ไขเพิ่มเติมรายชื่อลูกจ้าง</li>
+      <li><strong>แบบ สกล.4 / สกล.4/1:</strong> หนังสือสำคัญแสดงการขึ้นทะเบียนกองทุนสงเคราะห์ลูกจ้างที่ออกโดยหน่วยงานราชการ</li>
+    </ul>
   </section>
 
   <section>
-    <h2><span class="n">5.</span> ขั้นตอนที่นายจ้างต้องทำ</h2>
+    <h2><span class="n">5.</span> ขั้นตอนการปฏิบัติงานสำหรับทีม HR และกำหนดเวลา</h2>
     <ol class="steps">
-      <li>ตรวจสอบว่าบริษัทเข้าเกณฑ์หรือไม่ (จำนวนลูกจ้าง 10 คนขึ้นไป และสถานะกองทุนสำรองเลี้ยงชีพ)</li>
-      <li>ยื่นแบบ สกล.3 เพื่อขึ้นทะเบียนเป็นสมาชิกกองทุนสงเคราะห์ลูกจ้าง (กรณีตกลงร่วมกันเพิ่มเติม ใช้แบบ สกล.3/1)</li>
-      <li>หักเงินสะสมจากค่าจ้างของลูกจ้างตามอัตราที่กำหนด และเตรียมเงินสมทบฝ่ายนายจ้างในจำนวนเท่ากัน</li>
-      <li>นำส่งเงินเข้ากองทุนภายในวันที่ 15 ของเดือนถัดไป ผ่านช่องทางที่กรมกำหนด (เช่น ระบบ e-Payment)</li>
-      <li>เก็บหลักฐานการหัก การสมทบ และการนำส่งไว้ให้ตรวจสอบได้ทุกงวด</li>
+      <li><strong>ตรวจสอบสถานะกิจการ:</strong> เช็กยอดพนักงานประจำ (ตั้งแต่ 10 คนขึ้นไป) และสถานะกองทุนสำรองเลี้ยงชีพของพนักงานทุกคน</li>
+      <li><strong>เตรียมข้อมูลและยื่นขึ้นทะเบียน:</strong> กรอกข้อมูลสถานประกอบกิจการและรายชื่อลูกจ้าง ยื่นผ่านช่องทางออนไลน์หรือสำนักงานสวัสดิการและคุ้มครองแรงงานในพื้นที่ด้วยแบบ <strong>สกล.3</strong></li>
+      <li><strong>หักเงินสะสมและสมทบทุกงวดเงินเดือน:</strong> ทุกวันจ่ายค่าจ้าง ให้ HR ทำการหักเงินสะสมจากลูกจ้าง และบันทึกเงินสมทบในส่วนของนายจ้าง</li>
+      <li><strong>นำส่งเงินเข้ากองทุน:</strong> นำส่งเงินสมทบและเงินสะสมรวมกันเข้ากองทุน <strong>ภายในวันที่ 15 ของเดือนถัดไป</strong></li>
+      <li><strong>จัดเก็บหลักฐาน:</strong> บันทึกหลักฐานการหักเงินและใบเสร็จการนำส่งให้เป็นระเบียบ พร้อมสำหรับการตรวจสอบ</li>
     </ol>
-  </section>
 
-  <section>
-    <h2><span class="n">6.</span> กำหนดเวลาและบทลงโทษ</h2>
-    <ul class="clean">
-      <li>นำส่งภายในวันที่ 15 ของเดือนถัดจากเดือนที่หักค่าจ้าง</li>
-      <li>นำส่งล่าช้าหรือไม่ครบ อาจมีเงินเพิ่ม (ดอกเบี้ย/เบี้ยปรับ) ตามที่กฎหมายกำหนด</li>
-      <li>ไม่ขึ้นทะเบียน ไม่หัก หรือไม่นำส่ง อาจมีความรับผิดตามบทกำหนดโทษของ พ.ร.บ. คุ้มครองแรงงาน</li>
-    </ul>
-    <p class="muted">อัตราเงินเพิ่มและโทษที่แน่นอนให้ยึดตามประกาศ/กฎกระทรวงล่าสุด และควรตรวจสอบกับกรมสวัสดิการและคุ้มครองแรงงานก่อนดำเนินการจริง</p>
-  </section>
-
-  <section>
-    <h2><span class="n">7.</span> ประโยชน์ต่อลูกจ้างและนายจ้าง</h2>
-    <table>
-      <thead><tr><th>ต่อลูกจ้าง</th><th>ต่อนายจ้าง</th></tr></thead>
-      <tbody>
-        <tr><td>มีเงินก้อนช่วยเหลือเมื่อออกจากงานหรือเสียชีวิต</td><td>ปฏิบัติตามกฎหมายครบถ้วน ลดความเสี่ยงถูกปรับ</td></tr>
-        <tr><td>เป็นหลักประกันเพิ่มเติมจากประกันสังคม</td><td>สร้างภาพลักษณ์องค์กรที่ดูแลพนักงาน</td></tr>
-        <tr><td>สะสมต่อเนื่องแม้เปลี่ยนงาน</td><td>มีระบบระเบียบด้านสวัสดิการชัดเจน ตรวจสอบได้</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section>
-    <h2><span class="n">8.</span> PDPA — การเก็บและใช้ข้อมูลจากแบบฟอร์ม</h2>
-    <p>แบบฟอร์มตรวจเกณฑ์ EWF ออนไลน์มีการรับข้อมูล เช่น ชื่อบริษัท เลขประจำตัวผู้เสียภาษี จำนวนลูกจ้าง และอีเมล/เบอร์ติดต่อ ข้อมูลบางส่วนเป็นข้อมูลนิติบุคคล แต่บางส่วน (เช่น อีเมลหรือชื่อผู้กรอก) อาจเป็นข้อมูลส่วนบุคคลตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA) จึงต้องจัดการให้ถูกต้องตั้งแต่ตอนเก็บ</p>
-    <h3>หลักปฏิบัติที่ควรทำ</h3>
-    <ul class="clean">
-      <li><strong>แจ้งวัตถุประสงค์ชัดเจน (Privacy Notice):</strong> เก็บเพื่อประเมินเกณฑ์ EWF และติดต่อกลับเท่านั้น ไม่ใช้นอกวัตถุประสงค์</li>
-      <li><strong>เก็บเท่าที่จำเป็น (Data Minimisation):</strong> ขอเฉพาะข้อมูลที่ใช้ประเมินและติดต่อจริง</li>
-      <li><strong>ขอความยินยอม (Consent):</strong> ก่อนเก็บข้อมูลติดต่อ พร้อมช่องทางถอนความยินยอม</li>
-      <li><strong>กำหนดอายุการเก็บ (Retention):</strong> เช่น เก็บ lead ไม่เกิน 12–24 เดือน แล้วลบหรือทำให้ไม่ระบุตัวตน</li>
-      <li><strong>รักษาความปลอดภัย:</strong> ส่งผ่าน HTTPS จำกัดสิทธิ์เข้าถึง มีบันทึกการเข้าถึง/แก้ไข</li>
-      <li><strong>รองรับสิทธิเจ้าของข้อมูล:</strong> ขอเข้าถึง แก้ไข ลบ หรือคัดค้านการใช้ข้อมูลได้</li>
-      <li><strong>มีข้อตกลงกับผู้ประมวลผลภายนอก (DPA)</strong> หากใช้บริการภายนอกจัดเก็บ/ประมวลผลข้อมูล</li>
-    </ul>
-    <div class="callout">
-      <div class="t">ข้อความขอความยินยอมสำเร็จรูป (ใส่ท้ายฟอร์มได้เลย)</div>
-      <div class="quote">“ข้าพเจ้ายินยอมให้ METHAFLOW เก็บและใช้ข้อมูลที่กรอกเพื่อประเมินเกณฑ์กองทุนสงเคราะห์ลูกจ้างและติดต่อกลับ ตามนโยบายความเป็นส่วนตัว และสามารถถอนความยินยอมได้ที่ contact@methaflow.tech”</div>
+    <div class="callout warn">
+      <div class="t">บทกำหนดโทษและการนำส่งล่าช้า</div>
+      <p>หากนายจ้างนำส่งเงินสะสมหรือเงินสมทบ<strong>ล่าช้ากว่ากำหนด (ภายในวันที่ 15 ของเดือนถัดไป)</strong> จะต้องเสีย<strong>เงินเพิ่มในอัตราร้อยละ 5 ต่อเดือน</strong>ของจำนวนเงินที่ค้างส่ง และการไม่ปฏิบัติตามอาจมีบทลงโทษตาม พ.ร.บ. คุ้มครองแรงงาน</p>
     </div>
   </section>
 
   <section>
-    <h2><span class="n">9.</span> METHAFLOW ช่วยเรื่องนี้อย่างไร</h2>
-    <p>ระบบเงินเดือน METHAFLOW จัดการ EWF ได้ในงวดเดียวกับเงินเดือนปกติ ไม่ต้องคำนวณหรือกรอกซ้ำ และออกแบบให้สอดคล้อง PDPA ตั้งแต่ต้น</p>
+    <h2><span class="n">6.</span> ข้อมูลที่ต้องเตรียมสำหรับ HR (Checklist)</h2>
+    <p>เพื่อความรวดเร็วในการขึ้นทะเบียนและตั้งค่าระบบ HR / Payroll ควรเตรียมข้อมูลดังนี้ให้พร้อม:</p>
+    <div class="grid2">
+      <div class="box">
+        <h3>1. ข้อมูลสถานประกอบกิจการ</h3>
+        <ul class="clean">
+          <li>ชื่อสถานประกอบกิจการ / นิติบุคคล</li>
+          <li>เลขทะเบียนนิติบุคคล / เลขประจำตัวผู้เสียภาษี 13 หลัก</li>
+          <li>ที่อยู่สำนักงานใหญ่และสาขาที่เกี่ยวข้อง</li>
+          <li>จำนวนลูกจ้างรวมทั้งหมดแยกตามเพศและประเภท</li>
+          <li>ชื่อผู้มีอำนาจลงนาม เบอร์โทรศัพท์ และอีเมลติดต่อ</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>2. ข้อมูลพนักงาน (ลูกจ้าง)</h3>
+        <ul class="clean">
+          <li>ชื่อ-นามสกุล และเลขประจำตัวประชาชน 13 หลัก</li>
+          <li>วัน เดือน ปี ที่เริ่มทำงาน</li>
+          <li>ตำแหน่งงาน / แผนก</li>
+          <li>อัตราค่าจ้างปัจจุบัน (ใช้คำนวณ 0.25%)</li>
+          <li>สถานะการเป็นสมาชิกกองทุนสำรองเลี้ยงชีพ (ถ้ามี)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7.</span> การคุ้มครองข้อมูลส่วนบุคคล (PDPA) สำหรับ HR</h2>
+    <p>ในการรวบรวมข้อมูลพนักงานเพื่อจัดทำทะเบียนและยื่นกองทุนสงเคราะห์ลูกจ้าง ถือเป็นการเก็บรวบรวมข้อมูลส่วนบุคคลตาม <strong>พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)</strong> HR จึงต้องปฏิบัติตามหลักการดังนี้:</p>
     <ul class="clean">
-      <li>คำนวณเงินสะสม/เงินสมทบ EWF อัตโนมัติจากค่าจ้างแต่ละคน ตามอัตราที่บังคับใช้</li>
-      <li>แยกลูกจ้างที่มีกองทุนสำรองเลี้ยงชีพออกจากกลุ่มที่ต้องนำส่ง EWF ให้ถูกต้อง</li>
-      <li>สร้างไฟล์ยื่นราชการและไฟล์นำส่งจากงวดเดียวกับ ภ.ง.ด.1 และประกันสังคม</li>
-      <li>บันทึกตรวจสอบครบทุกรายการ และแยกข้อมูลรายบริษัทที่ระดับฐานข้อมูล ตามแนวทาง PDPA</li>
+      <li><strong>แจ้งวัตถุประสงค์ชัดเจน:</strong> แจ้งพนักงานว่าเก็บข้อมูลเพื่อนำส่งกองทุนสงเคราะห์ลูกจ้างตามกฎหมายแรงงาน</li>
+      <li><strong>จำกัดการเข้าถึง:</strong> ให้เฉพาะทีม HR และผู้มีอำนาจที่เกี่ยวข้องเข้าถึงข้อมูลเงินเดือนและเลขบัตรประชาชนได้</li>
+      <li><strong>ความปลอดภัยของระบบ:</strong> จัดเก็บในระบบ Payroll ที่เข้ารหัส ปลอดภัย และมีการสำรองข้อมูลสม่ำเสมอ</li>
     </ul>
+    
+    <div class="callout">
+      <div class="t">ข้อความขอความยินยอม/แจ้งประกาศความเป็นส่วนตัว (Privacy Notice) ตัวอย่าง:</div>
+      <div class="quote">“บริษัทมีความจำเป็นต้องเก็บรวบรวมและใช้ข้อมูลส่วนบุคคลของท่าน (เช่น ชื่อ นามสกุล เลขบัตรประชาชน และค่าจ้าง) เพื่อดำเนินการขึ้นทะเบียนและนำส่งเงินเข้ากองทุนสงเคราะห์ลูกจ้างตามพระราชบัญญัติคุ้มครองแรงงาน พ.ศ. 2541 โดยบริษัทจะรักษาความปลอดภัยของข้อมูลอย่างเคร่งครัด”</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">8.</span> METHAFLOW ช่วยงาน HR เรื่องกองทุนสงเคราะห์ลูกจ้างอย่างไร</h2>
+    <p>ระบบเงินเดือนและบริหารทรัพยากรบุคคล <strong>METHAFLOW</strong> ถูกออกแบบมาเพื่อช่วยให้ HR รับมือกับกฎหมายใหม่ได้อย่างราบรื่น:</p>
+    <ul class="clean">
+      <li><strong>คำนวณอัตโนมัติ:</strong> ระบบคำนวณเงินสะสม (0.25%) และเงินสมทบ (0.25%) จากฐานเงินเดือนในงวดจ่ายจริงทันที ไม่ต้องคำนวณมือ</li>
+      <li><strong>คัดกรองพนักงาน:</strong> รองรับการแยกพนักงานที่มีกองทุนสำรองเลี้ยงชีพ (PVD) ออกจากกลุ่มที่ต้องนำส่ง EWF อัตโนมัติ</li>
+      <li><strong>ออกรายงานและไฟล์นำส่ง:</strong> สร้างสรุปยอดและรูปแบบข้อมูลสำหรับตรวจสอบก่อนนำส่งราชการได้อย่างแม่นยำ</li>
+      <li><strong>ปลอดภัยตามมาตรฐาน PDPA:</strong> ข้อมูลพนักงานและสถานประกอบกิจการถูกจัดเก็บด้วยระบบเข้ารหัส ป้องกันการรั่วไหล</li>
+    </ul>
+    
+    <div class="print-row">
+      <button class="btn btn-print" onclick="mfPrintPDF()" type="button">🖨️ พิมพ์ / บันทึกเป็น PDF</button>
+      <button class="btn btn-print" onclick="mfExportExcel()" type="button">📊 ดาวน์โหลดข้อมูลเป็น Excel</button>
+      <button class="btn btn-print" onclick="mfExportWord()" type="button">📄 ดาวน์โหลดข้อมูลเป็น Word</button>
+    </div>
   </section>
 
   <div class="cta">
-    <h2>ตรวจความพร้อมบริษัทของคุณฟรี</h2>
-    <p>กรอกเลขประจำตัวผู้เสียภาษีหรือชื่อบริษัท แล้วตอบคำถามสั้น ๆ 3 ข้อ ระบบประเมินตามเกณฑ์กฎหมายจริง พร้อมบอกขั้นตอนถัดไป</p>
+    <h2>ตรวจความพร้อมบริษัทของคุณฟรีกับ METHAFLOW</h2>
+    <p>ประเมินว่าบริษัทของคุณเข้าเกณฑ์กองทุนสงเคราะห์ลูกจ้างหรือไม่ พร้อมรับคำแนะนำขั้นตอนที่ต้องทำทันที</p>
     <div class="cta-row">
-      <a class="btn btn-white" href="ewf-checker.html">เริ่มตรวจเกณฑ์ →</a>
-      <a class="btn btn-outline" href="mailto:contact@methaflow.tech">คุยกับทีม METHAFLOW</a>
+      <a class="btn btn-white" href="ewf-checker.html">เริ่มตรวจเกณฑ์บริษัทฟรี →</a>
+      <a class="btn btn-outline" href="mailto:contact@methaflow.tech">ติดต่อทีมงาน METHAFLOW</a>
       <a class="btn btn-outline" href="tel:+66616425116">โทร 061-642-5116</a>
     </div>
   </div>
 
   <div class="disclaimer">
-    เอกสารนี้จัดทำเพื่อให้ข้อมูลทั่วไปและเตรียมความพร้อม ไม่ถือเป็นคำวินิจฉัยหรือคำแนะนำทางกฎหมาย หลักเกณฑ์ อัตรา และกำหนดเวลาอาจปรับปรุงตามประกาศราชการ ตรวจสอบข้อมูลล่าสุดที่
-    <a href="https://ewf.labour.go.th/" target="_blank" rel="noopener">กรมสวัสดิการและคุ้มครองแรงงาน</a>
-    หรือปรึกษาที่ปรึกษาด้านแรงงาน/บัญชี/ข้อมูลส่วนบุคคล ก่อนดำเนินการจริง
+    <strong>ข้อสงวนสิทธิ์:</strong> คู่มือฉบับนี้จัดทำขึ้นเพื่อเป็นแนวทางและให้ความรู้แก่ผู้ประกอบการและฝ่าย HR ในการเตรียมความพร้อมเบื้องต้น ไม่ถือเป็นคำปรึกษาทางกฎหมายอย่างเป็นทางการ เนื่องจากกฎหมาย ประกาศ อัตรา และกำหนดเวลาอาจมีการเปลี่ยนแปลงตามประกาศของกระทรวงแรงงาน โปรดตรวจสอบข้อมูลล่าสุดโดยตรงกับเว็บไซต์ทางการของ <a href="https://ewf.labour.go.th/" target="_blank" rel="noopener">กรมสวัสดิการและคุ้มครองแรงงาน</a> ก่อนดำเนินการทางกฎหมาย
   </div>
 
   <div class="foot">
-    METHAFLOW · <a href="mailto:contact@methaflow.tech">contact@methaflow.tech</a> · <a href="tel:+66616425116">061-642-5116</a><br>
-    <a href="index.html">หน้าแรก</a> · <a href="privacy.html">นโยบายความเป็นส่วนตัว</a> · <a href="ewf-checker.html">ตรวจเกณฑ์บริษัท</a>
+    <div class="footer-brand">
+      <img src="methaflow_logo.png" alt="METHAFLOW"/>
+      <div class="footer-text"><strong>METHAFLOW</strong> | เอกสารสำหรับงาน HR | © 2026</div>
+    </div>
+    <div style="margin-top:8px"><a href="mailto:contact@methaflow.tech">contact@methaflow.tech</a> · โทร: 061-642-5116<br/>
+    <a href="index.html">หน้าแรก</a> · <a href="privacy.html">นโยบายความเป็นส่วนตัว (PDPA)</a> · <a href="ewf-checker.html">ระบบตรวจเกณฑ์ EWF</a></div>
   </div>
 
 </div>
+
+<script>
+function mfPrintPDF(){ 
+  window.print(); 
+}
+
+function mfExportExcel(){
+  var wrap = document.querySelector('.wrap');
+  if(!wrap) return;
+  var clone = wrap.cloneNode(true);
+  ['.print-row','.backlink','.cta','script'].forEach(function(sel){
+    clone.querySelectorAll(sel).forEach(function(el){ el.remove(); });
+  });
+  var html = '<table>' + clone.innerHTML + '</table>';
+  var blob = new Blob(['\ufeff' + html], {type: 'application/vnd.ms-excel;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'MethaFlow-EWF-Guide-2569.xls';
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 300);
+}
+
+function mfExportWord(){
+  var wrap = document.querySelector('.wrap');
+  if(!wrap) return;
+  var clone = wrap.cloneNode(true);
+  ['.print-row','.backlink','.cta','script'].forEach(function(sel){
+    clone.querySelectorAll(sel).forEach(function(el){ el.remove(); });
+  });
+  var html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/1999/xlink"><head><meta charset="utf-8"><title>EWF Guide</title></head><body style="font-family:Sarabun,sans-serif;">' + clone.innerHTML + '</body></html>';
+  var blob = new Blob(['\ufeff' + html], {type: 'application/msword;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'MethaFlow-EWF-Guide-2569.doc';
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 300);
+}
+</script>
 </body>
 </html>

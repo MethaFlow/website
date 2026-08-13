@@ -1,30 +1,26 @@
 <!DOCTYPE html>
+
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>ตรวจเกณฑ์กองทุนสงเคราะห์ลูกจ้าง | METHAFLOW</title>
-<meta name="description" content="เช็คฟรีว่าบริษัทของคุณต้องเข้ากองทุนสงเคราะห์ลูกจ้างหรือไม่ ก่อนกฎหมายบังคับใช้ 1 ต.ค. 2569 ค้นด้วยชื่อบริษัทหรือเลขประจำตัวผู้เสียภาษี" />
-
-
-<link rel="stylesheet" href="css/style.css" />
+<meta content="เช็คฟรีว่าบริษัทของคุณต้องเข้ากองทุนสงเคราะห์ลูกจ้างหรือไม่ ก่อนกฎหมายบังคับใช้ 1 ต.ค. 2569 ค้นด้วยชื่อบริษัทหรือเลขประจำตัวผู้เสียภาษี" name="description"/>
 <style>
   :root{
-    --ink:#182420; --accent:#0E5A47; --accent-2:#1B8F79; --accent-dark:#08382C;
-    --muted:#5C6B63; --rule:#E5DECD; --soft:#E8F0EC;
-    --amber:#FDF4E6; --amber-edge:#B45309;
-    --green:#1B8F79; --green-soft:#E8F0EC;
-    --red:#B91C1C; --red-soft:#FDECEC;
-    --grad:linear-gradient(135deg,#0E5A47 0%,#1B8F79 100%);
+     --cyan:#00FFFF; --orange:#FF6600;
+    --ink:#182420; --accent:#010D47; --accent-2:#00FFFF; --accent-dark:#010D47;
+    --muted:#5E687A; --rule:#DCE2EA; --soft:#F3F7FA;
+    --amber:#FFF1E8; --amber-edge:#FF6600;
+    --green:#00FFFF; --green-soft:#F3F7FA;
+    --red:#FF6600; --red-soft:#FFF1E8;
+    --grad:linear-gradient(135deg,#010D47 0%,#00FFFF 100%);
     --shadow:0 14px 44px rgba(14,90,71,.12);
     --radius:16px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  h1,h2,h3{font-family:'Prompt','Sarabun',sans-serif;letter-spacing:-.01em}
-  body{font-family:'Sarabun','Prompt',system-ui,sans-serif;color:var(--ink);background:
-    radial-gradient(1100px 560px at 82% -12%, #F0E7D2 0%, transparent 58%),
-    radial-gradient(880px 500px at -12% 18%, #E8F0EC 0%, transparent 55%),
-    #FAF8F2;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Sarabun',sans-serif;letter-spacing:-.01em}
+  body{font-family:'Sarabun',system-ui,sans-serif;color:var(--ink);background:#FFF7F1;line-height:1.6;-webkit-font-smoothing:antialiased}
   .wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
 
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.06em;font-size:18px}
@@ -123,87 +119,98 @@
     .search-row{flex-direction:column}
     .card{padding:22px}
   }
+
+  .mf-logo, .brand-name, .topbar .l .name{
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:.02em;
+    background:linear-gradient(90deg,#00AFC7 0%,#010D47 48%,#E85A16 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent !important;
+  }
+
 </style>
-</head>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&amp;family=Montserrat:wght@800;900&amp;family=Sarabun:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/></head>
 <body>
 <div class="wrap">
-
-  <a class="brand" href="index.html"><span class="dot"></span>METHAFLOW <small>· Automated Thai Payroll</small></a>
-
-  <div class="hero">
-    <span class="pill"><span class="k"></span>กฎหมายเริ่มบังคับ 1 ต.ค. 2569</span>
-    <h1>บริษัทคุณต้องเข้า<br><em>กองทุนสงเคราะห์ลูกจ้าง</em> ไหม?</h1>
-    <p class="sub">เช็คฟรีใน 30 วินาที ค้นด้วยชื่อบริษัทหรือเลขประจำตัวผู้เสียภาษี แล้วตอบคำถามสั้น ๆ 3 ข้อ ระบบจะประเมินตามเกณฑ์กฎหมายจริง พร้อมบอกขั้นตอนถัดไป</p>
-  </div>
-
-  <form class="card" id="checkForm" autocomplete="off">
-
-    <div class="step-label"><span class="step-num">1</span> ระบุบริษัทของคุณ</div>
-    <div class="field">
-      <label for="q">ชื่อบริษัท หรือ เลขประจำตัวผู้เสียภาษี (13 หลัก)</label>
-      <div class="search-row">
-        <input type="text" id="q" placeholder="เช่น บริษัท ตัวอย่าง จำกัด หรือ 0105500000000" />
-        <button type="button" class="btn btn-ghost" id="lookupBtn">ค้นหา</button>
-      </div>
-      <div class="lookup-status" id="lookupStatus"></div>
-      <p class="micro">ใช้เพื่อยืนยันชื่อนิติบุคคลจากฐานข้อมูลกรมพัฒนาธุรกิจการค้า (DBD) — ข้อมูลจำนวนลูกจ้างไม่มีในทะเบียนสาธารณะ จึงต้องกรอกในขั้นตอนที่ 2</p>
-    </div>
-
-    <div class="divider">ข้อมูลที่ใช้ประเมินจริง</div>
-
-    <div class="step-label"><span class="step-num">2</span> ตอบ 3 ข้อนี้เพื่อรู้คำตอบที่แม่นยำ</div>
-
-    <div class="field">
-      <label class="req" for="emp">จำนวนลูกจ้างในบริษัท (คน)</label>
-      <input type="number" id="emp" min="0" step="1" placeholder="เช่น 24" />
-    </div>
-
-    <div class="field">
-      <label class="req">บริษัทอยู่ภายใต้ พ.ร.บ. คุ้มครองแรงงานหรือไม่?</label>
-      <div class="radio-group" data-name="lpa">
-        <div class="radio-opt"><input type="radio" name="lpa" id="lpa-y" value="yes"><label for="lpa-y"><span class="tick"></span>ใช่ (กิจการทั่วไป)</label></div>
-        <div class="radio-opt"><input type="radio" name="lpa" id="lpa-n" value="no"><label for="lpa-n"><span class="tick"></span>ไม่ใช่ / ไม่แน่ใจ</label></div>
-      </div>
-      <p class="micro">ยกเว้น เช่น งานเกษตรบางประเภท งานรับใช้ในบ้าน มูลนิธิ สมาคม องค์กรไม่แสวงหากำไร</p>
-    </div>
-
-    <div class="field">
-      <label class="req">มี “กองทุนสำรองเลี้ยงชีพ” ครอบคลุมลูกจ้างครบทุกคนหรือไม่?</label>
-      <div class="radio-group" data-name="pvd">
-        <div class="radio-opt"><input type="radio" name="pvd" id="pvd-all" value="all"><label for="pvd-all"><span class="tick"></span>มีครบทุกคน</label></div>
-        <div class="radio-opt"><input type="radio" name="pvd" id="pvd-some" value="some"><label for="pvd-some"><span class="tick"></span>มีบางส่วน / ไม่มี</label></div>
-      </div>
-      <p class="micro">ลูกจ้างที่เป็นสมาชิกกองทุนสำรองเลี้ยงชีพแล้ว ได้รับยกเว้นการนำส่ง EWF เฉพาะกลุ่มนั้น</p>
-    </div>
-
-    <div class="field" style="margin-top:22px;display:flex;gap:10px;align-items:flex-start">
-      <input type="checkbox" id="consent" style="width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--accent)" />
-      <label for="consent" style="font-weight:400;font-size:13.5px;color:var(--muted);margin:0">
-        ข้าพเจ้ายินยอมให้ METHAFLOW เก็บและใช้ข้อมูลที่กรอกเพื่อประเมินเกณฑ์กองทุนสงเคราะห์ลูกจ้างและติดต่อกลับ ตาม
-        <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--accent)">นโยบายความเป็นส่วนตัว</a>
-        และสามารถถอนความยินยอมได้ที่ contact@methaflow.tech
-      </label>
-    </div>
-
-    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">ประเมินผลทันที →</button>
-  </form>
-
-  <div id="result"></div>
-
-  <div class="fineprint">
+<a class="brand" href="index.html"><span class="brand-name">METHAFLOW</span></a>
+<div class="hero">
+<span class="pill"><span class="k"></span>กฎหมายเริ่มบังคับ 1 ต.ค. 2569</span>
+<h1>บริษัทคุณต้องเข้า<br/><em>กองทุนสงเคราะห์ลูกจ้าง</em> ไหม?</h1>
+<p class="sub">เช็คฟรีใน 30 วินาที ค้นด้วยชื่อบริษัทหรือเลขประจำตัวผู้เสียภาษี แล้วตอบคำถามสั้น ๆ 6 ข้อ ระบบจะประเมินตามเกณฑ์กฎหมายจริง พร้อมบอกขั้นตอนถัดไป</p>
+</div>
+<form autocomplete="off" class="card" id="checkForm">
+<div class="step-label"><span class="step-num">1</span> ระบุบริษัทของคุณ</div>
+<div class="field">
+<label for="q">ชื่อบริษัท หรือ เลขประจำตัวผู้เสียภาษี (13 หลัก)</label>
+<div class="search-row">
+<input id="q" placeholder="เช่น บริษัท ตัวอย่าง จำกัด หรือ 0105500000000" type="text"/>
+<button class="btn btn-ghost" id="lookupBtn" type="button">ค้นหา</button>
+</div>
+<div class="lookup-status" id="lookupStatus"></div>
+<p class="micro">ใช้เพื่อยืนยันชื่อนิติบุคคลจากฐานข้อมูลกรมพัฒนาธุรกิจการค้า (DBD) — ข้อมูลจำนวนลูกจ้างไม่มีในทะเบียนสาธารณะ จึงต้องกรอกในขั้นตอนที่ 2</p>
+</div>
+<div class="divider">ข้อมูลที่ใช้ประเมินจริง</div>
+<div class="step-label"><span class="step-num">2</span> ตอบ 6 ข้อนี้เพื่อรู้คำตอบที่แม่นยำ</div>
+<div class="field">
+<label class="req" for="emp">จำนวนลูกจ้างในบริษัท (คน)</label>
+<input id="emp" min="0" placeholder="เช่น 24" step="1" type="number"/>
+</div>
+<div class="field">
+<label class="req">บริษัทอยู่ภายใต้ พ.ร.บ. คุ้มครองแรงงานหรือไม่?</label>
+<div class="radio-group" data-name="lpa">
+<div class="radio-opt"><input id="lpa-y" name="lpa" type="radio" value="yes"/><label for="lpa-y"><span class="tick"></span>ใช่ (กิจการทั่วไป)</label></div>
+<div class="radio-opt"><input id="lpa-n" name="lpa" type="radio" value="no"/><label for="lpa-n"><span class="tick"></span>ไม่ใช่ / ไม่แน่ใจ</label></div>
+</div>
+<p class="micro">ยกเว้น เช่น งานเกษตรบางประเภท งานรับใช้ในบ้าน มูลนิธิ สมาคม องค์กรไม่แสวงหากำไร</p>
+<div class="field">
+<label class="req">บริษัทของคุณมี "กองทุนสำรองเลี้ยงชีพ (PVD)" หรือไม่?</label>
+<div class="radio-group" data-name="pvd">
+<div class="radio-opt"><input id="pvd-all" name="pvd" type="radio" value="all"/><label for="pvd-all"><span class="tick"></span>มี</label></div>
+<div class="radio-opt"><input id="pvd-some" name="pvd" type="radio" value="some"/><label for="pvd-some"><span class="tick"></span>ไม่มี</label></div>
+</div>
+<p class="micro">ลูกจ้างที่เป็นสมาชิกกองทุนสำรองเลี้ยงชีพแล้ว ได้รับยกเว้นการนำส่ง EWF เฉพาะกลุ่มนั้น</p>
+<div class="field">
+<label class="req">ประเภทธุรกิจของบริษัทคืออะไร?</label>
+<div class="radio-group" data-name="businessType">
+<div class="radio-opt"><input id="business-general" name="businessType" type="radio" value="general"/><label for="business-general"><span class="tick"></span>ธุรกิจทั่วไป (ค้าขาย/บริการ/โรงงาน/ออฟฟิศ)</label></div>
+<div class="radio-opt"><input id="business-other" name="businessType" type="radio" value="other"/><label for="business-other"><span class="tick"></span>อื่น ๆ / ไม่แน่ใจ</label></div>
+</div>
+<p class="micro">เช่น ค้าขาย บริการ โรงงาน หรือสำนักงาน หากไม่แน่ใจให้เลือก “อื่น ๆ / ไม่แน่ใจ”</p>
+<div class="field">
+<label class="req">บริษัทมีสวัสดิการชดเชยกรณีออกจากงาน/เสียชีวิต ให้ลูกจ้างอยู่แล้วหรือไม่</label>
+<div class="radio-group" data-name="welfare">
+<div class="radio-opt"><input id="welfare-y" name="welfare" type="radio" value="yes"/><label for="welfare-y"><span class="tick"></span>มี</label></div>
+<div class="radio-opt"><input id="welfare-n" name="welfare" type="radio" value="no"/><label for="welfare-n"><span class="tick"></span>ไม่มี / ไม่แน่ใจ</label></div>
+</div>
+</div>
+<div class="field">
+<label class="req">มีลูกจ้างเป็นสมาชิกกองทุน PVD มากน้อยแค่ไหน?</label>
+<div class="radio-group" data-name="pvdMember">
+<div class="radio-opt"><input id="pvd-member-all" name="pvdMember" type="radio" value="all"/><label for="pvd-member-all"><span class="tick"></span>เป็นสมาชิกทุกคน</label></div>
+<div class="radio-opt"><input id="pvd-member-some" name="pvdMember" type="radio" value="some"/><label for="pvd-member-some"><span class="tick"></span>เป็นสมาชิกแค่บางคน / ไม่มี</label></div>
+</div>
+<p class="micro">หากบริษัทไม่มี PVD ให้เลือก “บางส่วน / ไม่มี”</p>
+<input type="checkbox" id="consent" checked style="display:none;" />
+</div>
+<button class="btn btn-primary btn-block" id="submitBtn" type="submit">ประเมินผลทันที →</button>
+</form>
+<div id="result"></div>
+<div class="fineprint">
     การประเมินนี้เป็นการคัดกรองเบื้องต้นตามเกณฑ์หลัก (จำนวนลูกจ้าง ≥ 10 คน · อยู่ใต้ พ.ร.บ.คุ้มครองแรงงาน · สถานะกองทุนสำรองเลี้ยงชีพ) ไม่ใช่คำวินิจฉัยทางกฎหมาย
     หลักเกณฑ์ อัตรา และกำหนดเวลาอาจปรับปรุงตามประกาศราชการ ตรวจสอบข้อมูลล่าสุดที่
-    <a href="https://ewf.labour.go.th/" target="_blank" rel="noopener">กรมสวัสดิการและคุ้มครองแรงงาน</a>
+    <a href="https://ewf.labour.go.th/" rel="noopener" target="_blank">กรมสวัสดิการและคุ้มครองแรงงาน</a>
     หรือปรึกษาที่ปรึกษาด้านแรงงาน/บัญชีก่อนดำเนินการจริง
   </div>
-
-  <div class="foot">
-    METHAFLOW · <a href="mailto:contact@methaflow.tech">contact@methaflow.tech</a> · <a href="tel:+66616425116">061-642-5116</a><br>
-    <a href="privacy.html">นโยบายความเป็นส่วนตัว</a> · <a href="ewf-guide.html">อ่านคู่มือ EWF ฉบับเต็ม</a>
-  </div>
-
+<div class="foot">
+    METHAFLOW · <a href="mailto:contact@methaflow.tech">contact@methaflow.tech</a> · <a href="tel:+66616425116">061-642-5116</a><br/>
+<a href="privacy.html">นโยบายความเป็นส่วนตัว</a> · <!--<a href="ewf-guide.html">อ่านคู่มือ EWF ฉบับเต็ม</a>-->
 </div>
-
+</div>
 <script src="js/ewf-checker.js"></script>
-</body>
+<script src="js/main.js"></script></body>
 </html>
