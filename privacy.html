@@ -1,53 +1,237 @@
 <!DOCTYPE html>
-
 <html lang="th">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>นโยบายความเป็นส่วนตัว — METHAFLOW</title>
-<meta content="นโยบายความเป็นส่วนตัวของ METHAFLOW ตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)" name="description"/>
+<meta content="นโยบายความเป็นส่วนตัวของ METHAFLOW ตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA) ครบถ้วนตามมาตรา 19–54" name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&amp;family=Montserrat:wght@800;900&amp;family=Sarabun:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<style id="methaflow-palette">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:'Sarabun',sans-serif;color:var(--dark);background:var(--page);line-height:1.8}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:var(--blue);transition:color .2s}
+a:hover{color:var(--blue-deep)}
+
+/* ===== BRAND TOKENS ===== */
 :root{
-  --brand-cyan:#00FFFF;
-  --brand-sapphire:#010D47;
-  --brand-orange:#FF6600;
-  --brand-sapphire-hover:#0A1A66;
-  --brand-sapphire-deep:#010A36;
-  --brand-cyan-tint:#E6FFFF;
-  --brand-orange-soft:#FFB38A;
-  --paper:#FFFFFF;
-  --page:#F7F9FC;
-  --ink:#010D47;
-  --muted:#42506F;
-  --faint:#71809E;
-  --line:#D9DEEA;
+  --blue:#1A6FBF;
+  --blue-deep:#145A9E;
+  --blue-light:#E8F2FB;
+  --red:#D91A2A;
+  --red-deep:#B81522;
+  --red-light:#FDF2F3;
+  --sand:#F5F0E8;
+  --sand-light:#FAF8F4;
+  --dark:#2A2A2A;
+  --mid:#5A5A5A;
+  --light:#9A9A9A;
+  --white:#FFFFFF;
+  --page:#FAFAFA;
+  --line:#E0E4EA;
+}
+
+/* ===== DOCUMENT LAYOUT ===== */
+.document-topbar{
+  position:sticky;top:0;z-index:100;
+  background:var(--white);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 1px 4px rgba(0,0,0,.04);
+}
+.document-topbar .inner{
+  max-width:960px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;
+}
+.mf-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Prompt',sans-serif;font-weight:800;font-size:1.2rem;
+  color:var(--blue);letter-spacing:-.01em;
+}
+.mf-logo .dot{width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0}
+.back-home{
+  font-family:'Prompt',sans-serif;font-size:.85rem;font-weight:500;
+  color:var(--mid);padding:6px 14px;border-radius:100px;
+  border:1px solid var(--line);transition:all .2s;
+}
+.back-home:hover{color:var(--blue);border-color:var(--blue);background:var(--blue-light)}
+
+/* ===== CONTAINER ===== */
+.container{max-width:860px;margin:0 auto;padding:24px 24px 48px}
+
+/* ===== ARTICLE ===== */
+article{
+  background:var(--white);
+  border-radius:20px;
+  padding:clamp(28px,5vw,56px);
+  box-shadow:0 2px 16px rgba(0,0,0,.04);
+  border:1px solid var(--line);
+}
+
+/* ===== DOCUMENT TOOLS ===== */
+.document-tools{
+  display:flex;gap:10px;flex-wrap:wrap;
+  margin-bottom:28px;
+}
+.btn-print{
+  font-family:'Prompt',sans-serif;font-size:.82rem;font-weight:500;
+  color:var(--white);background:var(--blue);
+  padding:9px 18px;border-radius:100px;border:none;cursor:pointer;
+  transition:background .2s,transform .15s;
+}
+.btn-print:hover{background:var(--blue-deep);transform:translateY(-1px)}
+.btn-excel{background:#1A8F5C}
+.btn-excel:hover{background:#167A4E}
+.btn-word{background:var(--dark)}
+.btn-word:hover{background:#1A1A1A}
+
+/* ===== TYPOGRAPHY ===== */
+.doc-eyebrow{
+  font-family:'Prompt',sans-serif;font-size:.8rem;font-weight:600;
+  color:var(--blue);letter-spacing:.04em;
+  margin-bottom:6px;
+}
+h1{
+  font-family:'Prompt',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);
+  font-weight:700;color:var(--dark);
+  margin-bottom:8px;line-height:1.25;
+}
+.effective{
+  font-size:.9rem;color:var(--light);margin-bottom:24px;
+  padding-bottom:20px;border-bottom:2px solid var(--sand);
+}
+h2{
+  font-family:'Prompt',sans-serif;font-size:clamp(1.15rem,2vw,1.45rem);
+  font-weight:700;color:var(--blue-deep);
+  margin:28px 0 12px;
+  padding-left:14px;
+  border-left:4px solid var(--blue);
+}
+h3{
+  font-family:'Prompt',sans-serif;font-size:1.05rem;font-weight:600;
+  color:var(--dark);margin:18px 0 8px;
+}
+p{margin-bottom:12px;font-size:clamp(.92rem,1.2vw,1.02rem);color:var(--mid)}
+ul{margin:0 0 14px 22px}
+li{margin-bottom:6px;font-size:clamp(.9rem,1.1vw,.98rem);color:var(--mid)}
+strong{color:var(--dark)}
+
+/* ===== TABLES ===== */
+.doc-table{
+  width:100%;border-collapse:collapse;margin:14px 0 18px;
+  font-size:.95rem;
+}
+.doc-table th{
+  background:var(--blue);color:var(--white);
+  font-family:'Prompt',sans-serif;font-weight:600;font-size:.85rem;
+  padding:10px 14px;text-align:left;
+}
+.doc-table td{
+  padding:10px 14px;border-bottom:1px solid var(--line);
+  vertical-align:top;color:var(--mid);
+}
+.doc-table tr:nth-child(even) td{background:var(--blue-light)}
+
+/* ===== CALLOUT BOXES ===== */
+.callout{
+  border-radius:12px;padding:18px 22px;margin:16px 0;
+  font-size:.92rem;line-height:1.7;
+}
+.callout-info{
+  background:var(--blue-light);border-left:4px solid var(--blue);
+  color:var(--blue-deep);
+}
+.callout-warn{
+  background:var(--red-light);border-left:4px solid var(--red);
+  color:var(--red-deep);
+}
+.callout-sand{
+  background:var(--sand);border-left:4px solid #C4A86A;
+  color:var(--dark);
+}
+
+/* ===== CONTACT CARD ===== */
+.contact-card{
+  background:var(--sand-light);border:1px solid var(--line);
+  border-radius:14px;padding:20px 24px;margin-top:16px;
+  display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+}
+.contact-card-icon{
+  width:44px;height:44px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+}
+.contact-card-icon.email{background:var(--blue-light)}
+.contact-card-icon.line{background:rgba(6,199,85,.1)}
+.contact-card-label{font-size:.8rem;color:var(--light);font-weight:500}
+.contact-card-value{font-family:'Prompt',sans-serif;font-size:.98rem;font-weight:600;color:var(--dark)}
+.contact-card-value a{color:var(--blue)}
+
+/* ===== FOOTER ===== */
+.site-footer{
+  background:var(--dark);color:rgba(255,255,255,.55);
+  padding:28px 0 20px;
+}
+.site-footer .container{max-width:960px}
+.footer-bottom{
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  font-size:.82rem;
+}
+
+/* ===== PRINT ===== */
+.mf-print-footer{display:none}
+@media print{
+  .document-topbar,.document-tools,.site-footer,.btn-print{display:none!important}
+  .container{padding:0;max-width:100%}
+  article{box-shadow:none;border:none;border-radius:0;padding:20px}
+  .mf-print-footer{display:block;font-size:.8rem;color:var(--mid);text-align:center;margin-top:20px}
+  h2{border-left-color:var(--blue);page-break-after:avoid}
+  .doc-table th{background:var(--blue)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .document-tools{flex-direction:column}
+  .btn-print{width:100%;text-align:center}
+  .contact-card{grid-template-columns:1fr}
 }
 </style>
-<link href="style.css" rel="stylesheet"/></head>
+</head>
 <body>
 <div class="mf-print-footer" id="mfPrintFooter" aria-hidden="true"></div>
+
 <div class="document-topbar">
   <div class="inner">
-    <a class="mf-logo" href="index.html" aria-label="METHAFLOW">METHAFLOW</a>
+    <a class="mf-logo" href="index.html" aria-label="METHAFLOW"><span class="dot"></span>METHAFLOW</a>
     <a class="back-home" href="index.html" aria-label="กลับหน้าหลัก">← กลับหน้าหลัก</a>
   </div>
 </div>
+
 <main class="container policy">
-<article><div class="document-tools" aria-label="เครื่องมือเอกสาร">
+<article>
+
+<div class="document-tools" aria-label="เครื่องมือเอกสาร">
   <button class="btn-print" onclick="mfPrintPDF()" type="button">🖨️ พิมพ์ / บันทึกเป็น PDF</button>
   <button class="btn-print btn-excel" onclick="mfExportExcel()" type="button">📊 ดาวน์โหลด Excel</button>
   <button class="btn-print btn-word" onclick="mfExportWord()" type="button">📝 ดาวน์โหลด Word</button>
 </div>
+
 <p class="doc-eyebrow">METHAFLOW โดย เมธารดี กาญจนนิยม</p>
 <h1>นโยบายความเป็นส่วนตัว</h1>
-<p class="effective">มีผลบังคับใช้ตั้งแต่วันที่ 8 สิงหาคม 2569 · ฉบับที่ 1.1</p>
-<p>METHAFLOW ระบบบริหารเงินเดือนสำหรับธุรกิจไทย ให้บริการโดย เมธารดี กาญจนนิยม (METHARADEE KANCHANANIYOM) ผู้ประกอบการ ("ผู้ให้บริการ" "เรา") เราตระหนักถึงความสำคัญของการคุ้มครองข้อมูลส่วนบุคคล นโยบายฉบับนี้จัดทำขึ้นตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 ("PDPA") เพื่ออธิบายว่าเราเก็บรวบรวม ใช้ เปิดเผย และคุ้มครองข้อมูลส่วนบุคคลของท่านอย่างไร</p>
+<p class="effective">มีผลบังคับใช้ตั้งแต่วันที่ 18 สิงหาคม 2569 · ฉบับที่ 1.2</p>
+
+<p>METHAFLOW ระบบบริหารเงินเดือนสำหรับธุรกิจไทย ให้บริการโดย เมธารดี กาญจนนิยม (METHARADEE KANCHANANIYOM) ผู้ประกอบการบุคคลธรรมดา ("ผู้ให้บริการ" "เรา") เราตระหนักถึงความสำคัญของการคุ้มครองข้อมูลส่วนบุคคล นโยบายฉบับนี้จัดทำขึ้นตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 ("PDPA") เพื่ออธิบายว่าเราเก็บรวบรวม ใช้ เปิดเผย และคุ้มครองข้อมูลส่วนบุคคลของท่านอย่างไร</p>
+
+<!-- ===== 1. บทบาท ===== -->
 <h2>1. บทบาทของเราต่อข้อมูลของท่าน</h2>
-<p><strong>ข้อมูลผู้เยี่ยมชมเว็บไซต์และผู้ติดต่อ</strong> — เราเป็น "ผู้ควบคุมข้อมูลส่วนบุคคล" ของข้อมูลที่ท่านส่งถึงเราโดยตรง เช่น ชื่อ อีเมล เบอร์โทร และชื่อกิจการ ที่ส่งมาเพื่อสอบถามหรือนัดชมระบบ</p>
-<p><strong>ข้อมูลพนักงานของบริษัทลูกค้า</strong> — บริษัทลูกค้า (นายจ้าง) เป็น "ผู้ควบคุมข้อมูลส่วนบุคคล" ของข้อมูลพนักงานตน เราทำหน้าที่เป็น "ผู้ประมวลผลข้อมูลส่วนบุคคล" ตามคำสั่งของลูกค้าภายใต้ข้อตกลงการประมวลผลข้อมูล (DPA) ที่ลงนามกับลูกค้าทุกราย พนักงานที่ต้องการใช้สิทธิเกี่ยวกับข้อมูลของตน โปรดติดต่อฝ่ายบุคคลของบริษัทนายจ้างเป็นลำดับแรก</p>
+<p><strong>ข้อมูลผู้เยี่ยมชมเว็บไซต์และผู้ติดต่อ</strong> — เราเป็น "ผู้ควบคุมข้อมูลส่วนบุคคล" (Data Controller) ของข้อมูลที่ท่านส่งถึงเราโดยตรง เช่น ชื่อ อีเมล เบอร์โทร และชื่อกิจการ ที่ส่งมาเพื่อสอบถามหรือนัดชมระบบ</p>
+<p><strong>ข้อมูลพนักงานขององค์กรลูกค้า</strong> — องค์กรลูกค้า (นายจ้าง) เป็น "ผู้ควบคุมข้อมูลส่วนบุคคล" ของข้อมูลพนักงานตน เราทำหน้าที่เป็น "ผู้ประมวลผลข้อมูลส่วนบุคคล" (Data Processor) ตามคำสั่งของลูกค้าภายใต้ข้อตกลงการประมวลผลข้อมูล (DPA) ที่ลงนามกับลูกค้าทุกราย พนักงานที่ต้องการใช้สิทธิเกี่ยวกับข้อมูลของตน โปรดติดต่อฝ่ายบุคคลขององค์กรนายจ้างเป็นลำดับแรก</p>
+
+<!-- ===== 2. ข้อมูลที่ประมวลผล ===== -->
 <h2>2. ข้อมูลส่วนบุคคลที่ประมวลผลในระบบ</h2>
 <ul>
 <li><strong>ข้อมูลระบุตัวตน</strong> — ชื่อ นามสกุล เลขประจำตัวประชาชน วันเริ่มงาน ตำแหน่ง แผนก</li>
@@ -56,165 +240,195 @@
 <li><strong>ข้อมูลเวลาทำงาน</strong> — เวลาเข้า–ออกงาน พิกัด GPS เฉพาะ ณ วินาทีที่กดลงเวลา (ไม่มีการติดตามตำแหน่งต่อเนื่อง) กะและสถานที่ปฏิบัติงาน วันลา และค่าล่วงเวลา</li>
 <li><strong>ข้อมูลการใช้งาน</strong> — บันทึกการเข้าสู่ระบบ หมายเลขไอพี ประเภทเบราว์เซอร์ และคุกกี้</li>
 </ul>
-<p>ระบบออกแบบมาให้ไม่เก็บข้อมูลอ่อนไหวตามมาตรา 26 — การลาป่วยบันทึกเฉพาะประเภทลาและจำนวนวัน ไม่บันทึกการวินิจฉัยโรคหรือข้อมูลสุขภาพในระบบ</p>
+
+<div class="callout callout-info">
+<strong>ข้อมูลส่วนบุคคลอ่อนไหว (มาตรา 26):</strong> ระบบออกแบบมาให้ไม่เก็บข้อมูลอ่อนไหวตามมาตรา 26 — การลาป่วยบันทึกเฉพาะประเภทลาและจำนวนวัน ไม่บันทึกการวินิจฉัยโรคหรือข้อมูลสุขภาพในระบบ ข้อมูลชีวภาพ (ภาพถ่ายใบหน้า) หากมีการใช้จะขอความยินยอมอย่างชัดแจ้งแยกต่างหากตาม<a href="pdpa-consent.html">หนังสือให้ความยินยอม</a>
+</div>
+
+<!-- ===== 3. วัตถุประสงค์และฐานกฎหมาย ===== -->
 <h2>3. วัตถุประสงค์และฐานทางกฎหมาย</h2>
 <ul>
-<li><strong>ฐานสัญญา</strong> — คำนวณและจ่ายค่าจ้าง ออกสลิปเงินเดือน สร้างไฟล์จ่ายเงินผ่านธนาคาร และให้บริการตามข้อตกลงการใช้บริการ</li>
-<li><strong>หน้าที่ตามกฎหมาย</strong> — หักและนำส่งภาษี ณ ที่จ่าย เงินสมทบประกันสังคม กองทุนสงเคราะห์ลูกจ้าง และการหักตามหนังสือแจ้งของหน่วยงานรัฐที่มีอำนาจ</li>
-<li><strong>ประโยชน์โดยชอบด้วยกฎหมาย</strong> — การบันทึกเวลาทำงานและพิกัด ณ จุดลงเวลาเพื่อยืนยันการปฏิบัติงาน การรักษาความปลอดภัยของระบบ การป้องกันการทุจริต และบันทึกตรวจสอบการใช้งาน</li>
-<li><strong>ความยินยอม</strong> — เฉพาะการส่งข่าวสารและข้อเสนอทางการตลาด ซึ่งท่านถอนความยินยอมได้ตลอดเวลา การจ่ายเงินเดือนและการนำส่งตามกฎหมายไม่อาศัยความยินยอม</li>
+<li><strong>ฐานสัญญา (มาตรา 19/3)</strong> — คำนวณและจ่ายค่าจ้าง ออกสลิปเงินเดือน สร้างไฟล์จ่ายเงินผ่านธนาคาร และให้บริการตามข้อตกลงการใช้บริการ</li>
+<li><strong>หน้าที่ตามกฎหมาย (มาตรา 19/2)</strong> — หักและนำส่งภาษี ณ ที่จ่าย เงินสมทบประกันสังคม กองทุนสงเคราะห์ลูกจ้าง และการหักตามหน้าสือแจ้งของหน่วยงานรัฐที่มีอำนาจ</li>
+<li><strong>ประโยชน์โดยชอบด้วยกฎหมาย (มาตรา 19/4)</strong> — การบันทึกเวลาทำงานและพิกัด ณ จุดลงเวลาเพื่อยืนยันการปฏิบัติงาน การรักษาความปลอดภัยของระบบ การป้องกันการทุจริต และบันทึกตรวจสอบการใช้งาน</li>
+<li><strong>ความยินยอม (มาตรา 19/1)</strong> — เฉพาะการส่งข่าวสารและข้อเสนอทางการตลาด ซึ่งท่านถอนความยินยอมได้ตลอดเวลา การจ่ายเงินเดือนและการนำส่งตามกฎหมายไม่อาศัยความยินยอม</li>
 </ul>
+
+<!-- ===== 4. การเปิดเผย ===== -->
 <h2>4. การเปิดเผยข้อมูลส่วนบุคคล</h2>
-<p>เราเปิดเผยข้อมูลเท่าที่จำเป็นแก่ (1) หน่วยงานราชการ เช่น กรมสรรพากร สำนักงานประกันสังคม ตามหน้าที่ตามกฎหมาย (2) ผู้ให้บริการโครงสร้างพื้นฐานคลาวด์ที่ประมวลผลข้อมูลแทนเรา ภายใต้ข้อตกลงการประมวลผลข้อมูลที่รัดกุม และ (3) ธนาคาร เพื่อการจ่ายเงินเดือนตามคำสั่งของลูกค้า เราไม่ขายข้อมูลส่วนบุคคลแก่บุคคลใดทั้งสิ้น และการส่งออกไฟล์ที่มีเลขประจำตัวประชาชนทุกครั้งถูกบันทึกในเส้นทางตรวจสอบของระบบ</p>
+<p>เราเปิดเผยข้อมูลเท่าที่จำเป็นแก่:</p>
+<ul>
+<li><strong>หน่วยงานราชการ</strong> — เช่น กรมสรรพากร สำนักงานประกันสังคม ตามหน้าที่ตามกฎหมาย</li>
+<li><strong>ผู้ให้บริการโครงสร้างพื้นฐานคลาวด์</strong> — ที่ประมวลผลข้อมูลแทนเรา ภายใต้ข้อตกลงการประมวลผลข้อมูล (DPA) ที่รัดกุม</li>
+<li><strong>ธนาคาร</strong> — เพื่อการจ่ายเงินเดือนตามคำสั่งของลูกค้า</li>
+</ul>
+<p>เราไม่ขายข้อมูลส่วนบุคคลแก่บุคคลใดทั้งสิ้น และการส่งออกไฟล์ที่มีเลขประจำตัวประชาชนทุกครั้งถูกบันทึกในเส้นทางตรวจสอบของระบบ (Audit Log)</p>
+
+<!-- ===== 5. การโอนข้อมูลต่างประเทศ ===== -->
 <h2>5. การส่งหรือโอนข้อมูลไปต่างประเทศ</h2>
-<p>ระบบใช้บริการคลาวด์ซึ่งเซิร์ฟเวอร์อาจตั้งอยู่นอกประเทศไทย เราดำเนินการให้การโอนข้อมูลเป็นไปตามมาตรา 28 และมาตรา 29 แห่ง PDPA โดยเลือกผู้ให้บริการที่มีมาตรการคุ้มครองข้อมูลที่เหมาะสม</p>
+<p>ระบบใช้บริการคลาวด์ซึ่งเซิร์ฟเวอร์อาจตั้งอยู่นอกประเทศไทย เราดำเนินการให้การโอนข้อมูลเป็นไปตามมาตรา 28 และมาตรา 29 แห่ง PDPA</p>
+
+<div class="callout callout-sand">
+<strong>การประเมินความเพียงพอของมาตรการคุ้มครอง (มาตรา 28):</strong> ก่อนส่งหรือโอนข้อมูลส่วนบุคคลไปยังต่างประเทศ เราจะประเมินว่าประเทศปลายทางมีมาตรฐานการคุ้มครองข้อมูลส่วนบุคคลที่เพียงพอหรือไม่ โดยพิจารณาจาก (1) กฎหมายคุ้มครองข้อมูลส่วนบุคคลของประเทศปลายทาง (2) การใช้มาตรการเสริมเช่น ข้อตกลงมาตรฐานสำหรับการโอนข้อมูล (Standard Contractual Clauses) (3) การเข้ารหัสข้อมูลระหว่างการโอน หากประเทศปลายทางไม่มีมาตรการคุ้มครองที่เพียงพอ เราจะแจ้งท่านและขอความยินยอมเพิ่มเติมก่อนดำเนินการ
+</div>
+
+<!-- ===== 6. ระยะเวลาเก็บรักษา ===== -->
 <h2>6. ระยะเวลาการเก็บรักษาข้อมูล</h2>
-<p>ข้อมูลเงินเดือนและเอกสารทางภาษีเก็บรักษาไม่น้อยกว่าระยะเวลาที่กฎหมายภาษีอากรและกฎหมายแรงงานกำหนด และไม่เกิน 10 ปีนับจากวันสิ้นสุดความสัมพันธ์ตามสัญญา ข้อมูลผู้ติดต่อที่ไม่ได้เป็นลูกค้าเก็บไม่เกิน 1 ปี เมื่อพ้นกำหนด เราจะลบหรือทำให้ข้อมูลไม่สามารถระบุตัวบุคคลได้</p>
+<p>เราเก็บรักษาข้อมูลส่วนบุคคลตามระยะเวลาที่กฎหมายกำหนด และไม่เกินระยะเวลาที่จำเป็นต่อวัตถุประสงค์ของการประมวลผล</p>
+
+<table class="doc-table">
+<tr><th>ประเภทข้อมูล</th><th>ระยะเวลาเก็บรักษา</th><th>ฐานกฎหมาย</th></tr>
+<tr><td>ข้อมูลเงินเดือนและเอกสารภาษี</td><td>ไม่น้อยกว่า 5 ปี นับจากวันสิ้นสุดปีภาษี</td><td>ประมวลกฎหมายภาษีอากร ม.11, ม.12</td></tr>
+<tr><td>ข้อมูลประกันสังคม</td><td>ตลอดอายุการจ้าง + 6 เดือนหลังลาออก</td><td>พ.ร.บ.ประกันสังคม</td></tr>
+<tr><td>ข้อมูลกองทุนสงเคราะห์ลูกจ้าง</td><td>ตลอดอายุสมาชิกภาพ + 2 ปี</td><td>พ.ร.บ.กองทุนสงเคราะห์ลูกจ้าง</td></tr>
+<tr><td>บันทึกการลงเวลา (GPS)</td><td>90 วันย้อนหลัง (เกินจากนั้นเก็บเฉพาะสรุปรายวัน)</td><td>ฐานสัญญา</td></tr>
+<tr><td>ข้อมูลผู้ติดต่อ (ยังไม่เป็นลูกค้า)</td><td>1 ปี นับจากการติดต่อล่าสุด</td><td>ความยินยอม</td></tr>
+<tr><td>บันทึกความยินยอม</td><td>ตลอดอายุการจ้าง + 2 ปี</td><td>ฐานหน้าที่ตามกฎหมาย</td></tr>
+<tr><td>Audit Log</td><td>3 ปี นับจากวันที่บันทึก</td><td>ประโยชน์โดยชอบด้วยกฎหมาย</td></tr>
+<tr><td>คุกกี้</td><td>ตามระยะเวลาที่ระบุในหัวข้อ 9</td><td>ความยินยอม / จำเป็น</td></tr>
+</table>
+<p>เมื่อพ้นระยะเวลาเก็บรักษา เราจะลบหรือทำให้ข้อมูลไม่สามารถระบุตัวบุคคลได้ (Anonymization) อย่างปลอดภัย</p>
+
+<!-- ===== 7. มาตรการรักษาความปลอดภัย ===== -->
 <h2>7. มาตรการรักษาความปลอดภัย</h2>
-<p>ข้อมูลแต่ละบริษัทถูกแยกขาดจากกันที่ระดับฐานข้อมูล คอลัมน์อ่อนไหว เช่น เลขประจำตัวประชาชนและเลขบัญชีธนาคาร ถูกจำกัดการเข้าถึงและปกปิดบางส่วนบนหน้าจอตามสิทธิ์ผู้ใช้ การรับส่งข้อมูลเข้ารหัสด้วย HTTPS ทั้งหมด มีการควบคุมสิทธิ์ตามบทบาท และบันทึกการใช้งานทุกรายการ ในกรณีเกิดเหตุละเมิดข้อมูลส่วนบุคคล เราจะแจ้งผู้เกี่ยวข้องและสำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคลภายใน 72 ชั่วโมงตามที่กฎหมายกำหนด</p>
+<p>เราใช้มาตรการรักษาความปลอดภัยทั้งทางเทคนิคและองค์กร เพื่อปกป้องข้อมูลส่วนบุคคลตามมาตรา 24 แห่ง PDPA ดังนี้:</p>
+<ul>
+<li><strong>การเข้ารหัสข้อมูล (Encryption)</strong> — ข้อมูลระหว่างการรับส่งเข้ารหัสด้วย TLS 1.2+ (HTTPS) ข้อมูลส่วนบุคคลอ่อนไหวที่เก็บในฐานข้อมูล (At Rest) ถูกเข้ารหัสด้วย AES-256</li>
+<li><strong>การควบคุมสิทธิ์เข้าถึง (Access Control)</strong> — ข้อมูลแต่ละองค์กรถูกแยกขาดจากกันที่ระดับฐานข้อมูลด้วย Row-Level Security (RLS) การเข้าถึงข้อมูลอาศัยระบบควบคุมสิทธิ์ตามบทบาท (Role-Based Access Control) คอลัมน์อ่อนไหว เช่น เลขประจำตัวประชาชนและเลขบัญชีธนาคาร ถูกปกปิดบางส่วนบนหน้าจอตามสิทธิ์ผู้ใช้</li>
+<li><strong>บันทึกตรวจสอบ (Audit Log)</strong> — บันทึกการใช้งานทุกรายการแบบ Immutable (ไม่สามารถลบหรือแก้ไขได้) พร้อม Timestamp และ IP Address</li>
+<li><strong>การทดสอบความปลอดภัย</strong> — มีการตรวจสอบช่องโหว่ (Vulnerability Assessment) เป็นระยะ และทดสอบการเจาะระบบ (Penetration Testing) อย่างน้อยปีละ 1 ครั้ง</li>
+<li><strong>การจัดการเหตุละเมิด</strong> — ในกรณีเกิดเหตุละเมิดข้อมูลส่วนบุคคล เราจะแจ้งผู้เกี่ยวข้องและสำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล (สคส.) ภายใน 72 ชั่วโมงตามมาตรา 34 ทั้งนี้จะดำเนินมาตรการตอบสนองเพื่อหยุดยั้งเหตุละเมิดทันที</li>
+</ul>
+
+<!-- ===== 8. สิทธิของเจ้าของข้อมูล ===== -->
 <h2>8. สิทธิของเจ้าของข้อมูลส่วนบุคคล</h2>
+<p>ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 มาตรา 24–30 เจ้าของข้อมูลส่วนบุคคลมีสิทธิดังต่อไปนี้:</p>
 <ul>
-<li>สิทธิในการเข้าถึงและขอรับสำเนาข้อมูลส่วนบุคคล</li>
-<li>สิทธิในการขอแก้ไขข้อมูลให้ถูกต้องและเป็นปัจจุบัน</li>
-<li>สิทธิในการขอลบหรือทำลายข้อมูล (ภายใต้ข้อจำกัดของข้อมูลที่กฎหมายกำหนดให้เก็บรักษา)</li>
-<li>สิทธิในการขอระงับการใช้ข้อมูล</li>
-<li>สิทธิในการคัดค้านการประมวลผลข้อมูล</li>
-<li>สิทธิในการขอโอนย้ายข้อมูล</li>
-<li>สิทธิในการถอนความยินยอมเมื่อใดก็ได้</li>
-<li>สิทธิในการร้องเรียนต่อสำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล (สคส.)</li>
+<li><strong>สิทธิในการเข้าถึงและขอรับสำเนาข้อมูล</strong> (มาตรา 24) — ขอดูหรือขอรับสำเนาข้อมูลส่วนบุคคลของตนที่เราเก็บรวบรวม</li>
+<li><strong>สิทธิในการขอแก้ไขข้อมูล</strong> (มาตรา 25) — ขอให้แก้ไขข้อมูลให้ถูกต้องและเป็นปัจจุบัน</li>
+<li><strong>สิทธิในการขอลบหรือทำลายข้อมูล</strong> (มาตรา 26) — ขอให้ลบข้อมูลเมื่อไม่จำเป็นต่อวัตถุประสงค์เดิม (ภายใต้ข้อจำกัดของข้อมูลที่กฎหมายกำหนดให้เก็บรักษา)</li>
+<li><strong>สิทธิในการขอระงับการใช้ข้อมูล</strong> (มาตรา 27) — ขอให้ระงับการประมวลผลข้อมูลชั่วคราว</li>
+<li><strong>สิทธิในการคัดค้านการประมวลผลข้อมูล</strong> (มาตรา 28) — คัดค้านการประมวลผลบนฐานประโยชน์โดยชอบด้วยกฎหมาย</li>
+<li><strong>สิทธิในการขอโอนย้ายข้อมูล</strong> (มาตรา 29) — ขอรับข้อมูลในรูปแบบที่สามารถนำไปใช้กับระบบอื่นได้</li>
+<li><strong>สิทธิไม่ถูกประมวลผลโดยอัตโนมัติ</strong> (มาตรา 30) — สิทธิไม่ให้ข้อมูลส่วนบุคคลของตนถูกประมวลผลโดยอัตโนมัติซึ่งมีผลทางกฎหมายหรือมีผลกระทบอย่างมีนัยสำคัญต่อตน รวมถึงการสร้างโปรไฟล์ (Profiling)</li>
+<li><strong>สิทธิในการถอนความยินยอม</strong> — ถอนความยินยอมเมื่อใดก็ได้ โดยการถอนไม่กระทบการประมวลผลที่ทำไปแล้วโดยชอบ</li>
+<li><strong>สิทธิในการร้องเรียน</strong> — ร้องเรียนต่อสำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล (สคส.) หากเห็นว่ามีการละเมิดสิทธิ</li>
 </ul>
-<p>เราจะดำเนินการตามคำขอภายใน 30 วันนับจากวันที่ได้รับคำขอ โดยไม่มีค่าใช้จ่าย พนักงานของบริษัทลูกค้ายังสามารถดูข้อมูลของตนเองได้ตลอดเวลาผ่านเมนู "ข้อมูลของฉัน" และ "สลิปของฉัน" ในระบบ</p>
-<h2>9. คุกกี้</h2>
-<p>เว็บไซต์ใช้คุกกี้ที่จำเป็นต่อการทำงาน เช่น การจดจำภาษาที่เลือก ท่านตั้งค่าเบราว์เซอร์เพื่อปฏิเสธคุกกี้ได้ แต่บางฟังก์ชันอาจไม่สมบูรณ์</p>
-<h2>10. การเปลี่ยนแปลงนโยบาย</h2>
+
+<div class="callout callout-info">
+<strong>การใช้สิทธิ:</strong> เราจะดำเนินการตามคำขอภายใน 30 วันนับจากวันที่ได้รับคำขอ โดยไม่มีค่าใช้จ่าย ยกเว้นกรณีที่กฎหมายอนุญาตให้เรียกเก็บได้ พนักงานขององค์กรลูกค้ายังสามารถดูข้อมูลของตนเองได้ตลอดเวลาผ่านเมนู "ข้อมูลของฉัน" และ "สลิปของฉัน" ในระบบ
+</div>
+
+<!-- ===== 9. คุกกี้ ===== -->
+<h2>9. คุกกี้และเทคโนโลยีติดตาม</h2>
+<p>เว็บไซต์ของเราใช้คุกกี้และเทคโนโลยีติดตามประเภทต่างๆ ดังนี้:</p>
+
+<table class="doc-table">
+<tr><th>ประเภทคุกกี้</th><th>วัตถุประสงค์</th><th>ระยะเวลา</th><th>ต้องมีความยินยอม</th></tr>
+<tr><td><strong>คุกกี้จำเป็น (Essential)</strong></td><td>จดจำภาษาที่เลือก การเข้าสู่ระบบ ความปลอดภัยของเซสชัน</td><td>เซสชัน / 1 ปี</td><td>ไม่ต้อง</td></tr>
+<tr><td><strong>คุกกี้วิเคราะห์ (Analytical)</strong></td><td>เก็บข้อมูลการใช้งานเพื่อปรับปรุงประสบการณ์ผู้ใช้ เช่น หน้าที่เข้าชม เวลาที่ใช้</td><td>1 ปี</td><td>ต้อง</td></tr>
+<tr><td><strong>คุกกี้การตลาด (Marketing)</strong></td><td>แสดงข้อเสนอและโฆษณาที่เหมาะสมกับท่าน</td><td>1 ปี</td><td>ต้อง</td></tr>
+</table>
+
+<p>ท่านสามารถจัดการความยินยอมคุกกี้ได้ผ่านแบนเนอร์คุกกี้ที่ปรากฏเมื่อเข้าใช้งานครั้งแรก หรือตั้งค่าเบราว์เซอร์เพื่อปฏิเสธหรือลบคุกกี้ได้ โดยคุกกี้จำเป็นจะยังทำงานต่อเนื่อง แต่การปฏิเสธคุกกี้วิเคราะห์และการตลาดอาจทำให้ฟังก์ชันบางอย่างไม่สมบูรณ์</p>
+
+<!-- ===== 10. DPO ===== -->
+<h2>10. เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (DPO)</h2>
+<p>ตามมาตรา 35 และมาตรา 41 แห่งพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 ผู้ควบคุมข้อมูลส่วนบุคคลที่มีกิจกรรมหลักเกี่ยวกับการเก็บรวบรวม ใช้ หรือเปิดเผยข้อมูลส่วนบุคคลซึ่งจำเป็นต้องตรวจสอบอย่างสม่ำเสมอ หรือมีข้อมูลส่วนบุคคลเป็นจำนวนมาก ต้องแต่งตั้งเจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (Data Protection Officer: DPO)</p>
+<p>DPO มีหน้าที่ให้คำปรึกษาแก่องค์กร ตรวจสอบความสอดคล้องกับ PDPA ประสานงานกับเจ้าของข้อมูลและสำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล (สคส.) และเป็นจุดติดต่อในกรณีเกิดเหตุละเมิดข้อมูล</p>
+
+<div class="callout callout-sand">
+<strong>หมายเหตุสำหรับองค์กรลูกค้า:</strong> หากองค์กรของท่านมีพนักงานจำนวนมากหรือมีกิจกรรมที่ต้องตรวจสอบข้อมูลส่วนบุคคลอย่างสม่ำเสมอ ท่านอาจมีหน้าที่ต้องแต่งตั้ง DPO ขององค์กรตนเองตามประกาศคณะกรรมการคุ้มครองข้อมูลส่วนบุคคลเพิ่มเติมมาตรา 41(2) ซึ่งมีผลบังคับใช้ตั้งแต่วันที่ 13 ธันวาคม 2566
+</div>
+
+<!-- ===== 11. DPIA ===== -->
+<h2>11. การประเมินผลกระทบด้านการคุ้มครองข้อมูล (DPIA)</h2>
+<p>ตามมาตรา 22 แห่ง PDPA ผู้ควบคุมข้อมูลส่วนบุคคลต้องดำเนินการประเมินผลกระทบด้านการคุ้มครองข้อมูลส่วนบุคคล (Data Protection Impact Assessment: DPIA) ก่อนดำเนินการใดๆ ที่อาจก่อให้เกิดความเสี่ยงสูงต่อสิทธิและเสรีภาพของเจ้าของข้อมูลส่วนบุคคล เช่น การประมวลผลข้อมูลอ่อนไหวเป็นจำนวนมาก การเฝ้าระวังอย่างเป็นระบบ หรือการใช้เทคโนโลยีใหม่</p>
+<p>หากจำเป็น เราจะดำเนิน DPIA ก่อนเปิดตัวฟีเจอร์ใหม่ที่เกี่ยวข้องกับการประมวลผลข้อมูลส่วนบุคคลที่อาจมีความเสี่ยงสูง</p>
+
+<!-- ===== 12. การเปลี่ยนแปลงนโยบาย ===== -->
+<h2>12. การเปลี่ยนแปลงนโยบาย</h2>
 <p>เราอาจปรับปรุงนโยบายฉบับนี้เป็นครั้งคราว ฉบับล่าสุดประกาศบนหน้านี้พร้อมวันที่มีผลบังคับใช้ หากมีการเปลี่ยนแปลงอย่างมีนัยสำคัญ เช่น การเปลี่ยนสถานะผู้ให้บริการเป็นนิติบุคคล เราจะแจ้งลูกค้าปัจจุบันทุกรายล่วงหน้า</p>
-<h2>11. ช่องทางติดต่อ</h2>
-<p><strong>ผู้รับผิดชอบด้านการคุ้มครองข้อมูลส่วนบุคคล</strong> — METHAFLOW โดย เมธารดี กาญจนนิยม</p>
-<ul>
-<li>อีเมล: <a href="mailto:contact@methaflow.tech">contact@methaflow.tech</a></li>
-<li>โทรศัพท์: <a href="tel:+66616425116">061-642-5116</a></li>
-</ul>
+
+<!-- ===== 13. ช่องทางติดต่อ ===== -->
+<h2>13. ช่องทางติดต่อ</h2>
+<p><strong>ผู้รับผิดชอบด้านการคุ้มครองข้อมูลส่วนบุคคล</strong> — เมธาโฟลว์ โดย เมธารดี กาญจนนิยม</p>
+
+    <div>
+      <a href="mailto:contact@methaflow">contact@methaflow.tech</a>
+    </div>
+  </div>
+  <div>
+</div>
+
 </article>
 </main>
+
 <footer class="site-footer">
-<div class="container">
-<div class="footer-bottom">
-<p>© 2569 METHAFLOW · METHAFLOW โดย เมธารดี กาญจนนิยม</p>
-<p>contact@methaflow.tech · 061-642-5116</p>
-</div>
-</div>
-</footer><script>
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2569 METHAFLOW by METHARADEE KANCHANANIYOM</p>
+      <p>อีเมล์: contact@methaflow.tech · แอดไลน์: @900htprv</p>
+    </div>
+  </div>
+</footer>
+
+<script>
 (function () {
   function mfNowText() {
     const d = new Date();
     const pad = n => String(n).padStart(2, '0');
-    const day = pad(d.getDate());
-    const month = pad(d.getMonth() + 1);
-    const year = d.getFullYear();
-    const time = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-    return `METHAFLOW · วันที่ ${day}/${month}/${year} · เวลา ${time}`;
+    return 'METHAFLOW · วันที่ ' + pad(d.getDate()) + '/' + pad(d.getMonth() + 1) + '/' + d.getFullYear() + ' · เวลา ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
   }
-
   function setMFPrintFooter() {
     const el = document.getElementById('mfPrintFooter');
     if (el) el.textContent = mfNowText();
   }
-
   window.mfSetExportFooter = setMFPrintFooter;
-
   window.addEventListener('beforeprint', setMFPrintFooter);
-
   setMFPrintFooter();
 })();
 </script>
 <script>
 (function () {
   'use strict';
-
   function getFileBase() {
     const title = (document.querySelector('h1')?.textContent || 'METHAFLOW Document').trim();
     return title.includes('ความยินยอม') ? 'METHAFLOW_PDPA_Consent' : 'METHAFLOW_Privacy_Policy';
   }
-
   function downloadBlob(blob, fileName) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
-    a.download = fileName;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+    a.href = url; a.download = fileName;
+    document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1500);
   }
-
-  function escapeXml(value) {
-    return String(value ?? '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&apos;');
+  function escapeXml(v) {
+    return String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
   }
-
-  function excelCell(content, style) {
-    return '<td style="' + (style || '') + '">' + escapeXml(content) + '</td>';
-  }
+  function excelCell(c,s){return '<td style="'+(s||'')+'">'+escapeXml(c)+'</td>'}
 
   function htmlToExcelWorkbook() {
     const article = document.querySelector('.policy article');
     const title = (article.querySelector('h1')?.textContent || getFileBase()).trim();
     const rows = [];
     const children = Array.from(article.children).filter(el => !el.classList.contains('print-row'));
-
     children.forEach(el => {
       const tag = el.tagName;
-      if (tag === 'H1') {
-        rows.push('<tr><td colspan="3" style="font-size:20pt;font-weight:bold;color:#010D47;padding:12px 6px">' + escapeXml(el.textContent.trim()) + '</td></tr>');
-      } else if (tag === 'H2') {
-        rows.push('<tr><td colspan="3" style="font-size:14pt;font-weight:bold;color:#010D47;padding:12px 6px 7px">' + escapeXml(el.textContent.trim()) + '</td></tr>');
-      } else if (tag === 'P') {
-        const text = el.innerText.trim();
-        if (text) rows.push('<tr>' + excelCell(text, 'vertical-align:top;padding:7px 6px;white-space:normal;') + '<td></td><td></td></tr>');
-      } else if (tag === 'UL' || tag === 'OL') {
-        Array.from(el.children).forEach(li => {
-          rows.push('<tr>' + excelCell('• ' + li.innerText.trim(), 'vertical-align:top;padding:5px 6px;white-space:normal;') + '<td></td><td></td></tr>');
-        });
-      } else if (tag === 'TABLE') {
-        Array.from(el.rows).forEach((tr, rowIndex) => {
-          const cells = Array.from(tr.cells);
-          let row = '<tr>';
-          for (let i = 0; i < 3; i++) {
-            const c = cells[i];
-            if (c) {
-              const style = rowIndex === 0
-                ? 'background:#010D47;color:#FFFFFF;font-weight:bold;padding:7px 6px;border:1px solid #010D47;vertical-align:top;'
-                : 'padding:7px 6px;border:1px solid #D9DEEA;vertical-align:top;white-space:normal;';
-              row += excelCell(c.innerText.trim(), style);
-            } else {
-              row += '<td></td>';
-            }
-          }
-          row += '</tr>';
-          rows.push(row);
+      if (tag === 'H1') rows.push('<tr><td colspan="3" style="font-size:20pt;font-weight:bold;color:#1A6FBF;padding:12px 6px">'+escapeXml(el.textContent.trim())+'</td></tr>');
+      else if (tag === 'H2') rows.push('<tr><td colspan="3" style="font-size:14pt;font-weight:bold;color:#145A9E;padding:12px 6px 7px">'+escapeXml(el.textContent.trim())+'</td></tr>');
+      else if (tag === 'P') { const t=el.innerText.trim(); if(t) rows.push('<tr>'+excelCell(t,'vertical-align:top;padding:7px 6px;white-space:normal;')+'<td></td><td></td></tr>'); }
+      else if (tag === 'UL' || tag === 'OL') { Array.from(el.children).forEach(li => { rows.push('<tr>'+excelCell('• '+li.innerText.trim(),'vertical-align:top;padding:5px 6px;white-space:normal;')+'<td></td><td></td></tr>'); }); }
+      else if (tag === 'TABLE') {
+        Array.from(el.rows).forEach((tr,ri) => {
+          const cells = Array.from(tr.cells); let row='<tr>';
+          for(let i=0;i<3;i++){const c=cells[i];if(c){const st=ri===0?'background:#1A6FBF;color:#FFFFFF;font-weight:bold;padding:7px 6px;border:1px solid #1A6FBF;vertical-align:top;':'padding:7px 6px;border:1px solid #E0E4EA;vertical-align:top;white-space:normal;';row+=excelCell(c.innerText.trim(),st);}else{row+='<td></td>';}}
+          row+='</tr>'; rows.push(row);
         });
         rows.push('<tr><td colspan="3" style="height:10px"></td></tr>');
       }
     });
-
-    const html = `<!DOCTYPE html>
-<html lang="th"><head><meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style>
-body{font-family:Sarabun,Arial,sans-serif;color:#010D47}
-table{border-collapse:collapse;width:100%;table-layout:fixed}td{font-size:12pt}
-</style></head><body>
-<table><colgroup><col style="width:55%"><col style="width:20%"><col style="width:25%"></colgroup>
-<tr><td colspan="3" style="font-size:22pt;font-weight:bold;color:#010D47;padding:10px 6px">${escapeXml(title)}</td></tr>
-<tr><td colspan="3" style="height:8px"></td></tr>
-${rows.join('\n')}
-<tr><td colspan="3" style="padding-top:18px;border-top:1px solid #D9DEEA;font-family:Sarabun,Arial,sans-serif;font-size:10.5pt;color:#42506F;">${escapeXml(document.getElementById('mfPrintFooter')?.textContent || '')}</td></tr>
-</table></body></html>`;
-
+    const html = '<!DOCTYPE html><html lang="th"><head><meta charset="UTF-8"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body{font-family:Sarabun,Arial,sans-serif;color:#2A2A2A}table{border-collapse:collapse;width:100%;table-layout:fixed}td{font-size:12pt}</style></head><body><table><colgroup><col style="width:55%"><col style="width:20%"><col style="width:25%"></colgroup><tr><td colspan="3" style="font-size:22pt;font-weight:bold;color:#1A6FBF;padding:10px 6px">'+escapeXml(title)+'</td></tr><tr><td colspan="3" style="height:8px"></td></tr>'+rows.join('\n')+'<tr><td colspan="3" style="padding-top:18px;border-top:1px solid #E0E4EA;font-family:Sarabun,Arial,sans-serif;font-size:10.5pt;color:#5A5A5A;">'+escapeXml(document.getElementById('mfPrintFooter')?.textContent||'')+'</td></tr></table></body></html>';
     return html;
   }
 
@@ -222,46 +436,26 @@ ${rows.join('\n')}
     const article = document.querySelector('.policy article').cloneNode(true);
     const exportFooter = document.createElement('div');
     exportFooter.textContent = (document.getElementById('mfPrintFooter')?.textContent || '');
-    exportFooter.style.cssText = 'margin-top:28px;padding-top:10px;border-top:1px solid #D9DEEA;font-family:Sarabun,Arial,sans-serif;font-size:10.5pt;color:#42506F;';
+    exportFooter.style.cssText = 'margin-top:28px;padding-top:10px;border-top:1px solid #E0E4EA;font-family:Sarabun,Arial,sans-serif;font-size:10.5pt;color:#5A5A5A;';
     article.appendChild(exportFooter);
     article.querySelector('.print-row')?.remove(); article.querySelector('.document-tools')?.remove();
     const title = (article.querySelector('h1')?.textContent || getFileBase()).trim();
-    const styles = `
-      body{font-family:'Sarabun','TH Sarabun New',Arial,sans-serif;color:#010D47;font-size:16px;line-height:1.75;margin:32px;}
-      h1,h2{font-family:'Sarabun','TH Sarabun New',Arial,sans-serif;color:#010D47;}
-      h1{font-size:26px;line-height:1.3;margin:0 0 8px;}
-      h2{font-size:20px;margin:22px 0 8px;}
-      p{margin:0 0 10px;}
-      ul{margin:0 0 12px 22px;}
-      li{margin-bottom:6px;}
-      a{color:#010D47;}
-      table{width:100%;border-collapse:collapse;margin:12px 0 18px;}
-      th{background:#010D47;color:#fff;border:1px solid #010D47;padding:8px;text-align:left;}
-      td{border:1px solid #D9DEEA;padding:8px;vertical-align:top;}
-      tr:nth-child(even) td{background:#E6FFFF;}
-    `;
-    return `<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40" lang="th"><head><meta charset="UTF-8"><title>${escapeXml(title)}</title><style>${styles}</style></head><body>${article.outerHTML}</body></html>`;
+    const styles = "body{font-family:'Sarabun','TH Sarabun New',Arial,sans-serif;color:#2A2A2A;font-size:16px;line-height:1.75;margin:32px;}h1,h2{font-family:'Prompt','Sarabun',Arial,sans-serif;}h1{font-size:26px;color:#2A2A2A;line-height:1.3;margin:0 0 8px;}h2{font-size:20px;color:#145A9E;margin:22px 0 8px;padding-left:14px;border-left:4px solid #1A6FBF;}p{margin:0 0 10px;color:#5A5A5A;}ul{margin:0 0 12px 22px;}li{margin-bottom:6px;}a{color:#1A6FBF;}table{width:100%;border-collapse:collapse;margin:12px 0 18px;}th{background:#1A6FBF;color:#fff;border:1px solid #1A6FBF;padding:8px;text-align:left;}td{border:1px solid #E0E4EA;padding:8px;vertical-align:top;}tr:nth-child(even) td{background:#E8F2FB;}";
+    return '<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40" lang="th"><head><meta charset="UTF-8"><title>'+escapeXml(title)+'</title><style>'+styles+'</style></head><body>'+article.outerHTML+'</body></html>';
   }
 
-  window.mfPrintPDF = function () {
-    window.mfSetExportFooter?.();
-    window.print();
-  };
-
+  window.mfPrintPDF = function () { window.mfSetExportFooter?.(); window.print(); };
   window.mfExportWord = function () {
     window.mfSetExportFooter?.();
-    const base = getFileBase();
     const html = htmlToWordDocument();
     const blob = new Blob(['\ufeff', html], { type: 'application/msword;charset=utf-8' });
-    downloadBlob(blob, base + '.doc');
+    downloadBlob(blob, getFileBase() + '.doc');
   };
-
   window.mfExportExcel = function () {
     window.mfSetExportFooter?.();
-    const base = getFileBase();
     const html = htmlToExcelWorkbook();
     const blob = new Blob(['\ufeff', html], { type: 'application/vnd.ms-excel;charset=utf-8' });
-    downloadBlob(blob, base + '.xls');
+    downloadBlob(blob, getFileBase() + '.xls');
   };
 })();
 </script>
