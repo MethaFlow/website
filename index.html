@@ -2,14 +2,98 @@
 <!DOCTYPE html>
 <html lang="th" dir="ltr">
 <head>
-<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) + METHAFLOW Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VG68DNEN42"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+
+  /*
+   * METHAFLOW owner/internal mode
+   * ใช้ ?mf_internal=1 เพียงครั้งเดียวบนเครื่อง/เบราว์เซอร์ของเจ้าของเว็บ
+   * ระบบจะจำค่าไว้ใน localStorage เพื่อไม่ให้การเข้าเว็บ/การทดสอบของเจ้าของ
+   * ปนกับข้อมูลผู้เข้าชมจริงใน GA4 เมื่อเปิด Internal Traffic filter แล้ว
+   * ใช้ ?mf_internal=0 เพื่อยกเลิกโหมดเจ้าของเครื่องนั้น
+   */
+  (function(){
+    try {
+      var p = new URLSearchParams(window.location.search);
+      if (p.get('mf_internal') === '1') {
+        localStorage.setItem('mf_internal_visitor', '1');
+      } else if (p.get('mf_internal') === '0') {
+        localStorage.removeItem('mf_internal_visitor');
+      }
+    } catch(e) {}
+  })();
+
+  var isInternalVisitor = false;
+  try { isInternalVisitor = localStorage.getItem('mf_internal_visitor') === '1'; } catch(e) {}
+
   gtag('js', new Date());
 
-  gtag('config', 'G-VG68DNEN42');
+  /* traffic_type ใช้คู่กับ GA4 Data Filter > Internal Traffic */
+  if (isInternalVisitor) {
+    gtag('set', { 'traffic_type': 'internal' });
+  }
+
+  gtag('config', 'G-VG68DNEN42', {
+    'user_properties': {
+      'user_group': 'SME_Startup_HR_Owner_General',
+      'visitor_type': isInternalVisitor ? 'internal_owner' : 'external_visitor'
+    }
+  });
+
+  /* Key event เดิม: กดปุ่ม “ทดลองใช้งาน” */
+  function trackTryDemoClick(source) {
+    gtag('event', 'click_try_demo', {
+      'event_category': 'conversion',
+      'event_label': source || 'Try Demo Button',
+      'button_location': source || 'unknown'
+    });
+  }
+
+  /* ติดตามคนที่เลื่อนมาถึงส่วนแนะนำระบบ */
+  function trackSystemView() {
+    if (window.__mfSystemViewed) return;
+    window.__mfSystemViewed = true;
+    gtag('event', 'view_system', {
+      'event_category': 'engagement',
+      'event_label': 'System Modules Section'
+    });
+  }
+
+  /* ติดตาม CTA สำคัญโดยไม่ต้องแก้ HTML ส่วนล่าง */
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('a[href*="demo.methaflow.tech"]').forEach(function(el){
+      el.addEventListener('click', function(){
+        trackTryDemoClick(el.textContent.trim() || 'Try Demo Button');
+      });
+    });
+
+    document.querySelectorAll('a[href*="cal.com/methaflow"]').forEach(function(el){
+      el.addEventListener('click', function(){
+        gtag('event', 'book_demo', {
+          'event_category': 'conversion',
+          'event_label': ' นัดดูระบบจริง'
+        });
+      });
+    });
+
+    var systemSection = document.getElementById('products');
+    if (systemSection && 'IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            trackSystemView();
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.25 });
+      observer.observe(systemSection);
+    } else if (systemSection) {
+      trackSystemView();
+    }
+  });
 </script>
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="946mEQ0swo9WQFdXRW3oIp7oWpPcwnG2bnOuLn0kyUA" />
