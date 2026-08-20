@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ตรวจเกณฑ์กองทุนสงเคราะห์ลูกจ้าง | METHAFLOW</title>
+<meta content="เช็คฟรีว่าบริษัทของคุณต้องเข้ากองทุนสงเคราะห์ลูกจ้างหรือไม่ ก่อนกฎหมายบังคับใช้ 1 ต.ค. 2569 ค้นด้วยเลขทะเบียนนิติบุคคลจาก DBD และตอบ 7 ข้อ" name="description"/>
+<style>
+:root{
+  --ink:#182420; --accent:#010D47; --accent2:#00AFC7; --accent3:#E85A16;
+  --muted:#5E687A; --rule:#DCE2EA; --soft:#F3F7FA;
+  --amber:#FFF1E8; --amber-edge:#E85A16;
+  --green-soft:#E8FFF5; --green:#00AFC7;
+  --red-soft:#FFF1E8; --red:#E85A16;
+  --shadow:0 14px 44px rgba(14,90,71,.12);
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+h1,h2,h3{font-family:'Sarabun',sans-serif;letter-spacing:-.01em}
+body{font-family:'Sarabun',system-ui,sans-serif;color:var(--ink);background:#FFF7F1;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.06em;font-size:18px}
+.brand .dot{width:10px;height:10px;border-radius:3px;background:var(--accent)}
+.brand small{font-weight:400;letter-spacing:0;color:var(--muted);font-size:13px}
+a.brand{color:inherit;text-decoration:none}
+
+.brand-name{
+  font-size:22px;font-weight:800;letter-spacing:.02em;
+  background:linear-gradient(90deg,#00AFC7 0%,#010D47 48%,#E85A16 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent!important;
+}
+
+.hero{margin-top:28px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:var(--amber-edge);
+  font-weight:600;font-size:13.5px;padding:7px 14px;border-radius:999px;border:1px solid #f3dcae}
+.pill .k{width:7px;height:7px;border-radius:50%;background:var(--amber-edge)}
+h1{font-size:32px;font-weight:700;line-height:1.25;margin:16px 0 10px}
+h1 em{font-style:normal;background:linear-gradient(90deg,#00AFC7,#010D47);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:16.5px;max-width:620px}
+
+.card{background:#fff;border:1px solid var(--rule);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:28px;margin-top:26px}
+.card h2{font-size:19px;font-weight:600;margin-bottom:4px}
+.card .hint{color:var(--muted);font-size:14px;margin-bottom:18px}
+
+.step-label{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.04em;margin:24px 0 12px}
+.step-label:first-of-type{margin-top:0}
+.step-num{width:24px;height:24px;border-radius:7px;background:var(--accent);color:#fff;
+  display:grid;place-items:center;font-size:13px;font-weight:700}
+
+label{display:block;font-weight:500;font-size:14.5px;margin-bottom:6px}
+.req::after{content:" *";color:var(--red)}
+.search-row{display:flex;gap:8px}
+input[type=text],input[type=number],select{width:100%;font-family:inherit;font-size:15.5px;
+  padding:12px 14px;border:1.5px solid var(--rule);border-radius:11px;background:#fff;color:var(--ink);
+  transition:border-color .15s,box-shadow .15s;outline:none}
+input:focus,select:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(0,175,199,.14)}
+.btn{font-family:inherit;font-weight:600;font-size:15.5px;border:none;border-radius:11px;cursor:pointer;
+  padding:12px 20px;transition:transform .08s,background .15s;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#000a2b}
+.btn-ghost{background:var(--soft);color:var(--accent);border:1.5px solid var(--rule)}
+.btn-block{width:100%;padding:15px;font-size:16.5px;margin-top:24px}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+
+.lookup-status{font-size:13.5px;margin-top:8px;min-height:18px}
+.lookup-status.ok{color:#059669}
+.lookup-status.err{color:var(--red)}
+.lookup-status.load{color:var(--muted)}
+.dbd-result{margin-top:10px;padding:12px 14px;background:var(--soft);border-radius:11px;font-size:14px;display:none}
+.dbd-result.show{display:block}
+.dbd-result .dbd-name{font-weight:700;font-size:15px;color:var(--accent)}
+.dbd-result .dbd-row{display:flex;gap:6px;margin-top:4px;color:var(--muted);font-size:13px}
+.dbd-result .dbd-row b{color:var(--ink)}
+.divider{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;margin:20px 0}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--rule)}
+
+.field{margin-bottom:18px}
+.radio-group{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.radio-opt{position:relative}
+.radio-opt input{position:absolute;opacity:0;pointer-events:none}
+.radio-opt label{display:flex;align-items:center;gap:9px;border:1.5px solid var(--rule);border-radius:11px;
+  padding:13px 14px;cursor:pointer;font-weight:500;font-size:14.5px;margin:0;transition:.15s}
+.radio-opt label .tick{width:18px;height:18px;border-radius:50%;border:2px solid var(--rule);flex:none;transition:.15s}
+.radio-opt input:checked + label{border-color:var(--accent2);background:var(--soft)}
+.radio-opt input:checked + label .tick{border-color:var(--accent2);background:var(--accent2);
+  box-shadow:inset 0 0 0 3px #fff}
+.micro{font-size:12.5px;color:var(--muted);margin-top:6px}
+
+/* conditional fields */
+.conditional{display:none;margin-top:10px}
+.conditional.show{display:block}
+
+/* result */
+#result{margin-top:26px;display:none}
+#result.show{display:block;animation:rise .35s ease}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.result-card{border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);border:1px solid var(--rule);background:#fff}
+.result-card.must{border-top:5px solid var(--accent)}
+.result-card.maybe{border-top:5px solid var(--amber-edge)}
+.result-card.exempt{border-top:5px solid var(--green)}
+.verdict{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.verdict .icon{width:46px;height:46px;border-radius:12px;flex:none;display:grid;place-items:center;font-size:24px;font-weight:700;color:#fff}
+.must .icon{background:var(--accent)}
+.maybe .icon{background:var(--amber-edge)}
+.exempt .icon{background:var(--green)}
+.verdict h3{font-size:22px;font-weight:700}
+.verdict .co{font-size:14px;color:var(--muted)}
+.verdict-body{font-size:15.5px;margin-bottom:16px}
+.reasons{list-style:none;margin:16px 0;padding:16px;background:var(--soft);border-radius:12px}
+.reasons li{display:flex;gap:10px;font-size:14.5px;padding:5px 0}
+.reasons li .b{color:var(--accent);font-weight:700;flex:none}
+.estimate{background:var(--green-soft);border-radius:12px;padding:14px 16px;font-size:14.5px;margin:16px 0}
+.estimate table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+.estimate th,.estimate td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--rule)}
+.estimate th{color:var(--muted);font-weight:500;font-size:13px}
+.estimate td b{color:var(--accent2)}
+.warn-box{background:var(--amber);border-radius:12px;padding:14px 16px;font-size:14.5px;margin:16px 0;border:1px solid #f3dcae}
+.warn-box b{color:var(--amber-edge)}
+.next{border-top:1px dashed var(--rule);margin-top:18px;padding-top:18px}
+.next h4{font-size:15px;font-weight:600;margin-bottom:8px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.cta-row a{text-decoration:none}
+
+.penalty-box{background:var(--red-soft);border-radius:12px;padding:14px 16px;font-size:14px;margin:16px 0;border:1px solid #f3dcae}
+.penalty-box b{color:var(--red)}
+
+.fineprint{font-size:12.5px;color:var(--muted);margin-top:22px;padding:14px 16px;background:var(--soft);border-radius:11px}
+.fineprint a{color:var(--accent)}
+.foot{text-align:center;color:var(--muted);font-size:13px;margin-top:34px}
+.foot a{color:var(--accent);text-decoration:none}
+
+.law-ref{font-size:12px;color:var(--muted);margin-top:4px;font-style:italic}
+
+@media(max-width:560px){
+  h1{font-size:26px}
+  .radio-group{grid-template-columns:1fr}
+  .search-row{flex-direction:column}
+  .card{padding:22px}
+  .estimate table{font-size:13px}
+}
+</style>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="#">
+    <span class="brand-name">METHAFLOW</span>
+  </a>
+
+  <div class="hero">
+    <span class="pill"><span class="k"></span>กฎหมายเริ่มบังคับ 1 ต.ค. 2569</span>
+    <h1>บริษัทคุณต้องเข้า<br/><em>กองทุนสงเคราะห์ลูกจ้าง</em> ไหม?</h1>
+    <p class="sub">เช็คฟรีใน 30 วินาที — ค้นเลขทะเบียนนิติบุคคลจากกรมพัฒนาธุรกิจการค้า (DBD) แล้วตอบคำถาม 7 ข้อ ระบบประเมินตามเกณฑ์กฎหมายจริง พร้อมบอกตัวเลขประมาณการและขั้นตอนถัดไป</p>
+  </div>
+
+  <form autocomplete="off" class="card" id="checkForm">
+    <!-- STEP 1: Company identification via DBD -->
+    <div class="step-label"><span class="step-num">1</span> ระบุบริษัทของคุณ</div>
+    <div class="field">
+      <label class="req" for="q">เลขทะเบียนนิติบุคคล หรือ ชื่อบริษัท</label>
+      <div class="search-row">
+        <input id="q" placeholder="เช่น 0105566XXXXX หรือ บริษัท ตัวอย่าง จำกัด" type="text"/>
+        <button class="btn btn-ghost" id="lookupBtn" type="button">ค้นหา DBD</button>
+      </div>
+      <div class="lookup-status" id="lookupStatus"></div>
+      <div class="dbd-result" id="dbdResult">
+        <div class="dbd-name" id="dbdName"></div>
+        <div class="dbd-row"><span>สถานะ:</span> <b id="dbdStatus"></b></div>
+        <div class="dbd-row"><span>ทุนจดทะเบียน:</span> <b id="dbdCapital"></b></div>
+        <div class="dbd-row"><span>ประเภท:</span> <b id="dbdType"></b></div>
+      </div>
+      <p class="micro">ระบบจะค้นหาข้อมูลนิติบุคคลจากฐานข้อมูลกรมพัฒนาธุรกิจการค้า (DBD) ผ่าน Government Data Exchange (GDX) — ข้อมูลจำนวนลูกจ้างไม่มีในทะเบียนสาธารณะ จึงต้องกรอกเองในขั้นตอนที่ 2</p>
+    </div>
+
+    <div class="divider">ข้อมูลที่ใช้ประเมินจริง</div>
+
+    <div class="step-label"><span class="step-num">2</span> ตอบ 7 ข้อเพื่อรู้คำตอบที่แม่นยำ</div>
+
+    <!-- Q1: Employee count -->
+    <div class="field">
+      <label class="req" for="emp">① จำนวนลูกจ้างในบริษัทปัจจุบัน (คน)</label>
+      <input id="emp" min="0" placeholder="เช่น 24" step="1" type="number"/>
+      <p class="micro">รวมพนักงานประจำ พนักงานทดลองงาน พนักงานรายวัน พนักงานชั่วคราว — ไม่รวมฟรีแลนซ์ ที่ปรึกษาอิสระ กรรมการผู้จัดการที่บริหารกิจการโดยอิสระ</p>
+      <p class="law-ref">อ้างอิง: พ.ร.บ.คุ้มครองแรงงาน พ.ศ. 2541 มาตรา 118 วรรคสอง</p>
+    </div>
+
+    <!-- Q2: Under LPA -->
+    <div class="field">
+      <label class="req">② กิจการของคุณอยู่ภายใต้ พ.ร.บ.คุ้มครองแรงงานหรือไม่?</label>
+      <div class="radio-group" data-name="lpa">
+        <div class="radio-opt"><input id="lpa-y" name="lpa" type="radio" value="yes"/><label for="lpa-y"><span class="tick"></span>ใช่ (กิจการทั่วไป)</label></div>
+        <div class="radio-opt"><input id="lpa-n" name="lpa" type="radio" value="no"/><label for="lpa-n"><span class="tick"></span>ไม่ใช่ / ไม่แน่ใจ</label></div>
+      </div>
+      <p class="micro">ยกเว้น: งานเกษตรบางประเภท งานประมง งานรับใช้ในบ้าน (ที่ไม่ประกอบธุรกิจรวม) มูลนิธิ สมาคม โรงเรียนเอกชน (ส่วนผู้อำนวยการ/ครู/บุคลากรทางการศึกษา)</p>
+      <p class="law-ref">อ้างอิง: กฎกระทรวง (พ.ศ. 2541) ข้อ 4, พ.ร.บ.โรงเรียนเอกชน มาตรา 96</p>
+    </div>
+
+    <!-- Q3: Has PVD? -->
+    <div class="field">
+      <label class="req">③ บริษัทมี "กองทุนสำรองเลี้ยงชีพ (PVD)" หรือไม่?</label>
+      <div class="radio-group" data-name="pvd">
+        <div class="radio-opt"><input id="pvd-y" name="pvd" type="radio" value="yes"/><label for="pvd-y"><span class="tick"></span>มี</label></div>
+        <div class="radio-opt"><input id="pvd-n" name="pvd" type="radio" value="no"/><label for="pvd-n"><span class="tick"></span>ไม่มี</label></div>
+      </div>
+    </div>
+
+    <!-- Q4: PVD covers 100%? (conditional) -->
+    <div class="field conditional" id="pvdCoverageField">
+      <label class="req">④ PVD ครอบคลุมลูกจ้าง 100% หรือไม่?</label>
+      <div class="radio-group" data-name="pvdCover">
+        <div class="radio-opt"><input id="pvd-cover-all" name="pvdCover" type="radio" value="all"/><label for="pvd-cover-all"><span class="tick"></span>ครอบคลุมทุกคน</label></div>
+        <div class="radio-opt"><input id="pvd-cover-partial" name="pvdCover" type="radio" value="partial"/><label for="pvd-cover-partial"><span class="tick"></span>มีบางคนไม่ครอบคลุม</label></div>
+      </div>
+      <p class="micro">พนักงานทดลองงาน พนักงานใหม่ที่ยังไม่ครบเงื่อนไข พนักงานที่ไม่สมัครใจ ล้วนไม่อยู่ใน PVD — นายจ้างต้องนำคนกลุ่มนี้เข้า EWF</p>
+      <p class="law-ref">อ้างอิง: พ.ร.บ.คุ้มครองแรงงาน มาตรา 118 วรรคหนึ่ง, กฎกระทรวงกำหนดหลักเกณฑ์การสงเคราะห์ลูกจ้าง</p>
+    </div>
+
+    <!-- Q5: Has other welfare fund? -->
+    <div class="field">
+      <label class="req" id="q5label">⑤ บริษัทมีกองทุนสงเคราะห์อื่น (กรณีลาออก/เสียชีวิต) ตามหลักเกณฑ์กฎกระทรวงหรือไม่?</label>
+      <div class="radio-group" data-name="welfare">
+        <div class="radio-opt"><input id="welfare-y" name="welfare" type="radio" value="yes"/><label for="welfare-y"><span class="tick"></span>มี (ได้รับยกเว้น)</label></div>
+        <div class="radio-opt"><input id="welfare-n" name="welfare" type="radio" value="no"/><label for="welfare-n"><span class="tick"></span>ไม่มี / ไม่แน่ใจ</label></div>
+      </div>
+      <p class="micro">หมายถึง กองทุนสงเคราะห์ที่นายจ้างจัดให้ลูกจ้างกรณีออกจากงาน/เสียชีวิต ตามหลักเกณฑ์ที่กฎกระทรวงกำหนด — ไม่ใช่สวัสดิการทั่วไป (เช่น ประกันสุขภาพ กองทุนเพื่อการศึกษา)</p>
+      <p class="law-ref">อ้างอิง: พ.ร.บ.คุ้มครองแรงงาน มาตรา 118 วรรคหนึ่ง (2)</p>
+    </div>
+
+    <!-- Q6: Business type (exempt categories) -->
+    <div class="field">
+      <label class="req">⑥ กิจการของคุณเป็นประเภทที่ได้รับยกเว้นตามกฎหมายหรือไม่?</label>
+      <div class="radio-group" data-name="exempt">
+        <div class="radio-opt"><input id="exempt-n" name="exempt" type="radio" value="no"/><label for="exempt-n"><span class="tick"></span>ไม่ใช่กิจการยกเว้น</label></div>
+        <div class="radio-opt"><input id="exempt-y" name="exempt" type="radio" value="yes"/><label for="exempt-y"><span class="tick"></span>เป็นกิจการยกเว้น</label></div>
+      </div>
+      <p class="micro">กิจการยกเว้น เช่น มูลนิธิ สมาคม องค์กรไม่แสวงหากำไรทางเศรษฐกิจ (ตามกฎกระทรวง 2541) — หากไม่แน่ใจให้เลือก "ไม่ใช่"</p>
+      <p class="law-ref">อ้างอิง: กฎกระทรวง (พ.ศ. 2541) ข้อ 4, พ.ร.บ.คุ้มครองแรงงาน มาตรา 5</p>
+    </div>
+
+    <!-- Q7: Average wage -->
+    <div class="field">
+      <label class="req" for="wage">⑦ ค่าจ้างเฉลี่ยต่อเดือนต่อคน (บาท)</label>
+      <p class="micro">ใช้ประมาณการตัวเลขนำส่งเข้ากองทุน — ฐานคำนวณคือ "ค่าตอบแทนจากการจ้าง" (เงินเดือน ค่าจ้างตามผลงาน ค่าทักษะ ค่าวิชาชีพ ค่าครองชีพ ค่าตำแหน่ง) ไม่รวม โบนัส OT ค่าเช่าบ้าน เบี้ยขยัน เงินจูงใจ</p>
+      <p class="law-ref">อ้างอิง: มาตรา 118 วรรคห้า, ประกาศกระทรวงแรงงายเรื่องหลักเกณฑ์การคำนวณเงินสะสมและเงินสมทบ</p>
+    </div>
+
+    <button class="btn btn-primary btn-block" id="submitBtn" type="submit">ประเมินผลทันที →</button>
+  </form>
+
+  <div id="result"></div>
+
+  <div class="fineprint">
+    การประเมินนี้เป็นการคัดกรองเบื้องต้นตามเกณฑ์หลักของ พ.ร.บ.คุ้มครองแรงงาน พ.ศ. 2541 หมวด 13 (มาตรา 117–136) ณ 20 ส.ค. 2569 ไม่ใช่คำวินิจฉัยทางกฎหมาย
+    อัตราและกำหนดเวลาอาจปรับปรุงตามประกาศราชการ ตรวจสอบข้อมูลล่าสุดที่
+    <a href="https://ewf.labour.go.th/" rel="noopener" target="_blank">กรมสวัสดิการและคุ้มครองแรงงาน</a>
+    หรือปรึกษาที่ปรึกษาด้านแรงงาน/บัญชีก่อนดำเนินการจริง
+  </div>
+
+  <div class="foot">
+    METHAFLOW · <a href="mailto:contact@methaflow.tech">contact@methaflow.tech</a> · <a href="tel:+66616425116">061-642-5116</a><br/>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ──────── helpers ──────── */
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, function(ch){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch];
+}); }
+var EMAIL = "contact@methaflow.tech";
+var PHONE = "061-642-5116";
+var $ = function(id){ return document.getElementById(id); };
+
+function fmt(n){ return n.toLocaleString("th-TH",{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function fmtInt(n){ return n.toLocaleString("th-TH"); }
+
+/* ──────── DBD Lookup via GDX API ──────── */
+var verifiedName = "";
+var dbdData = null;
+
+var JURISTIC_TYPE_MAP = {
+  "2": "ห้างหุ้นส่วนสามัญ",
+  "3": "ห้างหุ้นส่วนจำกัด",
+  "5": "บริษัทจำกัด",
+  "7": "บริษัทจำกัดมหาชน"
+};
+
+function looksLikeJuristicID(s){ return /^\d{13}$/.test(s.replace(/\D/g, "")); }
+
+/* Try GDX/DGA API first, then fallback to DBD DataWarehouse+ redirect */
+async function doDBDLookup(query){
+  var st = $("lookupStatus");
+  var result = $("dbdResult");
+  var cleanQuery = query.trim();
+
+  if(!cleanQuery){
+    st.className="lookup-status err"; st.textContent="กรุณากรอกเลขทะเบียนนิติบุคคลหรือชื่อบริษัท";
+    result.classList.remove("show");
+    return;
+  }
+
+  /* If it looks like a 13-digit ID, try GDX API */
+  var isID = looksLikeJuristicID(cleanQuery);
+
+  if(isID){
+    st.className="lookup-status load"; st.textContent="กำลังค้นหาจากฐาน DBD (GDX)...";
+    result.classList.remove("show");
+
+    try {
+      var apiURL = "https://api.egov.go.th/ws/dbd/juristic/v4/profile/information?JuristicID=" + encodeURIComponent(cleanQuery);
+      var resp = await fetch(apiURL, {
+        method: "GET",
+        headers: { "Accept": "application/json" },
+        signal: AbortSignal.timeout(8000)
+      });
+
+      if(resp.ok){
+        var data = await resp.json();
+        if(data.ResultList && data.ResultList.length > 0){
+          var j = data.ResultList[0];
+          dbdData = j;
+          verifiedName = j.JuristicName_TH || cleanQuery;
+
+          $("dbdName").textContent = j.JuristicName_TH || "—";
+          $("dbdStatus").textContent = j.JuristicStatus || "—";
+          $("dbdCapital").textContent = j.RegisterCapital ? fmtInt(parseInt(j.RegisterCapital)) + " บาท" : "—";
+          $("dbdType").textContent = JURISTIC_TYPE_MAP[j.JuristicType] || j.JuristicType || "—";
+
+          result.classList.add("show");
+          st.className="lookup-status ok";
+          st.textContent="✓ พบข้อมูลนิติบุคคลจาก DBD — กรอกข้อมูลขั้นตอนที่ 2 เพื่อประเมิน";
+          return;
+        }
+      }
+    } catch(e){
+      /* API failed (CORS / no key / timeout) — fall through to fallback */
+    }
+
+    /* Fallback: just record the ID */
+    verifiedName = cleanQuery;
+    st.className="lookup-status ok";
+    st.textContent="บันทึกเลขทะเบียนนิติบุคคลแล้ว — หากต้องการยืนยันชื่อ ค้นหาได้ที่ DBD DataWarehouse+ (ลิงก์ด้านล่าง)";
+    result.classList.remove("show");
+    addDBDFallbackLink(cleanQuery);
+    return;
+  }
+
+  /* Name-based search: redirect to DBD DataWarehouse+ */
+  verifiedName = cleanQuery;
+  st.className="lookup-status ok";
+  st.textContent="ใช้ชื่อ \"" + cleanQuery + "\" ในการประเมิน — ยืนยันชื่อนิติบุคคลได้ที่ DBD DataWarehouse+";
+  result.classList.remove("show");
+  addDBDFallbackLink(cleanQuery);
+}
+
+function addDBDFallbackLink(q){
+  var st = $("lookupStatus");
+  var existing = st.querySelector('.dbd-link');
+  if(!existing){
+    var a = document.createElement('a');
+    a.className = 'dbd-link';
+    a.href = 'https://datawarehouse.dbd.go.th/';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.style.cssText = 'display:inline-block;margin-left:8px;color:var(--accent);font-weight:600;font-size:13px;';
+    a.textContent = 'เปิด DBD DataWarehouse+ ↗';
+    st.appendChild(a);
+  }
+}
+
+$("lookupBtn").addEventListener("click", function(){ doDBDLookup($("q").value); });
+$("q").addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); doDBDLookup($("q").value); } });
+
+/* ──────── Conditional: Show PVD coverage Q when PVD=yes ──────── */
+var pvdRadios = document.querySelectorAll('input[name="pvd"]');
+pvdRadios.forEach(function(r){
+  r.addEventListener("change", function(){
+    var coverField = $("pvdCoverageField");
+    if(this.value === "yes"){
+      coverField.classList.add("show");
+    } else {
+      coverField.classList.remove("show");
+      /* Reset coverage radio */
+      document.querySelectorAll('input[name="pvdCover"]').forEach(function(x){ x.checked = false; });
+    }
+    /* Update Q numbering */
+    updateNumbering();
+  });
+});
+
+function updateNumbering(){
+  var pvdVal = getRadio("pvd");
+  var q5label = $("q5label");
+  if(pvdVal === "yes"){
+    q5label.innerHTML = '⑤ บริษัทมีกองทุนสงเคราะห์อื่น (กรณีลาออก/เสียชีวิต) ตามหลักเกณฑ์กฎกระทรวงหรือไม่?';
+  } else {
+    q5label.innerHTML = '④ บริษัทมีกองทุนสงเคราะห์อื่น (กรณีลาออก/เสียชีวิต) ตามหลักเกณฑ์กฎกระทรวงหรือไม่?';
+  }
+}
+
+/* ──────── Form submit ──────── */
+function getRadio(name){
+  var el = document.querySelector('input[name="'+name+'"]:checked');
+  return el ? el.value : null;
+}
+
+$("checkForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  var emp = parseInt($("emp").value, 10);
+  var lpa = getRadio("lpa");
+  var pvd = getRadio("pvd");
+  var pvdCover = getRadio("pvdCover");
+  var welfare = getRadio("welfare");
+  var exempt = getRadio("exempt");
+  var wage = parseFloat($("wage").value);
+
+  /* Validate required fields */
+  if(isNaN(emp) || emp<0){ flash($("emp")); return; }
+  if(!lpa){ flash(document.querySelector('[data-name="lpa"]')); return; }
+  if(!pvd){ flash(document.querySelector('[data-name="pvd"]')); return; }
+  if(pvd==="yes" && !pvdCover){ flash(document.querySelector('[data-name="pvdCover"]')); return; }
+  if(!welfare){ flash(document.querySelector('[data-name="welfare"]')); return; }
+  if(!exempt){ flash(document.querySelector('[data-name="exempt"]')); return; }
+  if(isNaN(wage) || wage<=0){ flash($("wage")); return; }
+
+  var coName = verifiedName || $("q").value.trim();
+  render(decide(emp, lpa, pvd, pvdCover, welfare, exempt, wage), coName, wage);
+});
+
+function flash(el){
+  el.style.transition="box-shadow .2s";
+  el.style.boxShadow="0 0 0 3px rgba(185,28,28,.25)";
+  setTimeout(function(){ el.style.boxShadow=""; },900);
+  el.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+/* ════════════════════════════════════════════════════════════════
+   CORE RULE ENGINE — พ.ร.บ.คุ้มครองแรงงาน พ.ศ. 2541 หมวด 13
+   ════════════════════════════════════════════════════════════════ */
+function decide(emp, lpa, pvd, pvdCover, welfare, exempt, wage){
+
+  /* ── Case 1: Not under LPA ── */
+  if(lpa==="no"){
+    return {
+      cls:"exempt", icon:"—", title:"ไม่อยู่ในบังคับกองทุนสงเคราะห์ลูกจ้าง",
+      body:"กิจการที่ไม่อยู่ภายใต้ พ.ร.บ.คุ้มครองแรงงาน ไม่มีหน้าที่นำส่งเงินเข้ากองทุนสงเคราะห์ลูกจ้าง ตามมาตรา 5 และกฎกระทรวง (พ.ศ. 2541) ข้อ 4",
+      reasons:[
+        "ไม่อยู่ภายใต้ พ.ร.บ.คุ้มครองแรงงาน",
+        "ตัวอย่างกิจการยกเว้น: งานเกษตร งานประมง งานรับใช้ในบ้าน มูลนิธิ สมาคม โรงเรียนเอกชน (บุคลากรทางการศึกษา)"
+      ],
+      est:null, penalty:null
+    };
+  }
+
+  /* ── Case 2: Exempt business type ── */
+  if(exempt==="yes"){
+    return {
+      cls:"exempt", icon:"—", title:"กิจการประเภทนี้ได้รับยกเว้น",
+      body:"กิจการที่ไม่แสวงหากำไรทางเศรษฐกิจ (มูลนิธิ สมาคม) หรือกิจการที่กฎหมายยกเว้นไม่ให้นำหมวด 13 มาใช้บังคับ ไม่ต้องนำส่งเงินเข้ากองทุนสงเคราะห์ลูกจ้าง",
+      reasons:[
+        "ระบุว่าเป็นกิจการยกเว้นตามกฎหมาย",
+        "ตามกฎกระทรวง (พ.ศ. 2541) ข้อ 4 และ พ.ร.บ.คุ้มครองแรงงาน มาตรา 5"
+      ],
+      est:null, penalty:null
+    };
+  }
+
+  /* ── Case 3: < 10 employees ── */
+  if(emp < 10){
+    return {
+      cls:"exempt", icon:"—", title:"ยังไม่เข้าเกณฑ์ (ตอนนี้)",
+      body:"บริษัทมีลูกจ้าง " + emp + " คน ซึ่งน้อยกว่าเกณฑ์ 10 คน จึงยังไม่มีหน้าที่นำส่งกองทุนสงเคราะห์ลูกจ้าง แต่เมื่อจำนวนลูกจ้างถึง 10 คน จะเข้าเกณฑ์ทันที",
+      reasons:[
+        "ลูกจ้าง " + emp + " คน (น้อยกว่าเกณฑ์ 10 คน)",
+        "อยู่ภายใต้ พ.ร.บ.คุ้มครองแรงงาน"
+      ],
+      watch:"เมื่อจำนวนลูกจ้างถึง 10 คนขึ้นไป จะเข้าเกณฑ์ทันที ควรเตรียมระบบ payroll ไว้ล่วงหน้า",
+      est:null, penalty:null
+    };
+  }
+
+  /* ── Cases where emp >= 10 AND under LPA ── */
+
+  /* ── Case 4: Has other welfare fund that qualifies ── */
+  if(welfare==="yes"){
+    return {
+      cls:"maybe", icon:"≈", title:"อาจได้รับยกเว้น (ตามหลักเกณฑ์กองทุนสงเคราะห์อื่น)",
+      body:"หากบริษัทจัดให้มีการสงเคราะห์ลูกจ้างกรณีออกจากงาน/เสียชีวิต ตามหลักเกณฑ์ที่กฎกระทรวงกำหนด (มาตรา 118 วรรคหนึ่ง (2)) อาจได้รับยกเว้น แต่ต้องตรวจสอบว่าหลักเกณฑ์กองทุนตรงตามที่กฎหมายกำหนดหรือไม่",
+      reasons:[
+        "ลูกจ้าง " + emp + " คน (ถึงเกณฑ์ 10 คนขึ้นไป)",
+        "อยู่ภายใต้ พ.ร.บ.คุ้มครองแรงงาน",
+        "ระบุว่ามีกองทุนสงเคราะห์อื่นตามหลักเกณฑ์กฎกระทรวง"
+      ],
+      watch:"ตรวจสอบให้แน่ใจว่าหลักเกณฑ์กองทุนสงเคราะห์อื่น ตรงตามเงื่อนไขมาตรา 118 วรรคหนึ่ง (2) จึงจะได้รับยกเว้นอย่างเป็นทางการ",
+      est:null, penalty:null
+    };
+  }
+
+  /* ── Case 5: Has PVD covering 100% ── */
+  if(pvd==="yes" && pvdCover==="all"){
+    return {
+      cls:"maybe", icon:"≈", title:"อาจได้รับยกเว้น (เนื่องจากมี PVD ครอบคลุม 100%)",
+      body:"หากลูกจ้างทุกคนเป็นสมาชิกกองทุนสำรองเลี้ยงชีพ (PVD) อยู่แล้ว บริษัทจะได้รับยกเว้นการนำส่ง EWF สำหรับลูกจ้างกลุ่มนั้น ตามมาตรา 118 วรรคหนึ่ง (1) แต่ต้องตรวจสอบอย่างละเอียดว่าครอบคลุมจริง 100% รวมพนักงานใหม่ พนักงานทดลองงาน พนักงานรายวัน",
+      reasons:[
+        "ลูกจ้าง " + emp + " คน (ถึงเกณฑ์ 10 คนขึ้นไป)",
+        "อยู่ภายใต้ พ.ร.บ.คุ้มครองแรงงาน",
+        "มีกองทุนสำรองเลี้ยงชีพและระบุว่าครอบคลุมลูกจ้างทุกคน"
+      ],
+      watch:"ตรวจสอบให้แน่ใจว่า PVD ครอบคลุมลูกจ้าง 100% จริง รวมถึงพนักงานทดลองงาน พนักงานใหม่ พนักงานรายวัน หากมีใครไม่อยู่ใน PVD แม้แค่ 1 คน ต้องนำคนนั้นเข้า EWF",
+      est:null, penalty:null
+    };
+  }
+
+  /* ── Case 6: Has PVD but NOT 100% (partial) ── */
+  if(pvd==="yes" && pvdCover==="partial"){
+    return {
+      cls:"must", icon:"✓", title:"ต้องเข้ากองทุนสงเคราะห์ลูกจ้าง (บางส่วน)",
+      body:"บริษัทมี PVD แต่ยังมีลูกจ้างที่ไม่ได้เป็นสมาชิก PVD (เช่น พนักงานทดลองงาน พนักงานใหม่ที่ยังไม่ครบเงื่อนไข พนักงานที่ไม่สมัครใจ) นายจ้างต้องนำลูกจ้างกลุ่มนี้เข้าเป็นสมาชิกกองทุนสงเคราะห์ลูกจ้าง ตามมาตรา 118",
+      reasons:[
+        "ลูกจ้าง " + emp + " คน (ถึงเกณฑ์ 10 คนขึ้นไป)",
+        "อยู่ภายใต้ พ.ร.บ.คุ้มครองแรงงาน",
+        "มี PVD แต่มีลูกจ้างบางคนไม่ได้เป็นสมาชิก"
+      ],
+      partialPVD: true,
+      est:{count:emp, wage:wage},
+      penalty:true
+    };
+  }
+
+  /* ── Case 7: No PVD, no welfare fund → MUST enroll ── */
+  return {
+    cls:"must", icon:"✓", title:"ต้องเข้ากองทุนสงเคราะห์ลูกจ้าง",
+    body:"บริษัทของคุณเข้าเกณฑ์ที่กฎหมายกำหนด ต้องขึ้นทะเบียนและนำส่งเงินเข้ากองทุนสงเคราะห์ลูกจ้าง ตั้งแต่วันที่ 1 ตุลาคม 2569 สำหรับลูกจ้างทุกคน",
+    reasons:[
+      "ลูกจ้าง " + emp + " คน (ถึงเกณฑ์ 10 คนขึ้นไป)",
+      "อยู่ภายใต้ พ.ร.บ.คุ้มครองแรงงาน",
+      "ไม่มีกองทุนสำรองเลี้ยงชีพ (PVD) หรือกองทุนสงเคราะห์อื่นที่ได้รับยกเว้น"
+    ],
+    est:{count:emp, wage:wage},
+    penalty:true
+  };
+}
+
+/* ──────── Render result ──────── */
+function render(r, coName, wage){
+  var host = $("result");
+  var reasonsHtml = r.reasons.map(function(x){ return '<li><span class="b">›</span><span>'+esc(x)+'</span></li>'; }).join("");
+
+  /* ── Estimation table ── */
+  var estHtml = "";
+  if(r.est){
+    var count = r.est.count;
+    var w = r.est.wage;
+    /* Period 1: 1 Oct 2569 – 30 Sep 2574 → 0.25% each side */
+    var p1_emp = w * 0.0025;               /* employee 0.25% */
+    var p1_er  = w * 0.0025;               /* employer 0.25% */
+    var p1_total = (p1_emp + p1_er) * count;
+    /* Period 2: 1 Oct 2574 → → 0.5% each side */
+    var p2_emp = w * 0.005;                /* employee 0.5% */
+    var p2_er  = w * 0.005;                /* employer 0.5% */
+    var p2_total = (p2_emp + p2_er) * count;
+
+    var pvdNote = r.partialPVD
+      ? '<br/><span style="color:var(--amber-edge);font-weight:600">⚠ หมายเหตุ: ตัวเลขนี้คำนวณจากลูกจ้าง '+count+' คนทั้งหมด — หากลูกจ้างที่เป็นสมาชิก PVD อยู่แล้วได้รับยกเว้น ให้ลดจำนวนลูกจ้างลงตามสัดส่วนจริง</span>'
+      : '';
+
+    estHtml =
+      '<div class="estimate">'+
+        '<b style="color:var(--accent)">ประมาณการตัวเลขนำส่งเข้ากองทุน</b> (ค่าจ้างเฉลี่ย '+fmtInt(w)+' บาท/คน/เดือน)'+
+        '<table>'+
+          '<tr><th>ช่วงเวลา</th><th>ลูกจ้าง (เงินสะสม)</th><th>นายจ้าง (เงินสมทบ)</th><th>รวม/เดือน</th></tr>'+
+          '<tr><td>1 ต.ค. 2569 – 30 ก.ย. 2574<br/><span style="font-size:12px;color:var(--muted)">อัตรา 0.25% ฝ่ายละ</span></td>'+
+            '<td>'+fmt(p1_emp)+' × '+fmtInt(count)+' = <b>'+fmt(p1_emp*count)+'</b></td>'+
+            '<td>'+fmt(p1_er)+' × '+fmtInt(count)+' = <b>'+fmt(p1_er*count)+'</b></td>'+
+            '<td><b style="color:var(--accent2)">'+fmt(p1_total)+'</b> บาท</td></tr>'+
+          '<tr><td>1 ต.ค. 2574 เป็นต้นไป<br/><span style="font-size:12px;color:var(--muted)">อัตรา 0.5% ฝ่ายละ</span></td>'+
+            '<td>'+fmt(p2_emp)+' × '+fmtInt(count)+' = <b>'+fmt(p2_emp*count)+'</b></td>'+
+            '<td>'+fmt(p2_er)+' × '+fmtInt(count)+' = <b>'+fmt(p2_er*count)+'</b></td>'+
+            '<td><b style="color:var(--accent2)">'+fmt(p2_total)+'</b> บาท</td></tr>'+
+        '</table>'+
+        '<p style="font-size:12.5px;color:var(--muted);margin-top:6px">ตัวเลขจริงขึ้นกับค่าจ้างแต่ละคน — ฐานคำนวณคือ "ค่าตอบแทนจากการจ้าง" ไม่มีเพดานขั้นสูง</p>'+
+        pvdNote+
+      '</div>';
+  }
+
+  /* ── Watch/warning box ── */
+  var watchHtml = r.watch ? '<div class="warn-box"><b>⚠ ข้อควรระวัง:</b> '+esc(r.watch)+'</div>' : "";
+
+  /* ── Penalty box ── */
+  var penaltyHtml = "";
+  if(r.penalty){
+    penaltyHtml =
+      '<div class="penalty-box">'+
+        '<b>บทลงโทษกรณีไม่ปฏิบัติตามกฎหมาย</b>'+
+        '<ul style="margin:8px 0 0 18px;font-size:13.5px">'+
+          '<li>ไม่นำส่งเงินสะสม/สมทบ หรือส่งไม่ครบ: <b>เงินเพิ่ม 5% ต่อเดือน</b> ของเงินที่ค้างนำส่ง (เศษเดือน ≥15 วัน นับเป็น 1 เดือน)</li>'+
+          '<li>ไม่ยื่นแบบแจ้งข้อมูล หรือแจ้งข้อมูลเท็จ: <b>จำคุก ≤6 เดือน ปรับ ≤10,000 บาท</b> หรือทั้งจำทั้งปรับ</li>'+
+          '<li>กองทุนไล่เบี้ยนายจ้างได้ <b>15% ต่อปี</b> อายุความ 10 ปี</li>'+
+        '</ul>'+
+        '<p style="font-size:12px;color:var(--muted);margin-top:6px">อ้างอิง: มาตรา 131, 132, 133 พ.ร.บ.คุ้มครองแรงงาน พ.ศ. 2541</p>'+
+      '</div>';
+  }
+
+  /* ── Key dates for "must" cases ── */
+  var datesHtml = "";
+  if(r.cls==="must"){
+    datesHtml =
+      '<div class="estimate" style="background:var(--soft)">'+
+        '<b style="color:var(--accent)">กำหนดการสำคัญ</b>'+
+        '<ul style="margin:8px 0 0 18px;font-size:14px">'+
+          '<li><b>1 ต.ค. 2569</b> — เริ่มบังคับใช้ นายจ้างต้องเริ่มหักเงินสะสมจากค่าจ้าง</li>'+
+          '<li><b>15 พ.ย. 2569</b> — นำส่งเงินงวดแรก (ภายในวันที่ 15 ของเดือนถัดจากงวดจ่ายค่าจ้าง)</li>'+
+          '<li>นำส่งได้ที่ สถาบันการเธนที่ทำความตกลงกับกรมสวัสดิการฯ หรือ สำนักงานสวัสดิการฯ ในพื้นที่</li>'+
+          '<li>ยื่นแบบ สกล.3 หรือ สกล.3/1 พร้อมหลักฐานการนำส่ง</li>'+
+        '</ul>'+
+      '</div>';
+  }
+
+  /* ── CTA buttons ── */
+  var subject = encodeURIComponent("ขอคำปรึกษากองทุนสงเคราะห์ลูกจ้าง - "+(coName||""));
+  var body = encodeURIComponent("บริษัท: "+(coName||"")+"\nผลประเมิน: "+r.title+"\nจำนวนลูกจ้าง: "+($("emp").value||"")+"\nต้องการให้ METHAFLOW ช่วยเตรียมความพร้อม EWF ค่ะ");
+
+  var ctaPrimary = '<a href="mailto:'+EMAIL+'?subject='+subject+'&body='+body+'"><button class="btn btn-primary">คุยกับทีม METHAFLOW →</button></a>';
+  var ctaDemo = '<a href="mailto:'+EMAIL+'?subject='+encodeURIComponent("นัดดูตัวอย่างระบบ METHAFLOW")+'"><button class="btn btn-ghost">นัดดูตัวอย่างระบบ</button></a>';
+  var ctaCall = '<a href="tel:+66616425116"><button class="btn btn-ghost">โทร '+PHONE+'</button></a>';
+
+  var nextTitle, nextCtas;
+  if(r.cls==="must"){
+    nextTitle = "ขั้นตอนถัดไปที่ควรทำ";
+    nextCtas = ctaPrimary + ctaDemo;
+  } else if(r.cls==="maybe"){
+    nextTitle = "แนะนำให้ตรวจสอบเพิ่มเติม";
+    nextCtas = ctaPrimary + ctaCall;
+  } else {
+    nextTitle = "เตรียมความพร้อมไว้ล่วงหน้า";
+    nextCtas = ctaDemo + ctaCall;
+  }
+
+  host.innerHTML =
+    '<div class="result-card '+r.cls+'">'+
+      '<div class="verdict">'+
+        '<div class="icon">'+r.icon+'</div>'+
+        '<div><h3>'+esc(r.title)+'</h3>'+(coName?'<div class="co">'+esc(coName)+'</div>':'')+'</div>'+
+      '</div>'+
+      '<div class="verdict-body">'+esc(r.body)+'</div>'+
+      '<ul class="reasons">'+reasonsHtml+'</ul>'+
+      datesHtml +
+      estHtml + watchHtml + penaltyHtml +
+      '<div class="next"><h4>'+nextTitle+'</h4>'+
+        '<div class="verdict-body" style="font-size:14.5px;color:var(--muted)">METHAFLOW คำนวณเงินสะสม/สมทบ EWF อัตโนมัติในงวดเดียวกับเงินเดือน แยกกลุ่มกองทุนสำรองเลี้ยงชีพให้ถูกต้อง และสร้างไฟล์นำส่งพร้อม audit trail</div>'+
+        '<div class="cta-row">'+nextCtas+'</div>'+
+      '</div>'+
+    '</div>';
+
+  host.classList.add("show");
+  host.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+})();
+</script>
+</body>
+</html>
