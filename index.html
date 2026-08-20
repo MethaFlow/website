@@ -1559,6 +1559,19 @@ html {
       outline:2px solid var(--cyan-deep);
       outline-offset:-3px;
     }
+
+    /* ===== FAQ MOBILE — ป้องกันข้อความล้นจอมือถือ ===== */
+    @media (max-width:640px){
+      #faq .mf-faq-item > summary{
+        height:auto;
+        min-height:72px;
+        padding:16px 18px;
+        font-size:16px;
+        line-height:1.45;
+        white-space:normal;
+        overflow-wrap:anywhere;
+      }
+    }
   </style>
   <section class="mf-section" id="faq" aria-labelledby="faq-title">
     <div class="mf-wrap">
