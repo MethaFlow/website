@@ -1158,6 +1158,111 @@ html {
 }
 
 </style>
+
+<!-- ===== MOBILE OVERFLOW FIX: PRICING DISPLAY ONLY ===== -->
+<style id="mobile-pricing-overflow-fix">
+@media (max-width:640px){
+  /* Pricing cards: keep all content inside the phone viewport. No JS/formula changes. */
+  #pricing .mf-price-grid{
+    grid-template-columns:minmax(0,1fr);
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+  #pricing .mf-price-card{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    overflow:hidden;
+  }
+  #pricing .mf-price-name,
+  #pricing .mf-price-sub,
+  #pricing .mf-price-note,
+  #pricing .mf-price-list li,
+  #pricing .mf-price-foot{
+    min-width:0;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+  #pricing .mf-price-figure{
+    min-width:0;
+    flex-wrap:wrap;
+    align-items:baseline;
+  }
+  #pricing .mf-price-amount{font-size:42px}
+  #pricing .mf-price-unit{font-size:13px;line-height:1.4}
+  #pricing .mf-price-card .mf-btn--block{
+    min-width:0;
+    max-width:100%;
+    height:auto;
+    white-space:normal;
+    line-height:1.4;
+    padding:11px 14px;
+  }
+  #pricing .mf-setup-table{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  #pricing .mf-setup-table .mf-table{
+    width:100%;
+    min-width:0;
+    table-layout:fixed;
+    font-size:12px;
+  }
+  #pricing .mf-setup-table .mf-table th,
+  #pricing .mf-setup-table .mf-table td{
+    padding:9px 8px;
+    white-space:normal;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+}
+
+/* Quote/calculation modal: display-only mobile containment. Formula, inputs, PDF and print remain untouched. */
+@media (max-width:620px){
+  .mfq-overlay{padding:12px 8px}
+  .mfq-modal{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    padding:20px 14px 24px;
+    overflow:hidden;
+  }
+  .mfq-sub,
+  .mfq-note,
+  .mfq-doc-head,
+  .mfq-doc-meta,
+  .mfq-doc-parties,
+  .mfq-pay-info,
+  .mfq-flow{
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+  .mfq-calc{
+    display:block;
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .mfq-calc tbody{display:table;min-width:520px}
+  .mfq-items{
+    display:block;
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .mfq-items tbody{display:table;min-width:560px}
+  .mfq-sums{max-width:100%}
+  .mfq-actions .mf-btn{max-width:100%;white-space:normal;line-height:1.35}
+  .mfq-pay{align-items:flex-start}
+  .mfq-pay-info{min-width:0}
+}
+</style>
 </head>
 <body>
 <a class="mf-announce" href="ewf-checker.html">กฎหมายใหม่เริ่ม 1 ต.ค. 2569 — บริษัทที่มีลูกจ้าง 10 คนขึ้นไป ต้องหักเงินกองทุนสงเคราะห์ลูกจ้างทุกเดือน <u>เช็คความพร้อมฟรี →</u></a>

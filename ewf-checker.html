@@ -160,6 +160,56 @@ input:focus,select:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(0
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+<!-- ===== MOBILE OVERFLOW FIX: RESULT DISPLAY ONLY ===== -->
+<style id="mobile-ewf-overflow-fix">
+@media (max-width:560px){
+  /* Mobile-only containment. All calculation/rendering JavaScript remains unchanged. */
+  .wrap{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    overflow-x:hidden;
+  }
+  .card,
+  .result-card{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+  .result-card{overflow:hidden}
+  .verdict,
+  .verdict > div,
+  .reasons li,
+  .next,
+  .next > div{min-width:0}
+  .verdict h3,
+  .verdict-body,
+  .verdict .co,
+  .reasons li span:last-child,
+  .warn-box,
+  .penalty-box,
+  .fineprint{
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+  .estimate{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+  }
+  /* Keep the original 5-column calculation table intact; scroll happens inside the box, not the page. */
+  .estimate table{
+    min-width:600px;
+    width:100%;
+  }
+  .cta-row{width:100%;max-width:100%}
+  .cta-row .btn{max-width:100%;white-space:normal;line-height:1.35}
+}
+</style>
 </head>
 <body>
 <div class="wrap">
