@@ -1,6 +1,47 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+<!-- Google tag (gtag.js) + METHAFLOW Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VG68DNEN42"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  /*
+   * METHAFLOW owner/internal mode
+   * ระบบคัดกรองการเข้าชมของเจ้าของเว็บ
+   */
+  (function(){
+    try {
+      var p = new URLSearchParams(window.location.search);
+      if (p.get('mf_internal') === '1') {
+        localStorage.setItem('mf_internal_visitor', '1');
+      } else if (p.get('mf_internal') === '0') {
+        localStorage.removeItem('mf_internal_visitor');
+      }
+    } catch(e) {}
+  })();
+
+  var isInternalVisitor = false;
+  try { isInternalVisitor = localStorage.getItem('mf_internal_visitor') === '1'; } catch(e) {}
+
+  gtag('js', new Date());
+
+  /* traffic_type ใช้คู่กับ GA4 Data Filter > Internal Traffic */
+  if (isInternalVisitor) {
+    gtag('set', { 'traffic_type': 'internal' });
+  }
+
+  gtag('config', 'G-VG68DNEN42', {
+    'user_properties': {
+      'user_group': 'SME_Startup_HR_Owner_General',
+      'visitor_type': isInternalVisitor ? 'internal_owner' : 'external_visitor'
+    }
+  });
+</script>
+
+<!-- ยืนยัน Google Search Console -->
+<meta name="google-site-verification" content="946mEQ0swo9WQFdXRW3oIp7oWpPcwnG2bnOuLn0kyUA" />
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>ตรวจเกณฑ์กองทุนสงเคราะห์ลูกจ้าง | METHAFLOW</title>
